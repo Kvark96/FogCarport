@@ -12,6 +12,11 @@
     <jsp:body>
         <h1>Hello ${sessionScope.email} </h1>
         You are now logged in as a Customer of our wonderful site.
+
+
+
+        <p>  <a href="${pageContext.request.contextPath}/fc/customCarport" class="btn btn-primary"> Vælg carport ud fra mål </a>
+
         Role: ${sessionScope.role}
     </jsp:body>
 
