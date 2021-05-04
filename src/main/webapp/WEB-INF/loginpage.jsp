@@ -4,7 +4,7 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Login page
+         Login side
     </jsp:attribute>
 
     <jsp:attribute name="footer">
@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label class="col-sm-1 col-form-label" for="password">Password</label>
+                    <label class="col-sm-1 col-form-label" for="password">kodeord</label>
                     <div class="col-sm-4">
                         <input class="form-control" type="password" name="password" placeholder="sesam">
                     </div>
@@ -34,7 +34,7 @@
                 <c:if test="${not empty param.msg}">
                     <p style="font-size: large">${param.msg}</p>
                 </c:if>
-                <button class="btn btn-primary" type="submit" value="Login">Sign in</button>
+                <button class="btn btn-primary" type="submit" value="Login">log ind</button>
             </form>
 
 

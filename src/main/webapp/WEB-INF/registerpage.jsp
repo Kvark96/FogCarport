@@ -4,7 +4,7 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Register as new User
+         Tilmeld dig
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label class="col-sm-1 col-form-label" for="password1">Password</label>
+                    <label class="col-sm-1 col-form-label" for="password1">Kodeord</label>
                     <div class="col-sm-4">
                         <input id="password1" class="form-control" type="password" name="password1"  value="${param.password1}"  placeholder="Enter your password">
                     </div>
