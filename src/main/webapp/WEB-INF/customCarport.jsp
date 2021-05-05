@@ -15,7 +15,7 @@
             <select name="length" id="length" class="form-select">
 
                 <c:forEach var="length" items="${applicationScope.meassureEntitiesList}">
-                    <option value="${MeassureEntities.length}">${MeassureEntities.length}</option>
+                    <option value="${MeasureEntities.length}">${MeasureEntities.length}</option>
                 </c:forEach>
             </select>
 
@@ -23,9 +23,10 @@
             <label for="width">bredte</label>
             <select name="width" id="width" class="form-select">
                 <c:forEach var="width" items="${applicationScope.meassureEntitiesList}">
-                    <option value="${MeassureEntities.width}">${MeassureEntities.width}</option>
+                    <option value="${MeasureEntities.width}">${MeasureEntities.width}</option>
                 </c:forEach>
             </select>
+            <br>
             <input type="submit" class="btn btn-success align-items-md-center " value="Vælg"/>
         </form>
 
