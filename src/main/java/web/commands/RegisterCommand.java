@@ -26,23 +26,27 @@ public class RegisterCommand extends CommandUnprotectedPage
         String password1 = request.getParameter("password1");
         String password2 = request.getParameter("password2");
 
-        if(email.contains("@")){
-        if (password1.equals(password2))
-        {
-            User user = userFacade.createUser(email, password1);
-            HttpSession session = request.getSession();
+        if(email.contains("@")) {
+            if (!password1.equals("")) {
+                if (password1.equals(password2)) {
+                    User user = userFacade.createUser(email, password1);
+                    HttpSession session = request.getSession();
 
-            session.setAttribute("email", email);
-            session.setAttribute("user", user);
-            session.setAttribute("role", user.getRole());
-            return user.getRole() + "page";
-        }
-        else
-        {
-            request.setAttribute("error", "the two passwords did not match");
-            return "registerpage";
-        }
-        } else {
+                    session.setAttribute("email", email);
+                    session.setAttribute("user", user);
+                    session.setAttribute("role", user.getRole());
+                    return user.getRole() + "page";
+                } else {
+                    request.setAttribute("error", "the two passwords did not match");
+                    return "registerpage";
+                }
+
+            } else {
+                request.setAttribute("error","user needs a password");
+                return "registerpage";
+
+            }
+        }else {
             request.setAttribute("error", "the email must be valid!");
             return "registerpage";
         }
