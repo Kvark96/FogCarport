@@ -43,7 +43,7 @@ public class FrontController extends HttpServlet
         try {
             getServletContext().setAttribute("meassureEntitiesList",carportMapper.getMeasureEntities());
         } catch (Exception e ){
-            Logger.getLogger("web").log(Level.SEVERE, e.getMessage(), e);;
+            Logger.getLogger("web").log(Level.SEVERE, e.getMessage(), e);
         }
     }
 
