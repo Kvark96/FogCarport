@@ -1,6 +1,7 @@
 package web;
 
 import business.exceptions.UserException;
+import business.persistence.CarportMapper;
 import business.persistence.Database;
 import web.commands.*;
 
@@ -38,8 +39,12 @@ public class FrontController extends HttpServlet
             }
         }
 
-        // Initialize whatever global datastructures needed here:
-
+        CarportMapper carportMapper = new CarportMapper(database);
+        try {
+            getServletContext().setAttribute("meassureEntitiesList",carportMapper.getMeasureEntities());
+        } catch (Exception e ){
+            Logger.getLogger("web").log(Level.SEVERE, e.getMessage(), e);;
+        }
     }
 
     protected void processRequest(

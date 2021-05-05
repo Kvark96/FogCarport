@@ -10,28 +10,23 @@
 
         <form method="post" action="${pageContext.request.contextPath}/fc/">
 
-            <label for="width">Bredte</label>
+            <label for="length">længde </label>
+
+            <select name="length" id="length" class="form-select">
+
+                <c:forEach var="length" items="${applicationScope.meassureEntitiesList}">
+                    <option value="${MeassureEntities.length}">${MeassureEntities.length}</option>
+                </c:forEach>
+            </select>
+
+
+            <label for="width">bredte</label>
             <select name="width" id="width" class="form-select">
-
-                    <option> Hej</option>
-
+                <c:forEach var="width" items="${applicationScope.meassureEntitiesList}">
+                    <option value="${MeassureEntities.width}">${MeassureEntities.width}</option>
+                </c:forEach>
             </select>
-
-
-            <label for="length">Længde</label>
-
-            <br>
-            <select name="lengnth" id="length" class="form-select">
-               <option> Hej </option>
-            </select>
-
             <input type="submit" class="btn btn-success align-items-md-center " value="Vælg"/>
-
-
-
-
-
-
         </form>
 
 
