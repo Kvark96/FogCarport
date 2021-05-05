@@ -10,9 +10,9 @@ public class CarportMapper {
         this.database = database;
     }
 
-    public void getMeassures() throws SQLException{
+    /*public void getMeassures() throws SQLException{
         try {
-            String SQL
+            String SQL;
         }
-    }
+    }*/
 }
