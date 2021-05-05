@@ -1,5 +1,5 @@
 -- MySQL Workbench Forward Engineering
-
+DROP DATABASE carport;
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
@@ -51,15 +51,15 @@ DEFAULT CHARACTER SET = latin1;
 -- -----------------------------------------------------
 -- Table `carport`.`orders`
 -- -----------------------------------------------------
+
 CREATE TABLE IF NOT EXISTS `carport`.`orders` (
-  `ordre_id` INT NOT NULL,
-  `created` TIMESTAMP NULL DEFAULT NULL,
-  `orderline_id` INT NULL DEFAULT NULL,
+  `order_id` INT NOT NULL auto_increment,
+  `created` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   `price` DOUBLE NULL DEFAULT NULL,
   `user_id` INT NULL DEFAULT NULL,
   `customer_request` TINYINT NULL DEFAULT NULL,
-  PRIMARY KEY (`ordre_id`),
-  UNIQUE INDEX `orderline_id_UNIQUE` (`orderline_id` ASC) VISIBLE,
+  PRIMARY KEY (`order_id`),
+  UNIQUE INDEX `order_id` (`order_id` ASC) VISIBLE,
   INDEX `fk_orders_users_idx` (`user_id` ASC) VISIBLE,
   CONSTRAINT `fk_orders_users`
     FOREIGN KEY (`user_id`)
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `carport`.`orderline` (
   INDEX `fk_orderline_orders1` (`order_id` ASC) VISIBLE,
   CONSTRAINT `fk_orderline_orders1`
     FOREIGN KEY (`order_id`)
-    REFERENCES `carport`.`orders` (`ordre_id`))
+    REFERENCES `carport`.`orders` (`order_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;

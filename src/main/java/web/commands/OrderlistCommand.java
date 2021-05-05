@@ -25,7 +25,7 @@ public class OrderlistCommand extends CommandProtectedPage{
             ResultSet rs = ps.executeQuery();
 
             while(rs.next()){
-                int order_id = rs.getInt("ordre_id");
+                int order_id = rs.getInt("order_id");
                 Timestamp ts = rs.getTimestamp("created");
                 double price = rs.getDouble("price");
                 int user_id = rs.getInt("user_id");
