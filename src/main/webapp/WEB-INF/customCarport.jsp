@@ -18,7 +18,7 @@
             </select>
 
 
-            <label for="length">Længde</label>  
+            <label for="length">Længde</label>
 
             <br>
             <select name="lengnth" id="length" class="form-select">

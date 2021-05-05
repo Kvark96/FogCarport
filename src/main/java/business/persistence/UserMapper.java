@@ -29,7 +29,7 @@ public class UserMapper
                 ResultSet ids = ps.getGeneratedKeys();
                 ids.next();
                 int id = ids.getInt(1);
-                user.setId(id);
+                user.setUser_id(id);
             }
             catch (SQLException ex)
             {
@@ -46,7 +46,7 @@ public class UserMapper
     {
         try (Connection connection = database.connect())
         {
-            String sql = "SELECT id, role FROM users WHERE email=? AND password=?";
+            String sql = "SELECT user_id, role FROM users WHERE email=? AND password=?";
 
             try (PreparedStatement ps = connection.prepareStatement(sql))
             {
@@ -56,9 +56,9 @@ public class UserMapper
                 if (rs.next())
                 {
                     String role = rs.getString("role");
-                    int id = rs.getInt("id");
+                    int id = rs.getInt("user_id");
                     User user = new User(email, password, role);
-                    user.setId(id);
+                    user.setUser_id(id);
                     return user;
                 } else
                 {
