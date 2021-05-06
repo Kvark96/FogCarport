@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `carport`.`product`
     `tool_room_length` DOUBLE      NULL DEFAULT NULL,
     `tool_room_width`  DOUBLE      NULL DEFAULT NULL,
     `carport_id`       INT         NULL DEFAULT NULL,
-    `product_id`       INT         NULL AUTO_INCREMENT,
+    `product_id`       INT         NOT NULL AUTO_INCREMENT,
     PRIMARY KEY (`product_id`)
 )
     ENGINE = InnoDB
@@ -139,6 +139,11 @@ CREATE TABLE IF NOT EXISTS `carport`.`orderline`
     COLLATE = utf8mb4_0900_ai_ci;
 
 
+SET SQL_MODE = @OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS = @OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS = @OLD_UNIQUE_CHECKS;
+
+
 INSERT INTO carport.measures (measure_id, length, width)
 VALUES ('1', '150', '150');
 INSERT INTO carport.measures (measure_id, length, width)
@@ -161,6 +166,3 @@ INSERT INTO carport.measures (measure_id, length, width)
 VALUES ('10', '600', '600');
 
 
-SET SQL_MODE = @OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS = @OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS = @OLD_UNIQUE_CHECKS;
