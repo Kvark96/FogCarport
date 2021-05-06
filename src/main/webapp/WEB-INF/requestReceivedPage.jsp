@@ -12,7 +12,9 @@
     <jsp:body>
         <h1>Mange tak for din henvendelse</h1>
 
-        bredte ${requestScope.}
+        bredte = ${length}
+
+        højde =  ${width}
 
 
 
