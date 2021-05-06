@@ -1,5 +1,8 @@
 package web.commands;
 
+import business.persistence.Database;
+import business.persistence.RequestMapper;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,24 +24,11 @@ public class CustomCarportCommand extends Command
         int length = Integer.parseInt(request.getParameter("length"));
         int width = Integer.parseInt(request.getParameter("width"));
 
-
-       // int id = (int) request.getSession().getAttribute("user_id");
-
-
-
-
-        // add request to orderline// TODO
-
-
-
-        // Parse to jsp customer page for accepted request
         request.getSession().setAttribute("length",length);
         request.getSession().setAttribute("width",width);
 
-
-
-
         return pageToShow;
+
     }
 
     public String getRole()
