@@ -13,7 +13,7 @@
         <h1>Mange tak for din henvendelse</h1>
 
         bredte = ${length}
-
+        <br/>
         højde =  ${width}
 
 
