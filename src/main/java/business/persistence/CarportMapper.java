@@ -13,6 +13,10 @@ public class CarportMapper {
 
     Database database;
 
+    public CarportMapper(Database database){
+        this.database = database;
+    }
+
     public List<MeasureEntities> getMeasureEntities() {
         List<MeasureEntities> measureEntitiesList = new ArrayList<>();
         try (Connection connection = database.connect()) {
