@@ -4,16 +4,23 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Medarbejderside
+         Tak for din henvendelse eller noget i den dur
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
-    <jsp:body>
-        <h1>Hej ${sessionScope.email}! </h1>
-        Du er nu logget ind som en medarbejder
 
-        <p>  <a href="${pageContext.request.contextPath}/fc/orderlist" class="btn btn-primary"> Se alle ordrer </a>
+    <jsp:body>
+        <h1>Mange tak for din henvendelse</h1>
+
+        bredte = ${length}
+
+        højde =  ${width}
+
+
+
 
 
     </jsp:body>
+
 </t:genericpage>
+

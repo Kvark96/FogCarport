@@ -8,29 +8,32 @@
     <jsp:body>
        <h1>Vælg din carport ud fra dine ønskede mål</h1>
 
-        <form method="post" action="${pageContext.request.contextPath}/fc/">
+        <form method="post" action="${pageContext.request.contextPath}/fc/requestReceivedPage">
 
-            <label for="width">Bredte</label>
-            <select name="width" id="width" class="form-select">
+            <label for="length">længde </label>
 
-                    <option> Hej</option>
+            <select name="length" id="length" class="form-select">
 
+                <c:forEach var="length" items="${applicationScope.meassureEntitiesList}">
+                    <option value="${length.length}">${length.length}</option>
+                </c:forEach>
             </select>
 
 
-            <label for="length">Længde</label>
+            <label for="width">bredte</label>
+
+            <select name="width" id="width" class="form-select">
+                <c:forEach var="width" items="${applicationScope.meassureEntitiesList}">
+                    <option value="${width.width}">${width.width}</option>
+
+
+                </c:forEach>
+
+
+            </select>
 
             <br>
-            <select name="lengnth" id="length" class="form-select">
-               <option> Hej </option>
-            </select>
-
             <input type="submit" class="btn btn-success align-items-md-center " value="Vælg"/>
-
-
-
-
-
 
         </form>
 
