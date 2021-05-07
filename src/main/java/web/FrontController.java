@@ -7,6 +7,7 @@ import web.commands.*;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -18,8 +19,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "FrontController", urlPatterns = {"/fc/*"})
 public class FrontController extends HttpServlet
 {
-    private final static String USER = "root";
-    private final static String PASSWORD = "Cph73128";
+    private final static String USER = "java";
+    private final static String PASSWORD = "java";
     private final static String URL = "jdbc:mysql://localhost:3306/carport?serverTimezone=CET";
 
     public static Database database;
@@ -63,7 +64,7 @@ public class FrontController extends HttpServlet
                 return;
             }
 
-            String view = action.execute(request, response);
+            String view = action.execute (request, response);
 
             if (view.startsWith(Command.REDIRECT_INDICATOR)) {
                 String page = view.substring(Command.REDIRECT_INDICATOR.length());
@@ -73,7 +74,7 @@ public class FrontController extends HttpServlet
 
             request.getRequestDispatcher("/WEB-INF/" + view + ".jsp").forward(request, response);
         }
-        catch (UnsupportedEncodingException | UserException ex)
+        catch (UnsupportedEncodingException | UserException | SQLException ex)
         {
             request.setAttribute("problem", ex.getMessage());
             Logger.getLogger("web").log(Level.SEVERE, ex.getMessage(), ex);

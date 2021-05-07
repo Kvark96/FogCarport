@@ -1,7 +1,10 @@
 package business.persistence;
 
 import business.entities.MeasureEntities;
+import web.FrontController;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,9 +16,14 @@ public class RequestMapper {
 
     Database database;
 
-    public RequestMapper(Database database) {
+    public RequestMapper(Database database) throws SQLException {
         this.database = database;
     }
+
+
+
+
+
 
     public void insertRequest(int length, int width) {
         try (Connection connection = database.connect()) {

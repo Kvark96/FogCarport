@@ -10,15 +10,10 @@
     </jsp:attribute>
 
     <jsp:body>
-        <h1>Mange tak for din henvendelse</h1>
-
-        bredte = ${length}
-        <br/>
-        højde =  ${width}
+        <h1>Din henvendelse er nu br</h1>
 
 
 
-        <p>  <a href="${pageContext.request.contextPath}/fc/requestConfirmedPage" class="btn btn-primary"> requestConfirmedPage </a>
 
 
 

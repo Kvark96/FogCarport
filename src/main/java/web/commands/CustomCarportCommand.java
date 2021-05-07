@@ -24,6 +24,10 @@ public class CustomCarportCommand extends Command
         int length = Integer.parseInt(request.getParameter("length"));
         int width = Integer.parseInt(request.getParameter("width"));
 
+        int user_id = (int) request.getSession().getAttribute("user_id");
+
+
+        request.getSession().setAttribute("user_id", user_id);
         request.getSession().setAttribute("length",length);
         request.getSession().setAttribute("width",width);
 
