@@ -14,12 +14,28 @@
 
     <jsp:body>
 
-        <div>
-            <h2>Our Cool Site</h2>
 
+            <h2>Velkommen til Fog </h2>
             <div style="margin-top: 3em;margin-bottom: 3em;">
-                Main page for this 2. semester start project used at cphbusiness.dk
+                <h6>Opret nemt og hurtigt en ny profil for at sende en henvendelse</h6>
             </div>
+                <div class="row">
+
+            <div class="col"> <img src="${pageContext.request.contextPath}/IMG/carport6.jpg"  class="img-fluid mx-auto d-block"   alt="FrontPic">
+        </div>
+
+       <div class="col"><img src="${pageContext.request.contextPath}/IMG/carport2.fill.jpg"  class="img-fluid  mx-auto d-block mt-5"   alt="FrontPic">
+       </div>
+        </div>
+
+        <c:if test="${empty sessionScope.role}">
+            <c:set var="link" scope="session" value="/fc/registerpage"/>
+        </c:if>
+
+            <div class="col-sm-4">
+                <a class="btn btn-primary" href="${pageContext.request.contextPath}${link}" role="button">Lav en henvendelse!</a>
+            </div>
+
 
             <c:if test="${sessionScope.role == 'employee' }">
                 <p style="font-size: larger">This is what you can do,
