@@ -19,36 +19,50 @@ public class ConfirmRequestCommand extends CommandProtectedPage {
 
     private void addIdAndGetOrder_id(HttpServletRequest request, HttpServletResponse response) throws SQLException {
         int user_id = (int) request.getSession().getAttribute("user_id");
+        int isARequest =(int) request.getSession().getAttribute("isARequest");
         try (Connection connection = FrontController.database.connect()) {
 
-            String insertSql = "INSERT INTO carport.orders (user_id) VALUES (?)";
+            String insertSql = "INSERT INTO carport.orders (user_id, customer_request) VALUES (?,?)";
             try (PreparedStatement ps = connection.prepareStatement(insertSql)) {
                 ps.setInt(1, user_id);
+                ps.setInt(2, isARequest);
                 ps.execute();
 
-            } catch (SQLException se) {
-                System.out.println("Failed to add to orders = ");
-                System.out.println(se.getMessage());
+            } catch (SQLException error) {
+                System.out.println("Failed to add id to orders" +error.getMessage());
             }
 
 
-            String orderSql = "SELECT order_id FROM carport.orders WHERE order_id = ?";
-            int order_id = 0;
+            String orderSql = "SELECT order_id FROM carport.orders WHERE user_id = ? order by order_id desc";
+
             try (PreparedStatement ps = connection.prepareStatement(orderSql)) {
-                ps.setInt(1,  order_id);
+                ps.setInt(1,  user_id);
                 ResultSet rs = ps.executeQuery();
                 rs.next();
-                request.getSession().setAttribute("order_ided", rs.getInt("order_id"));
-            } catch (SQLException se) {
-                System.out.println("Failed to retrieve order_id from database = ");
-                System.out.println(se.getMessage());
+                request.getSession().setAttribute("order_id", rs.getInt("order_id"));
+                System.out.println(request.getSession().getAttribute("order_id"));
+            } catch (SQLException error) {
+                System.out.println("Failed get order_id from database="+ error.getMessage());
             }
-        } }
+        }
+
+
+
+
+
+
+    }
+
+
+
+
 
 
         public String execute( HttpServletRequest request,HttpServletResponse response) throws SQLException {
             //int length = Integer.parseInt(request.getParameter("length"));
           //  int width = Integer.parseInt(request.getParameter("width"));
+           //  addIdAndGetOrder_id(request,response);
+
             addIdAndGetOrder_id(request,response);
 
             return pageToShow;
