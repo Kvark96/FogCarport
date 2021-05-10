@@ -33,6 +33,7 @@
                     <td>
                         <form name="orderpage" action="${pageContext.request.contextPath}/fc/orderpage" method="post">
                             <input type="hidden" name="order_id" value="${order.order_id}"/>
+                            <input type="hidden" name="typeOfOrder" value="${order.type}"/>
                             <button class="btn btn-sm  btn-outline-secondary" type="submit" value="seOrdrer">Se ordre</button>
                         </form>
                     </td>

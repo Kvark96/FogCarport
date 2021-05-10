@@ -32,9 +32,8 @@
                     <td><c:out value="${req.type}"/></td>
                     <td>
                         <form name="orderpage" action="${pageContext.request.contextPath}/fc/orderpage" method="post">
-                            HERE WE HAVE SOME HIDDEN VARIABLES
                             <input type="hidden" name="order_id" value="${req.order_id}"/>
-                            <input type="hidden" name="typeOfOrder" value="request"/>
+                            <input type="hidden" name="typeOfOrder" value="${req.type}"/>
                             <button class="btn btn-sm  btn-outline-secondary" type="submit" value="seOrdrer"> Se ordre </button>
                         </form>
                     </td>

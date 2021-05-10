@@ -26,5 +26,4 @@ public class Orderline {
     public int getProduct_id() {
         return product_id;
     }
->>>>>>> 566c4bc480c601ad0db0a765b4bd08b4a51492c2
 }

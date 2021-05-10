@@ -10,7 +10,7 @@
     </jsp:attribute>
     <jsp:body>
 
-        <h1>Ordre nr. ${order_id} fra ${user_email}</h1>
+        <h1>${typeOfOrder} nr. ${order_id} fra ${user_email}</h1>
 
         <table class="table">
             <thead>

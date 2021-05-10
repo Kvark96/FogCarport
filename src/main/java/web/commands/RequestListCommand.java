@@ -39,6 +39,6 @@ public class RequestListCommand extends CommandProtectedPage{
             System.out.println(se.getMessage());
         }
 
-        return super.execute(request, response);
+        return pageToShow;
     }
 }

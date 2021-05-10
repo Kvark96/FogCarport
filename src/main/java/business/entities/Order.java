@@ -1,6 +1,8 @@
 package business.entities;
 
-import java.sql.Timestamp;
+import web.FrontController;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +14,7 @@ public class Order {
     private double price;
     private int user_id;
     private String type;
+    private String mail;
 
     public Order(int order_id, Timestamp created, double price, int user_id, String type) {
         this.order_id = order_id;
@@ -20,6 +23,21 @@ public class Order {
         this.user_id = user_id;
         this.type = type;
         orderlines = new ArrayList<>();
+        mail = getUserMail();
+    }
+
+    private String getUserMail() {
+        try(Connection con = FrontController.database.connect()){
+            String sql = "SELECT mail FROM carport.users WHERE user_id = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, user_id);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            return rs.getString(1);
+        } catch(SQLException se){
+            System.out.println(se.getMessage());
+            return se.getMessage();
+        }
     }
 
     public void addOrderline(Orderline o){
@@ -48,5 +66,9 @@ public class Order {
 
     public String getType() {
         return type;
+    }
+
+    public String getMail() {
+        return mail;
     }
 }

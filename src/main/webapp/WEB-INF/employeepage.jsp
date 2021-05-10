@@ -13,6 +13,7 @@
         Du er nu logget ind som en medarbejder
 
         <p>  <a href="${pageContext.request.contextPath}/fc/orderlist" class="btn btn-primary"> Se alle ordrer </a>
+        <p>  <a href="${pageContext.request.contextPath}/fc/requestlist" class="btn btn-primary"> Se alle forespørgelser</a>
 
 
     </jsp:body>
