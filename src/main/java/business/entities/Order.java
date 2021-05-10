@@ -28,7 +28,7 @@ public class Order {
 
     private String getUserMail() {
         try(Connection con = FrontController.database.connect()){
-            String sql = "SELECT mail FROM carport.users WHERE user_id = ?";
+            String sql = "SELECT email FROM carport.users WHERE user_id = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, user_id);
             ResultSet rs = ps.executeQuery();
@@ -36,6 +36,7 @@ public class Order {
             return rs.getString(1);
         } catch(SQLException se){
             System.out.println(se.getMessage());
+            se.printStackTrace();
             return se.getMessage();
         }
     }

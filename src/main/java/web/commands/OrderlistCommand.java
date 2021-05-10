@@ -20,7 +20,7 @@ public class OrderlistCommand extends CommandProtectedPage{
         List<Order> orders = new ArrayList<>();
 
         try(Connection con = FrontController.database.connect()){
-            String sql = "SELECT * FROM orders";
+            String sql = "SELECT * FROM orders WHERE customer_request = 0";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
 

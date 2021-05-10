@@ -4,7 +4,7 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Ordreliste
+         Se ${typeOfOrder}:
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
