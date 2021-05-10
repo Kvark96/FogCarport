@@ -26,7 +26,6 @@ CREATE TABLE IF NOT EXISTS `carport`.`materials`
     `materials_id` INT          NOT NULL,
     `name`         VARCHAR(100) NULL DEFAULT NULL,
     `length`       INT          NULL DEFAULT NULL,
-    `quantity`     INT          NULL DEFAULT NULL,
     `unit`         VARCHAR(45)  NULL DEFAULT NULL,
     `description`  VARCHAR(100) NULL DEFAULT NULL,
     PRIMARY KEY (`materials_id`)
@@ -74,11 +73,16 @@ CREATE TABLE IF NOT EXISTS `carport`.`users`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `carport`.`orders`
 (
-    `order_id`         INT       NOT NULL AUTO_INCREMENT,
-    `created`          TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
-    `price`            DOUBLE    NULL DEFAULT NULL,
-    `user_id`          INT       NULL DEFAULT NULL,
-    `customer_request` TINYINT   NULL DEFAULT NULL,
+    `order_id`         INT         NOT NULL AUTO_INCREMENT,
+    `created`          TIMESTAMP   NULL DEFAULT CURRENT_TIMESTAMP,
+    `price`            DOUBLE      NULL DEFAULT NULL,
+    `user_id`          INT         NULL DEFAULT NULL,
+    `customer_request` TINYINT     NULL DEFAULT NULL,
+    `length`           DOUBLE      NULL,
+    `width`            DOUBLE      NULL,
+    `roof_type`        VARCHAR(45) NULL,
+    `tool_room_length` INT         NULL,
+    `tool_room:width`  INT         NULL,
     PRIMARY KEY (`order_id`),
     UNIQUE INDEX `order_id` (`order_id` ASC) VISIBLE,
     INDEX `fk_orders_users_idx` (`user_id` ASC) VISIBLE,
@@ -87,26 +91,7 @@ CREATE TABLE IF NOT EXISTS `carport`.`orders`
             REFERENCES `carport`.`users` (`user_id`)
 )
     ENGINE = InnoDB
-    DEFAULT CHARACTER SET = utf8mb4
-    COLLATE = utf8mb4_0900_ai_ci;
-
-
--- -----------------------------------------------------
--- Table `carport`.`product`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `carport`.`product`
-(
-    `length`           DOUBLE      NULL DEFAULT NULL,
-    `width`            DOUBLE      NULL DEFAULT NULL,
-    `roof_type`        VARCHAR(45) NULL DEFAULT NULL,
-    `tool_room_length` DOUBLE      NULL DEFAULT NULL,
-    `tool_room_width`  DOUBLE      NULL DEFAULT NULL,
-    `carport_id`       INT         NULL DEFAULT NULL,
-    `product_id`       INT         NOT NULL AUTO_INCREMENT,
-    PRIMARY KEY (`product_id`)
-)
-    ENGINE = InnoDB
-    AUTO_INCREMENT = 4
+    AUTO_INCREMENT = 12
     DEFAULT CHARACTER SET = utf8mb4
     COLLATE = utf8mb4_0900_ai_ci;
 
@@ -116,21 +101,21 @@ CREATE TABLE IF NOT EXISTS `carport`.`product`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `carport`.`orderline`
 (
-    `order_id`     INT NOT NULL,
-    `orderline_id` INT NOT NULL AUTO_INCREMENT,
-    `quantity`     INT NOT NULL,
-    `product_id`   INT NOT NULL,
+    `order_id`               INT NOT NULL,
+    `orderline_id`           INT NOT NULL AUTO_INCREMENT,
+    `quantity`               INT NOT NULL,
+    `product_id`             INT NOT NULL,
+    `materials_materials_id` INT NOT NULL,
     PRIMARY KEY (`orderline_id`),
-    INDEX `fk_orderline_orders1_idx` (`order_id` ASC) VISIBLE,
-    INDEX `fk_orderline_product1_idx` (`product_id` ASC) VISIBLE,
+    UNIQUE INDEX `product_id_UNIQUE` (`product_id` ASC) VISIBLE,
+    INDEX `fk_orderline_orders1` (`order_id` ASC) VISIBLE,
+    INDEX `fk_orderline_materials1_idx` (`materials_materials_id` ASC) VISIBLE,
     CONSTRAINT `fk_orderline_orders1`
         FOREIGN KEY (`order_id`)
-            REFERENCES `carport`.`orders` (`order_id`)
-            ON DELETE NO ACTION
-            ON UPDATE NO ACTION,
-    CONSTRAINT `fk_orderline_product1`
-        FOREIGN KEY (`product_id`)
-            REFERENCES `carport`.`product` (`product_id`)
+            REFERENCES `carport`.`orders` (`order_id`),
+    CONSTRAINT `fk_orderline_materials1`
+        FOREIGN KEY (`materials_materials_id`)
+            REFERENCES `carport`.`materials` (`materials_id`)
             ON DELETE NO ACTION
             ON UPDATE NO ACTION
 )
