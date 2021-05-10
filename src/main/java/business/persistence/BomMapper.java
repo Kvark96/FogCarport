@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class BomMapper {
 
+    Database database;
+
     int trykimpBrædtUnderSternForOgBagMål = 360;
     int getTrykimpBrædtUnderSternForOgBagAntal = 4;
 
@@ -45,6 +47,21 @@ public class BomMapper {
 
     int bræddeBolte;
     int firkantSkiver;
+
+    public BomMapper(Database database) {
+        this.database = database;
+    }
+
+    public String getMats() {
+        return "antal remme: "+remmeAntal+ " Remmemål: "+remMål+
+                "\nantal Spærtræ: "+spærTræAntal+ " spærtræ mål: "+spærTræMål+
+                "\nantal stolper: "+stolpeAntal+
+                "\nantal Tagplader: "+tagPladerAntal+ "tagplade mål: "+tagPladerMål+
+                "\nantal bundskruepakker: "+ bundSkruerAntalPakker+
+                "\nantal bræddebolte: "+ bræddeBolte+
+                "\nantal firkantSkiver: " +firkantSkiver;
+    }
+
 
     public void calculateCarport(int length, int width) {
 
