@@ -32,6 +32,7 @@ public abstract class Command
         commands.put("orderlist", new OrderlistCommand("orderlist", "employee"));
         commands.put("orderpage", new ViewOrderCommand("orderpage", "employee"));
         commands.put("requestReceivedPage", new CustomCarportCommand("requestReceivedPage","customer"));
+        commands.put("standardCarport", new CommandProtectedPage("standardCarport", "customer"));
     }
 
     public static Command fromPath(
