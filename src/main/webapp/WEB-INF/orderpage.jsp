@@ -4,13 +4,13 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Ordreliste
+         Se ${typeOfOrder}:
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
     <jsp:body>
 
-        <h1>Ordre nr. ${order_id} fra ${user_email}</h1>
+        <h1>${typeOfOrder} nr. ${order_id} fra ${user_email}</h1>
 
         <table class="table">
             <thead>
