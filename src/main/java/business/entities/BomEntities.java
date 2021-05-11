@@ -25,8 +25,21 @@ public class BomEntities {
    private int rafterMeasure;
 
    private int beamQuant; //stolpe
+    private int beamMeasure = 300;
 
-   private int weatherBoardSidesMeasure = 540; //vandbræt
+    public int getPressureBoardUnderSternSidesMeasure() {
+        return pressureBoardUnderSternSidesMeasure;
+    }
+
+    public int getBeamMeasure() {
+        return beamMeasure;
+    }
+
+    public void setBeamMeasure(int beamMeasure) {
+        this.beamMeasure = beamMeasure;
+    }
+
+    private int weatherBoardSidesMeasure = 540; //vandbræt
    private int weatherBoardSidesQuant = 4;
 
    private int weatherBoardFrontMeasure = 360;
@@ -267,17 +280,6 @@ public class BomEntities {
     public void setSquareDiscs(int squareDiscs) {
         this.squareDiscs = squareDiscs;
     }
-
-    public String getMats() {
-        return "antal remme: " + wallPlateQuant + " Remmemål: " + wallPlatemeasure +
-                "\nantal Spærtræ: " + rafterQuant + " spærtræ mål: " + rafterMeasure +
-                "\nantal stolper: " + beamQuant +
-                "\nantal Tagplader: " + roofPlatesQuant + "tagplade mål: " + roofPlatesMeasure +
-                "\nantal bundskruepakker: " + screwFasteningQuantPackages +
-                "\nantal boardBolt: " + boardBolt +
-                "\nantal squareDiscs: " + squareDiscs;
-    }
-
 
     public void generateCarport(int length, int width) {
 
