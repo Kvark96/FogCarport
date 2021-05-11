@@ -1,10 +1,8 @@
 package business.exceptions;
 
-public class UserException extends Exception
-{
+public class UserException extends Exception {
 
-    public UserException(String msg)
-    {
+    public UserException(String msg) {
         super(msg);
     }
 

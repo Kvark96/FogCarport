@@ -27,21 +27,21 @@ public class Order {
     }
 
     private String getUserMail() {
-        try(Connection con = FrontController.database.connect()){
+        try (Connection con = FrontController.database.connect()) {
             String sql = "SELECT email FROM carport.users WHERE user_id = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, user_id);
             ResultSet rs = ps.executeQuery();
             rs.next();
             return rs.getString(1);
-        } catch(SQLException se){
+        } catch (SQLException se) {
             System.out.println(se.getMessage());
             se.printStackTrace();
             return se.getMessage();
         }
     }
 
-    public void addOrderline(Orderline o){
+    public void addOrderline(Orderline o) {
         orderlines.add(o);
     }
 

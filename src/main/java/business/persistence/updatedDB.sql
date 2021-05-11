@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `carport`.`users`
     UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE
 )
     ENGINE = InnoDB
-    AUTO_INCREMENT = 8
+    AUTO_INCREMENT = 1
     DEFAULT CHARACTER SET = latin1;
 
 
@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `carport`.`orders`
             REFERENCES `carport`.`users` (`user_id`)
 )
     ENGINE = InnoDB
-    AUTO_INCREMENT = 12
+    AUTO_INCREMENT = 1
     DEFAULT CHARACTER SET = utf8mb4
     COLLATE = utf8mb4_0900_ai_ci;
 

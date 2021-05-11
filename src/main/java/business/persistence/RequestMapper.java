@@ -23,7 +23,8 @@ public class RequestMapper {
     public void insertRequest(int length, int width) {
         try (Connection connection = database.connect()) {
 
-            String sql = "INSERT INTO carport.orders (length,width) VALUES (?,?)";
+
+            String sql = "INSERT INTO carport.orders  (order_id ,length,width) VALUES (?,?,?);";
 
             PreparedStatement ps = connection.prepareStatement(sql);
 
@@ -37,6 +38,7 @@ public class RequestMapper {
             ex.printStackTrace();
 
         }
+
     }
 }
 

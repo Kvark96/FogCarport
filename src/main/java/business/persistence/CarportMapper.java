@@ -13,7 +13,7 @@ public class CarportMapper {
 
     Database database;
 
-    public CarportMapper(Database database){
+    public CarportMapper(Database database) {
         this.database = database;
     }
 
