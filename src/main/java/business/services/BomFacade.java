@@ -1,13 +1,13 @@
 package business.services;
 
-import business.persistence.BomMapper;
+import business.entities.BomEntities;
 import business.persistence.Database;
 
 public class BomFacade {
-    BomMapper bomMapper;
+    BomEntities bomMapper;
 
     public BomFacade(Database database) {
-        this.bomMapper = new BomMapper(database);
+        this.bomMapper = new BomEntities(database);
     }
 
     public String getList(int length, int width) {
