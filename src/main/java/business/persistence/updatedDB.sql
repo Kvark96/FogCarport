@@ -99,15 +99,15 @@ CREATE TABLE IF NOT EXISTS `carport`.`orderline` (
                                                      `order_id` INT NOT NULL,
                                                      `orderline_id` INT NOT NULL,
                                                      `quantity` INT NOT NULL,
-                                                     `materials_material_id` INT NOT NULL,
+                                                     `material_id` INT NOT NULL,
                                                      PRIMARY KEY (`orderline_id`),
                                                      INDEX `fk_orderline_orders1` (`order_id` ASC) VISIBLE,
-                                                     INDEX `fk_orderline_materials1_idx` (`materials_material_id` ASC) VISIBLE,
+                                                     INDEX `fk_orderline_materials1_idx` (`material_id` ASC) VISIBLE,
                                                      CONSTRAINT `fk_orderline_orders1`
                                                          FOREIGN KEY (`order_id`)
                                                              REFERENCES `carport`.`orders` (`order_id`),
                                                      CONSTRAINT `fk_orderline_materials1`
-                                                         FOREIGN KEY (`materials_material_id`)
+                                                         FOREIGN KEY (`material_id`)
                                                              REFERENCES `carport`.`materials` (`material_id`)
                                                              ON DELETE NO ACTION
                                                              ON UPDATE NO ACTION)
