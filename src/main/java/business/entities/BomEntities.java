@@ -9,273 +9,273 @@ public class BomEntities {
    private int pressureBoardUnderSternFrontAndBackMeasure = 360;
    private int pressureBoardUnderSternFrontAndBackQuant = 4;
 
-   private int tryKimpBrædtUnderSternTilSiderneMål = 540;
-   private int tryKimpBrædtUnderSternTilSidernAntal = 4;
+   private int pressureBoardUnderSternSidesMeasure = 540;
+   private int pressureBoardUnderSternSidesQuant = 4;
 
-   private int tryKimpBrædtOverSternTilForendenMål = 360;
-   private int getTryKimpBrædtOverSternTilForendenAntal = 2;
+   private int pressureBoardOverSternFrontMeasure = 360;
+   private int pressureBoardOverSternFrontQuant = 2;
 
-   private int tryKimpBrædtOverSternTilSiderneMål = 540;
-   private int tryKimpBrædtOverSternTilSiderneAntal = 4;
+   private int pressureBoardOverSternSidesMeasure = 540;
+   private int pressureBoardOverSternSidesQuant = 4;
 
-   private int remmeAntal = 2;
-   private int remMål;
+   private int wallPlateQuant = 2; //remme
+   private int wallPlatemeasure;
 
-   private int spærTræAntal;
-   private int spærTræMål;
+   private int rafterQuant; //spærtræ
+   private int rafterMeasure;
 
-   private int stolpeAntal;
+   private int beamQuant; //stolpe
 
-   private int vandBrætSiderMål = 540;
-   private int getVandBrætSiderAntal = 4;
+   private int weatherBoardSidesMeasure = 540; //vandbræt
+   private int weatherBoardSidesQuant = 4;
 
-   private int vandBrætForendeMål = 360;
-   private int vandBrætForendeAntal = 2;
+   private int weatherBoardFrontMeasure = 360;
+   private int weatherBoardFrontQuant = 2;
 
-   private int tagPladerAntal;
-   private int tagPladerMål;
+   private int roofPlatesQuant;  //tagPlader
+   private int roofPlatesMeasure;
 
-   private int bundSkruerAntalPakker;
+   private int screwFasteningQuantPackages; //bundskrue
 
-   private int hulBånd = 2;
+   private int punchTape = 2; //hulbånd
 
-   private int universalHøjreAntal;
-   private int universalVenstreAntal;
+   private int universalRightQuant;
+   private int universalLeftQuant;
 
-   private int pakkeSkruer = 1;
-   private int pakkeBeslagSkruer = 1;
+   private int screwPacks = 1;
+   private int mountScrewPacks = 1;   //beslagSkruer
 
-   private int bræddeBolte;
-   private int firkantSkiver;
+   private int boardBolt;  //boardBolt
+   private int squareDiscs;   //squareDiscs
 
     public BomEntities(int width, int length) {
         generateCarport(length, width);
     }
 
-    public int getTrykimpBrædtUnderSternForOgBagMål() {
-        return trykimpBrædtUnderSternForOgBagMål;
+    public int getPressureBoardUnderSternFrontAndBackMeasure() {
+        return pressureBoardUnderSternFrontAndBackMeasure;
     }
 
-    public void setTrykimpBrædtUnderSternForOgBagMål(int trykimpBrædtUnderSternForOgBagMål) {
-        this.trykimpBrædtUnderSternForOgBagMål = trykimpBrædtUnderSternForOgBagMål;
+    public void setPressureBoardUnderSternFrontAndBackMeasure(int pressureBoardUnderSternFrontAndBackMeasure) {
+        this.pressureBoardUnderSternFrontAndBackMeasure = pressureBoardUnderSternFrontAndBackMeasure;
     }
 
-    public int getGetTrykimpBrædtUnderSternForOgBagAntal() {
-        return getTrykimpBrædtUnderSternForOgBagAntal;
+    public int getPressureBoardUnderSternFrontAndBackQuant() {
+        return pressureBoardUnderSternFrontAndBackQuant;
     }
 
-    public void setGetTrykimpBrædtUnderSternForOgBagAntal(int getTrykimpBrædtUnderSternForOgBagAntal) {
-        this.getTrykimpBrædtUnderSternForOgBagAntal = getTrykimpBrædtUnderSternForOgBagAntal;
+    public void setPressureBoardUnderSternFrontAndBackQuant(int pressureBoardUnderSternFrontAndBackQuant) {
+        this.pressureBoardUnderSternFrontAndBackQuant = pressureBoardUnderSternFrontAndBackQuant;
     }
 
-    public int getTryKimpBrædtUnderSternTilSiderneMål() {
-        return tryKimpBrædtUnderSternTilSiderneMål;
+    public int getpressureBoardUnderSternSidesMeasure() {
+        return pressureBoardUnderSternSidesMeasure;
     }
 
-    public void setTryKimpBrædtUnderSternTilSiderneMål(int tryKimpBrædtUnderSternTilSiderneMål) {
-        this.tryKimpBrædtUnderSternTilSiderneMål = tryKimpBrædtUnderSternTilSiderneMål;
+    public void setPressureBoardUnderSternSidesMeasure(int pressureBoardUnderSternSidesMeasure) {
+        this.pressureBoardUnderSternSidesMeasure = pressureBoardUnderSternSidesMeasure;
     }
 
-    public int getTryKimpBrædtUnderSternTilSidernAntal() {
-        return tryKimpBrædtUnderSternTilSidernAntal;
+    public int getPressureBoardUnderSternSidesQuant() {
+        return pressureBoardUnderSternSidesQuant;
     }
 
-    public void setTryKimpBrædtUnderSternTilSidernAntal(int tryKimpBrædtUnderSternTilSidernAntal) {
-        this.tryKimpBrædtUnderSternTilSidernAntal = tryKimpBrædtUnderSternTilSidernAntal;
+    public void setPressureBoardUnderSternSidesQuant(int pressureBoardUnderSternSidesQuant) {
+        this.pressureBoardUnderSternSidesQuant = pressureBoardUnderSternSidesQuant;
     }
 
-    public int getTryKimpBrædtOverSternTilForendenMål() {
-        return tryKimpBrædtOverSternTilForendenMål;
+    public int getPressureBoardOverSternFrontMeasure() {
+        return pressureBoardOverSternFrontMeasure;
     }
 
-    public void setTryKimpBrædtOverSternTilForendenMål(int tryKimpBrædtOverSternTilForendenMål) {
-        this.tryKimpBrædtOverSternTilForendenMål = tryKimpBrædtOverSternTilForendenMål;
+    public void setPressureBoardOverSternFrontMeasure(int pressureBoardOverSternFrontMeasure) {
+        this.pressureBoardOverSternFrontMeasure = pressureBoardOverSternFrontMeasure;
     }
 
-    public int getGetTryKimpBrædtOverSternTilForendenAntal() {
-        return getTryKimpBrædtOverSternTilForendenAntal;
+    public int getPressureBoardOverSternFrontQuant() {
+        return pressureBoardOverSternFrontQuant;
     }
 
-    public void setGetTryKimpBrædtOverSternTilForendenAntal(int getTryKimpBrædtOverSternTilForendenAntal) {
-        this.getTryKimpBrædtOverSternTilForendenAntal = getTryKimpBrædtOverSternTilForendenAntal;
+    public void setPressureBoardOverSternFrontQuant(int pressureBoardOverSternFrontQuant) {
+        this.pressureBoardOverSternFrontQuant = pressureBoardOverSternFrontQuant;
     }
 
-    public int getTryKimpBrædtOverSternTilSiderneMål() {
-        return tryKimpBrædtOverSternTilSiderneMål;
+    public int getPressureBoardOverSternSidesMeasure() {
+        return pressureBoardOverSternSidesMeasure;
     }
 
-    public void setTryKimpBrædtOverSternTilSiderneMål(int tryKimpBrædtOverSternTilSiderneMål) {
-        this.tryKimpBrædtOverSternTilSiderneMål = tryKimpBrædtOverSternTilSiderneMål;
+    public void setPressureBoardOverSternSidesMeasure(int pressureBoardOverSternSidesMeasure) {
+        this.pressureBoardOverSternSidesMeasure = pressureBoardOverSternSidesMeasure;
     }
 
-    public int getTryKimpBrædtOverSternTilSiderneAntal() {
-        return tryKimpBrædtOverSternTilSiderneAntal;
+    public int getPressureBoardOverSternSidesQuant() {
+        return pressureBoardOverSternSidesQuant;
     }
 
-    public void setTryKimpBrædtOverSternTilSiderneAntal(int tryKimpBrædtOverSternTilSiderneAntal) {
-        this.tryKimpBrædtOverSternTilSiderneAntal = tryKimpBrædtOverSternTilSiderneAntal;
+    public void setPressureBoardOverSternSidesQuant(int pressureBoardOverSternSidesQuant) {
+        this.pressureBoardOverSternSidesQuant = pressureBoardOverSternSidesQuant;
     }
 
-    public int getRemmeAntal() {
-        return remmeAntal;
+    public int getWallPlateQuant() {
+        return wallPlateQuant;
     }
 
-    public void setRemmeAntal(int remmeAntal) {
-        this.remmeAntal = remmeAntal;
+    public void setWallPlateQuant(int wallPlateQuant) {
+        this.wallPlateQuant = wallPlateQuant;
     }
 
-    public int getRemMål() {
-        return remMål;
+    public int getWallPlatemeasure() {
+        return wallPlatemeasure;
     }
 
-    public void setRemMål(int remMål) {
-        this.remMål = remMål;
+    public void setWallPlatemeasure(int wallPlatemeasure) {
+        this.wallPlatemeasure = wallPlatemeasure;
     }
 
-    public int getSpærTræAntal() {
-        return spærTræAntal;
+    public int getRafterQuant() {
+        return rafterQuant;
     }
 
-    public void setSpærTræAntal(int spærTræAntal) {
-        this.spærTræAntal = spærTræAntal;
+    public void setRafterQuant(int rafterQuant) {
+        this.rafterQuant = rafterQuant;
     }
 
-    public int getSpærTræMål() {
-        return spærTræMål;
+    public int getRafterMeasure() {
+        return rafterMeasure;
     }
 
-    public void setSpærTræMål(int spærTræMål) {
-        this.spærTræMål = spærTræMål;
+    public void setRafterMeasure(int rafterMeasure) {
+        this.rafterMeasure = rafterMeasure;
     }
 
-    public int getStolpeAntal() {
-        return stolpeAntal;
+    public int getBeamQuant() {
+        return beamQuant;
     }
 
-    public void setStolpeAntal(int stolpeAntal) {
-        this.stolpeAntal = stolpeAntal;
+    public void setBeamQuant(int beamQuant) {
+        this.beamQuant = beamQuant;
     }
 
-    public int getVandBrætSiderMål() {
-        return vandBrætSiderMål;
+    public int getWeatherBoardSidesMeasure() {
+        return weatherBoardSidesMeasure;
     }
 
-    public void setVandBrætSiderMål(int vandBrætSiderMål) {
-        this.vandBrætSiderMål = vandBrætSiderMål;
+    public void setWeatherBoardSidesMeasure(int weatherBoardSidesMeasure) {
+        this.weatherBoardSidesMeasure = weatherBoardSidesMeasure;
     }
 
-    public int getGetVandBrætSiderAntal() {
-        return getVandBrætSiderAntal;
+    public int getWeatherBoardSidesQuant() {
+        return weatherBoardSidesQuant;
     }
 
-    public void setGetVandBrætSiderAntal(int getVandBrætSiderAntal) {
-        this.getVandBrætSiderAntal = getVandBrætSiderAntal;
+    public void setWeatherBoardSidesQuant(int weatherBoardSidesQuant) {
+        this.weatherBoardSidesQuant = weatherBoardSidesQuant;
     }
 
-    public int getVandBrætForendeMål() {
-        return vandBrætForendeMål;
+    public int getWeatherBoardFrontMeasure() {
+        return weatherBoardFrontMeasure;
     }
 
-    public void setVandBrætForendeMål(int vandBrætForendeMål) {
-        this.vandBrætForendeMål = vandBrætForendeMål;
+    public void setWeatherBoardFrontMeasure(int weatherBoardFrontMeasure) {
+        this.weatherBoardFrontMeasure = weatherBoardFrontMeasure;
     }
 
-    public int getVandBrætForendeAntal() {
-        return vandBrætForendeAntal;
+    public int getWeatherBoardFrontQuant() {
+        return weatherBoardFrontQuant;
     }
 
-    public void setVandBrætForendeAntal(int vandBrætForendeAntal) {
-        this.vandBrætForendeAntal = vandBrætForendeAntal;
+    public void setWeatherBoardFrontQuant(int weatherBoardFrontQuant) {
+        this.weatherBoardFrontQuant = weatherBoardFrontQuant;
     }
 
-    public int getTagPladerAntal() {
-        return tagPladerAntal;
+    public int getRoofPlatesQuant() {
+        return roofPlatesQuant;
     }
 
-    public void setTagPladerAntal(int tagPladerAntal) {
-        this.tagPladerAntal = tagPladerAntal;
+    public void setRoofPlatesQuant(int roofPlatesQuant) {
+        this.roofPlatesQuant = roofPlatesQuant;
     }
 
-    public int getTagPladerMål() {
-        return tagPladerMål;
+    public int getRoofPlatesMeasure() {
+        return roofPlatesMeasure;
     }
 
-    public void setTagPladerMål(int tagPladerMål) {
-        this.tagPladerMål = tagPladerMål;
+    public void setRoofPlatesMeasure(int roofPlatesMeasure) {
+        this.roofPlatesMeasure = roofPlatesMeasure;
     }
 
-    public int getBundSkruerAntalPakker() {
-        return bundSkruerAntalPakker;
+    public int getScrewFasteningQuantPackages() {
+        return screwFasteningQuantPackages;
     }
 
-    public void setBundSkruerAntalPakker(int bundSkruerAntalPakker) {
-        this.bundSkruerAntalPakker = bundSkruerAntalPakker;
+    public void setScrewFasteningQuantPackages(int screwFasteningQuantPackages) {
+        this.screwFasteningQuantPackages = screwFasteningQuantPackages;
     }
 
-    public int getHulBånd() {
-        return hulBånd;
+    public int getPunchTape() {
+        return punchTape;
     }
 
-    public void setHulBånd(int hulBånd) {
-        this.hulBånd = hulBånd;
+    public void setPunchTape(int punchTape) {
+        this.punchTape = punchTape;
     }
 
-    public int getUniversalHøjreAntal() {
-        return universalHøjreAntal;
+    public int getUniversalRightQuant() {
+        return universalRightQuant;
     }
 
-    public void setUniversalHøjreAntal(int universalHøjreAntal) {
-        this.universalHøjreAntal = universalHøjreAntal;
+    public void setUniversalRightQuant(int universalRightQuant) {
+        this.universalRightQuant = universalRightQuant;
     }
 
-    public int getUniversalVenstreAntal() {
-        return universalVenstreAntal;
+    public int getUniversalLeftQuant() {
+        return universalLeftQuant;
     }
 
-    public void setUniversalVenstreAntal(int universalVenstreAntal) {
-        this.universalVenstreAntal = universalVenstreAntal;
+    public void setUniversalLeftQuant(int universalLeftQuant) {
+        this.universalLeftQuant = universalLeftQuant;
     }
 
-    public int getPakkeSkruer() {
-        return pakkeSkruer;
+    public int getScrewPacks() {
+        return screwPacks;
     }
 
-    public void setPakkeSkruer(int pakkeSkruer) {
-        this.pakkeSkruer = pakkeSkruer;
+    public void setScrewPacks(int screwPacks) {
+        this.screwPacks = screwPacks;
     }
 
-    public int getPakkeBeslagSkruer() {
-        return pakkeBeslagSkruer;
+    public int getMountScrewPacks() {
+        return mountScrewPacks;
     }
 
-    public void setPakkeBeslagSkruer(int pakkeBeslagSkruer) {
-        this.pakkeBeslagSkruer = pakkeBeslagSkruer;
+    public void setMountScrewPacks(int mountScrewPacks) {
+        this.mountScrewPacks = mountScrewPacks;
     }
 
-    public int getBræddeBolte() {
-        return bræddeBolte;
+    public int getBoardBolt() {
+        return boardBolt;
     }
 
-    public void setBræddeBolte(int bræddeBolte) {
-        this.bræddeBolte = bræddeBolte;
+    public void setBoardBolt(int boardBolt) {
+        this.boardBolt = boardBolt;
     }
 
-    public int getFirkantSkiver() {
-        return firkantSkiver;
+    public int getSquareDiscs() {
+        return squareDiscs;
     }
 
-    public void setFirkantSkiver(int firkantSkiver) {
-        this.firkantSkiver = firkantSkiver;
+    public void setSquareDiscs(int squareDiscs) {
+        this.squareDiscs = squareDiscs;
     }
 
     public String getMats() {
-        return "antal remme: " + remmeAntal + " Remmemål: " + remMål +
-                "\nantal Spærtræ: " + spærTræAntal + " spærtræ mål: " + spærTræMål +
-                "\nantal stolper: " + stolpeAntal +
-                "\nantal Tagplader: " + tagPladerAntal + "tagplade mål: " + tagPladerMål +
-                "\nantal bundskruepakker: " + bundSkruerAntalPakker +
-                "\nantal bræddebolte: " + bræddeBolte +
-                "\nantal firkantSkiver: " + firkantSkiver;
+        return "antal remme: " + wallPlateQuant + " Remmemål: " + wallPlatemeasure +
+                "\nantal Spærtræ: " + rafterQuant + " spærtræ mål: " + rafterMeasure +
+                "\nantal stolper: " + beamQuant +
+                "\nantal Tagplader: " + roofPlatesQuant + "tagplade mål: " + roofPlatesMeasure +
+                "\nantal bundskruepakker: " + screwFasteningQuantPackages +
+                "\nantal boardBolt: " + boardBolt +
+                "\nantal squareDiscs: " + squareDiscs;
     }
 
 
@@ -285,61 +285,62 @@ public class BomEntities {
         double antalRegner = (length / 100) / 0.55;
         double antalSkruer = length * width * 13 / 200;
 
-        remMål = length;
+        wallPlatemeasure = length;
 
-        spærTræAntal = (int) Math.ceil(antalRegner);
-        spærTræMål = width;
+        rafterQuant = (int) Math.ceil(antalRegner);
+        rafterMeasure = width;
 
         if (length >= 500) {
-            stolpeAntal = 6;
+            beamQuant = 6;
         } else {
-            stolpeAntal = 4;
+            beamQuant = 4;
         }
 
-        tagPladerAntal = width / 100;
+        roofPlatesQuant = width / 100;
 
         if (length > 360) {
-            tagPladerMål = 600;
+            roofPlatesMeasure = 600;
         } else {
-            tagPladerMål = 360;
+            roofPlatesMeasure = 360;
         }
 
-        bundSkruerAntalPakker = (int) Math.ceil(antalSkruer);
-        universalHøjreAntal = (int) Math.ceil(antalRegner);
-        universalVenstreAntal = (int) Math.ceil(antalRegner);
+        screwFasteningQuantPackages = (int) Math.ceil(antalSkruer);
+        universalRightQuant = (int) Math.ceil(antalRegner);
+        universalLeftQuant = (int) Math.ceil(antalRegner);
 
-        bræddeBolte = stolpeAntal * 2;
-        firkantSkiver = stolpeAntal * 2;
+        boardBolt = beamQuant * 2;
+        squareDiscs = beamQuant * 2;
 
 //        materials.add(trykimpBrædtUnderSternForOgBagMål);
 //        materials.add(getTrykimpBrædtUnderSternForOgBagAntal);
 //        materials.add(tryKimpBrædtUnderSternTilSiderneMål);
-//        materials.add(tryKimpBrædtUnderSternTilSidernAntal);
-//        materials.add(tryKimpBrædtOverSternTilForendenMål);
-//        materials.add(getTryKimpBrædtOverSternTilForendenAntal);
-//        materials.add(tryKimpBrædtOverSternTilSiderneMål);
-//        materials.add(tryKimpBrædtOverSternTilSiderneAntal);
-//        materials.add(remmeAntal);
-//        materials.add(remMål);
-//        materials.add(spærTræAntal);
-//        materials.add(spærTræMål);
-//        materials.add(stolpeAntal);
-//        materials.add(vandBrætSiderMål);
-//        materials.add(getVandBrætSiderAntal);
-//        materials.add(vandBrætForendeMål);
-//        materials.add(vandBrætForendeAntal);
-//        materials.add(tagPladerAntal);
-//        materials.add(tagPladerMål);
-//        materials.add(bundSkruerAntalPakker);
-//        materials.add(hulBånd);
-//        materials.add(universalHøjreAntal);
-//        materials.add(universalVenstreAntal);
-//        materials.add(pakkeSkruer);
-//        materials.add(pakkeBeslagSkruer);
-//        materials.add(bræddeBolte);
-//        materials.add(firkantSkiver);
+//        materials.add(pressureBoardUnderSternSidesQuant);
+//        materials.add(pressureBoardOverSternFrontMeasure);
+//        materials.add(pressureBoardOverSternFrontQuant);
+//        materials.add(pressureBoardOverSternSidesMeasure);
+//        materials.add(pressureBoardOverSternSidesQuant);
+//        materials.add(wallPlateQuant);
+//        materials.add(wallPlatemeasure);
+//        materials.add(rafterQuant);
+//        materials.add(rafterMeasure);
+//        materials.add(beamQuant);
+//        materials.add(weatherBoardSidesMeasure);
+//        materials.add(weatherBoardSidesQuant);
+//        materials.add(weatherBoardFrontMeasure);
+//        materials.add(weatherBoardFrontQuant);
+//        materials.add(roofPlatesQuant);
+//        materials.add(roofPlatesMeasure);
+//        materials.add(screwFasteningQuantPackages);
+//        materials.add(punchTape);
+//        materials.add(universalRightQuant);
+//        materials.add(universalLeftQuant);
+//        materials.add(screwPacks);
+//        materials.add(mountScrewPacks);
+//        materials.add(boardBolt);
+//        materials.add(squareDiscs);
 //
 //                return materials;
+
 
     }
 }
