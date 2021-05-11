@@ -20,6 +20,7 @@ public class ViewOrderCommand extends CommandProtectedPage{
         List<Orderline> orderlines = new ArrayList<>();
 
         int order_id = Integer.parseInt(request.getParameter("order_id"));
+        String type = request.getParameter("typeOfOrder");
 
         try(Connection con = FrontController.database.connect()){
             String sql = "SELECT product_id, quantity, orders.price, email, orderline.orderline_id FROM carport.orderline JOIN carport.orders ON orderline.order_id = orders.order_id JOIN carport.users ON orders.user_id = users.user_id WHERE orders.order_id = ?";
@@ -45,6 +46,7 @@ public class ViewOrderCommand extends CommandProtectedPage{
             }
 
             request.setAttribute("orderlines", orderlines);
+            request.setAttribute("typeOfOrder", type);
 
         } catch (SQLException se){
             System.out.println("Failed to connect to database in ViewOrderCommand");

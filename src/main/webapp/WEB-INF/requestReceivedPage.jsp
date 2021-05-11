@@ -18,6 +18,8 @@
 
 
 
+        <p>  <a href="${pageContext.request.contextPath}/fc/requestConfirmedPage" class="btn btn-primary"> requestConfirmedPage </a>
+
 
 
     </jsp:body>

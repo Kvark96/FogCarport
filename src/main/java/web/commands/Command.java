@@ -3,6 +3,7 @@ package web.commands;
 import business.exceptions.UserException;
 import business.persistence.Database;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,7 +33,10 @@ public abstract class Command
         commands.put("orderlist", new OrderlistCommand("orderlist", "employee"));
         commands.put("orderpage", new ViewOrderCommand("orderpage", "employee"));
         commands.put("requestReceivedPage", new CustomCarportCommand("requestReceivedPage","customer"));
-        commands.put("standardCarport", new CommandProtectedPage("standardCarport", "customer"));
+
+        commands.put("requestConfirmedPage", new ConfirmRequestCommand("requestConfirmedPage","customer"));
+        commands.put("requestlist", new RequestListCommand("requestlist", "employee"));
+
     }
 
     public static Command fromPath(
@@ -54,6 +58,6 @@ public abstract class Command
     public abstract String execute(
             HttpServletRequest request,
             HttpServletResponse response)
-            throws UserException;
+            throws UserException, SQLException;
 
 }

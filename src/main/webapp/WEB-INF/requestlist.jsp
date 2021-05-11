@@ -4,7 +4,7 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Ordreliste
+         Forespørgselsliste
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
@@ -15,26 +15,26 @@
                 <th scope="col"> Ordre nr</th>
                 <th scope="col"> Oprettet</th>
                 <th scope="col"> Pris</th>
-                <th scope="col"> Bruger nr</th>
+                <th scope="col"> Kunde</th>
                 <th scope="col"> Type</th>
                 <th scope="col"></th>
             </tr>
 
             </thead>
             <tbody>
-            <c:forEach items="${orders}" var="order">
+            <c:forEach items="${requestList}" var="req">
                 <tr>
-                    <th scope="row"><c:out value="${order.order_id}"/></th>
+                    <th scope="row"><c:out value="${req.order_id}"/></th>
 
-                    <td><c:out value="${order.created}"/></td>
-                    <td><c:out value="${order.price}"/></td>
-                    <td><c:out value="${order.user_id}"/></td>
-                    <td><c:out value="${order.type}"/></td>
+                    <td><c:out value="${req.created}"/></td>
+                    <td><c:out value="${req.price}"/></td>
+                    <td><c:out value="${req.mail}"/></td>
+                    <td><c:out value="${req.type}"/></td>
                     <td>
                         <form name="orderpage" action="${pageContext.request.contextPath}/fc/orderpage" method="post">
-                            <input type="hidden" name="order_id" value="${order.order_id}"/>
-                            <input type="hidden" name="typeOfOrder" value="${order.type}"/>
-                            <button class="btn btn-sm  btn-outline-secondary" type="submit" value="seOrdrer">Se ordre</button>
+                            <input type="hidden" name="order_id" value="${req.order_id}"/>
+                            <input type="hidden" name="typeOfOrder" value="${req.type}"/>
+                            <button class="btn btn-sm  btn-outline-secondary" type="submit" value="seOrdrer"> Se ordre </button>
                         </form>
                     </td>
                 </tr>

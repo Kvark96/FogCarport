@@ -4,18 +4,19 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Demo Page for Customer Roles
+         Tak for din henvendelse eller noget i den dur
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
 
     <jsp:body>
-        <h1>Hello ${sessionScope.email} </h1>
-       Vælg en carport!
+        <h1>Din henvendelse er nu br</h1>
 
 
 
-        Role: ${sessionScope.role}
+
+
+
     </jsp:body>
 
 </t:genericpage>
