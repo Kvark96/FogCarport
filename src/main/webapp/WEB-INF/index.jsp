@@ -31,10 +31,23 @@
         <c:if test="${empty sessionScope.role}">
             <c:set var="link" scope="session" value="/fc/registerpage"/>
         </c:if>
+        <c:if test="${empty sessionScope.role}">
+            <c:set var="customCarport" scope="session" value="/fc/customCarport"/>
+        </c:if>
 
-            <div class="col-sm-4">
-                <a class="btn btn-primary" href="${pageContext.request.contextPath}${link}" role="button">Lav en henvendelse!</a>
-            </div>
+
+        <c:choose>
+            <c:when test="${sessionScope.role == 'customer'}">
+                <div class="col-sm-4">
+                    <a class="btn btn-primary" href="${pageContext.request.contextPath}${customCarport}" role="button">Lav en henvendelse!</a>
+                </div>
+            </c:when>
+            <c:otherwise>
+                <div class="col-sm-4">
+                    <a class="btn btn-primary" href="${pageContext.request.contextPath}${link}" role="button">Lav en henvendelse!</a>
+                </div>
+            </c:otherwise>
+        </c:choose>
 
 
             <c:if test="${sessionScope.role == 'employee' }">
@@ -48,7 +61,6 @@
                     are logged in as a customer</p>
                 <p><a href="fc/customerpage">Customer Page</a>
             </c:if>
-
         </div>
 
     </jsp:body>
