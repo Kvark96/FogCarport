@@ -3,14 +3,14 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <t:genericpage>
-    <jsp:attribute name="header">Forespørgsel på carport.</jsp:attribute>
+    <jsp:attribute name="header">Forespørgsel på carport</jsp:attribute>
     <jsp:attribute name="footer"> </jsp:attribute>
     <jsp:body>
        <h1>Vælg din carport ud fra dine ønskede mål</h1>
 
         <form method="post" action="${pageContext.request.contextPath}/fc/requestReceivedPage">
 
-            <label for="length">længde </label>
+            <label for="length">Ønskede længde i centimeter </label>
 
             <select name="length" id="length" class="form-select">
 
@@ -20,7 +20,7 @@
             </select>
 
 
-            <label for="width">bredte</label>
+            <label for="width">Ønskede bredte i centimeter</label>
 
             <select name="width" id="width" class="form-select">
                 <c:forEach var="width" items="${applicationScope.meassureEntitiesList}">
