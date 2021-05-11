@@ -12,7 +12,7 @@
     <jsp:body>
         <h1>Mange tak for din henvendelse</h1>
 
-         Bekræft at du ønsker du at indsende en forspørgsel, for en carport med længden ${length}cm, og med en bredten ${width}cm.
+         Bekræft at du ønsker du at indsende en forspørgsel, for en carport med længden ${length}cm, og med en bredden ${width}cm.
         <br>
         <br>
 
