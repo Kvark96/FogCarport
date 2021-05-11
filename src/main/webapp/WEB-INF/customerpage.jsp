@@ -10,7 +10,7 @@
     </jsp:attribute>
 
     <jsp:body>
-        <h1>Hej ${sessionScope.email} </h1>
+        <h1>Hej ${sessionScope.name} </h1>
         <p> Velkommen til din kundeoversigt</p>
 
 

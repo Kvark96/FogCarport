@@ -10,13 +10,49 @@
     </jsp:attribute>
     <jsp:body>
         <div style="margin-top: 5em;">
+
             <form name="login" action="${pageContext.request.contextPath}/fc/registercommand" method="POST">
+
+            <div class="row mb-3">
+                <label class="col-sm-1 col-form-label" for="name">Navn</label>
+                <div class="col-sm-4">
+                    <input id="name" class="form-control" type="text" name="name" value="${param.name}" placeholder="Tilføj navn">
+                </div>
+            </div>
+
+
                 <div class="row mb-3">
                     <label class="col-sm-1 col-form-label" for="email">Email</label>
                     <div class="col-sm-4">
                         <input id="email" class="form-control" type="text" name="email" value="${param.email}" placeholder="Enter a valid email">
                     </div>
                 </div>
+
+
+                <div class="row mb-3">
+                    <label class="col-sm-1 col-form-label" for="phonenumber">Telefonnummer</label>
+                    <div class="col-sm-4">
+                        <input id="phonenumber" class="form-control" type="text" name="phonenumber" value="${param.phonenumber}" placeholder="Tilføj telefonmummer">
+                    </div>
+                </div>
+
+
+                <div class="row mb-3">
+                    <label class="col-sm-1 col-form-label" for="address">Adresse</label>
+                    <div class="col-sm-4">
+                        <input id="address" class="form-control" type="text" name="address" value="${param.address}" placeholder="Tilføj adresse">
+                    </div>
+                </div>
+
+
+                <div class="row mb-3">
+                    <label class="col-sm-1 col-form-label" for="zipcode">Postnummer</label>
+                    <div class="col-sm-4">
+                        <input id="zipcode" class="form-control" type="text" name="zipcode" value="${param.address}" placeholder="Tilføj postnummer">
+                    </div>
+                </div>
+
+
                 <div class="row mb-3">
                     <label class="col-sm-1 col-form-label" for="password1">Kodeord</label>
                     <div class="col-sm-4">
@@ -24,7 +60,7 @@
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label class="col-sm-1 col-form-label" for="password2">Password</label>
+                    <label class="col-sm-1 col-form-label" for="password2">Kodeord</label>
                     <div class="col-sm-4">
                         <input id="password2" class="form-control" type="password" name="password2" value="${param.password2}"  placeholder="Repeat the password">
                     </div>
