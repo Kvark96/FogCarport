@@ -53,19 +53,19 @@ public class BomMapper {
     }
 
     public String getMats() {
-        return "antal remme: "+remmeAntal+ " Remmemål: "+remMål+
-                "\nantal Spærtræ: "+spærTræAntal+ " spærtræ mål: "+spærTræMål+
-                "\nantal stolper: "+stolpeAntal+
-                "\nantal Tagplader: "+tagPladerAntal+ "tagplade mål: "+tagPladerMål+
-                "\nantal bundskruepakker: "+ bundSkruerAntalPakker+
-                "\nantal bræddebolte: "+ bræddeBolte+
-                "\nantal firkantSkiver: " +firkantSkiver;
+        return "antal remme: " + remmeAntal + " Remmemål: " + remMål +
+                "\nantal Spærtræ: " + spærTræAntal + " spærtræ mål: " + spærTræMål +
+                "\nantal stolper: " + stolpeAntal +
+                "\nantal Tagplader: " + tagPladerAntal + "tagplade mål: " + tagPladerMål +
+                "\nantal bundskruepakker: " + bundSkruerAntalPakker +
+                "\nantal bræddebolte: " + bræddeBolte +
+                "\nantal firkantSkiver: " + firkantSkiver;
     }
 
 
     public void calculateCarport(int length, int width) {
 
-        double antalRegner = (length/100) / 0.55;
+        double antalRegner = (length / 100) / 0.55;
         double antalSkruer = length * width * 13 / 200;
 
         remMål = length;
@@ -79,7 +79,7 @@ public class BomMapper {
             stolpeAntal = 4;
         }
 
-        tagPladerAntal = width /100;
+        tagPladerAntal = width / 100;
 
         if (length > 360) {
             tagPladerMål = 600;
@@ -91,8 +91,8 @@ public class BomMapper {
         universalHøjreAntal = (int) Math.ceil(antalRegner);
         universalVenstreAntal = (int) Math.ceil(antalRegner);
 
-        bræddeBolte = stolpeAntal*2;
-        firkantSkiver = stolpeAntal*2;
+        bræddeBolte = stolpeAntal * 2;
+        firkantSkiver = stolpeAntal * 2;
 
     }
 }
