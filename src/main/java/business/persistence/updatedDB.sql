@@ -102,9 +102,9 @@ CREATE TABLE IF NOT EXISTS `carport`.`orderline` (
                                                      `materials_materials_id` INT NOT NULL,
                                                      PRIMARY KEY (`orderline_id`),
                                                      INDEX `fk_orderline_orders1` (`order_id` ASC) VISIBLE,
-                                                     INDEX `fk_orderline_materials1_idx` (`materials_materials_id` ASC) VISIBLE,
-                                                     CONSTRAINT `fk_orderline_materials1`
-                                                         FOREIGN KEY (`materials_materials_id`)
+                                                     INDEX `fk_orderline_material1_idx` (`materials_material_id` ASC) VISIBLE,
+                                                     CONSTRAINT `fk_orderline_material1`
+                                                         FOREIGN KEY (`materials_material_id`)
                                                              REFERENCES `carport`.`materials` (`material_id`),
                                                      CONSTRAINT `fk_orderline_orders1`
                                                          FOREIGN KEY (`order_id`)

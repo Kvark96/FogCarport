@@ -12,11 +12,10 @@
     <jsp:body>
         <h1>Mange tak for din henvendelse</h1>
 
-         Bekræft at du ønsker du at indsende en forspørgsel på en carport med en bredte på = ${length} og med en længde på =  ${width}
+         Bekræft at du ønsker du at indsende en forspørgsel på en carport med en bredten ${length} og med en længde på =  ${width}
 
 
-
-        <p>  <a href="${pageContext.request.contextPath}/fc/requestConfirmedPage" class="btn btn-primary"> requestConfirmedPage </a>
+        <p>  <a href="${pageContext.request.contextPath}/fc/requestConfirmedPage" class="btn btn-primary"> Tryk her for at bekræfte </a>
 
 
 
