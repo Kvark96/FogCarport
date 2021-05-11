@@ -1,8 +1,10 @@
-package business.persistence;
+package business.entities;
+
+import business.persistence.Database;
 
 import java.util.ArrayList;
 
-public class BomMapper {
+public class BomEntities {
 
     Database database;
 
@@ -48,7 +50,7 @@ public class BomMapper {
     int bræddeBolte;
     int firkantSkiver;
 
-    public BomMapper(Database database) {
+    public BomEntities(Database database) {
         this.database = database;
     }
 
