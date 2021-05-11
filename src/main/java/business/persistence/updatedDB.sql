@@ -99,16 +99,18 @@ CREATE TABLE IF NOT EXISTS `carport`.`orderline` (
                                                      `order_id` INT NOT NULL,
                                                      `orderline_id` INT NOT NULL,
                                                      `quantity` INT NOT NULL,
-                                                     `materials_materials_id` INT NOT NULL,
+                                                     `materials_material_id` INT NOT NULL,
                                                      PRIMARY KEY (`orderline_id`),
                                                      INDEX `fk_orderline_orders1` (`order_id` ASC) VISIBLE,
-                                                     INDEX `fk_orderline_material1_idx` (`materials_material_id` ASC) VISIBLE,
-                                                     CONSTRAINT `fk_orderline_material1`
-                                                         FOREIGN KEY (`materials_material_id`)
-                                                             REFERENCES `carport`.`materials` (`material_id`),
+                                                     INDEX `fk_orderline_materials1_idx` (`materials_material_id` ASC) VISIBLE,
                                                      CONSTRAINT `fk_orderline_orders1`
                                                          FOREIGN KEY (`order_id`)
-                                                             REFERENCES `carport`.`orders` (`order_id`))
+                                                             REFERENCES `carport`.`orders` (`order_id`),
+                                                     CONSTRAINT `fk_orderline_materials1`
+                                                         FOREIGN KEY (`materials_material_id`)
+                                                             REFERENCES `carport`.`materials` (`material_id`)
+                                                             ON DELETE NO ACTION
+                                                             ON UPDATE NO ACTION)
     ENGINE = InnoDB
     DEFAULT CHARACTER SET = utf8mb4
     COLLATE = utf8mb4_0900_ai_ci;
@@ -117,6 +119,7 @@ CREATE TABLE IF NOT EXISTS `carport`.`orderline` (
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
 
 
 
