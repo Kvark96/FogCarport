@@ -12,9 +12,7 @@
     <jsp:body>
         <h1>Mange tak for din henvendelse</h1>
 
-        bredte = ${length}
-        <br/>
-        højde =  ${width}
+         Bekræft at du ønsker du at indsende en forspørgsel på en carport med en bredte på = ${length} og med en længde på =  ${width}
 
 
 

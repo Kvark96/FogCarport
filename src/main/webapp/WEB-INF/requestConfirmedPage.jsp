@@ -10,7 +10,8 @@
     </jsp:attribute>
 
     <jsp:body>
-        <h1>Din henvendelse er nu br</h1>
+        <h1>Din henvendelse er nu modtaget</h1>
+        <p> Du vil høre fra os inden for 5 hverdage</p>
 
 
 
