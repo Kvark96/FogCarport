@@ -15,18 +15,17 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">Produkt nr</th>
-                <th scope="col">Antal</th>
+                <th scope="col">Længde</th>
+                <th scope="col">Bredde</th>
             </tr>
 
             </thead>
             <tbody>
-            <c:forEach items="${orderlines}" var="orderline">
-                <tr>
-                    <td><c:out value="${orderline.product_id}"/></td>
-                    <td><c:out value="${orderline.quantity}"/></td>
-                </tr>
-            </c:forEach>
+
+            <tr>
+                <td>${length}</td>
+                <td>${width}</td>
+            </tr>
             </tbody>
         </table>
 
