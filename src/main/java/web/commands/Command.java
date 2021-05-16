@@ -36,6 +36,7 @@ public abstract class Command
         commands.put("requestConfirmedPage", new ConfirmRequestCommand("requestConfirmedPage","customer"));
         commands.put("requestlist", new RequestListCommand("requestlist", "employee"));
         commands.put("bomPage", new BomCommand("bomPage", "employee"));
+        commands.put("standartCarportPage", new CommandProtectedPage("standartCarportPage", "customer"));
     }
 
     public static Command fromPath(
