@@ -8,30 +8,30 @@
     </jsp:attribute>
 
     <jsp:body>
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col"> Beskrivelse</th>
-            <th scope="col"> Længde</th>
-            <th scope="col"> Antal</th>
-            <th scope="col"> Enhed</th>
-            <th scope="col"> Noter</th>
-        </tr>
-
-        </thead>
-        <tbody>
-
-        <c:forEach items="${descriptionEntities}" var="description">
+        <table class="table">
+            <thead>
             <tr>
-                <th scope="row"><c:out value="${description}"/></th>
-
-                <td><c:out value="${getDescription}"/>
-                </td>
+                <th scope="col"> Beskrivelse</th>
+                <th scope="col"> Længde</th>
+                <th scope="col"> Antal</th>
+                <th scope="col"> Enhed</th>
+                <th scope="col"> Noter</th>
             </tr>
-        </c:forEach>
 
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+
+            <c:forEach items="${descriptionEntities}" var="description">
+                <tr>
+                    <th scope="row"><c:out value="${description}"/></th>
+
+                    <td><c:out value="${getDescription}"/>
+                    </td>
+                </tr>
+            </c:forEach>
+
+            </tbody>
+        </table>
     </jsp:body>
 
 </t:genericpage>

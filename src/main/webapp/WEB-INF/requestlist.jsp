@@ -39,9 +39,9 @@
                         </form>
                     </td>
                     <td>
-                            <form name="bompage" action="${pageContext.request.contextPath}/fc/bomPage" method="post">
-                                <button class="btn btn-sm  btn-outline-primary"> Se stykliste </button>
-                            </form>
+                        <form name="bompage" action="${pageContext.request.contextPath}/fc/bomPage" method="post">
+                            <button class="btn btn-sm  btn-outline-primary"> Se stykliste </button>
+                        </form>
                     </td>
                 </tr>
             </c:forEach>
