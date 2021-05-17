@@ -35,6 +35,10 @@
                 </form>
 
 
+
+            <div class="col">    <img src="${pageContext.request.contextPath}/IMG/CARPORT ENKELT 3,60X5,40M CAR01H HØJ REJSNING.png"  class="img-fluid  mx-auto d-block mt-5"   alt="HØJ REJSNING">
+
+
                 <h1> ${applicationScope.standardCarportEntities.get(1).name}</h1>
 
                 <div class="col"><img
@@ -71,6 +75,10 @@
                     <p class="font-weight-bold">${applicationScope.standardCarportEntities.get(2).price}</p>
 
 
+
+            </div>
+
+
                 </div>
 
 
@@ -85,7 +93,9 @@
                 </form>
 
 
-                <h1> ${applicationScope.standardCarportEntities.get(3).name}</h1>
+
+            <h1> ${applicationScope.standardCarportEntities.get(3).name}</h1>
+
 
                 <div class="col"><img
                         src="${pageContext.request.contextPath}/IMG/CARPORT ENKELT 3,90X7,80M CPO01HR MED REDSKABSRUM 2,40X3,30M.png"

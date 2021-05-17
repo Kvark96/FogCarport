@@ -35,7 +35,7 @@ public abstract class Command
         commands.put("requestReceivedPage", new CustomCarportCommand("requestReceivedPage","customer"));
         commands.put("requestConfirmedPage", new ConfirmRequestCommand("requestConfirmedPage","customer"));
         commands.put("requestlist", new RequestListCommand("requestlist", "employee"));
-       // commands.put("bomPage", new BomCommand("bomPage", "employee"));
+        commands.put("bomPage", new BomCommand("bomPage", "employee"));
         commands.put("standardCarportPage", new CommandProtectedPage("standardCarportPage", "customer"));
 
     }
