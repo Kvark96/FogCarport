@@ -4,7 +4,7 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Tak for din henvendelse eller noget i den dur
+         Bekræft din forespørgsel
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
@@ -12,13 +12,11 @@
     <jsp:body>
         <h1>Mange tak for din henvendelse</h1>
 
-        bredte = ${length}
-        <br/>
-        højde =  ${width}
+         Bekræft at du ønsker du at indsende en forspørgsel, for en carport med længden ${length}cm, og med en bredten ${width}cm.
+        <br>
+        <br>
 
-
-
-        <p>  <a href="${pageContext.request.contextPath}/fc/requestConfirmedPage" class="btn btn-primary"> requestConfirmedPage </a>
+        <p>  <a href="${pageContext.request.contextPath}/fc/requestConfirmedPage" class="btn btn-primary"> Tryk her for at bekræfte </a>
 
 
 
