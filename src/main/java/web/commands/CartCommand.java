@@ -14,7 +14,7 @@ public class CartCommand extends CommandProtectedPage{
     public String execute(HttpServletRequest request, HttpServletResponse response) throws SQLException {
         HttpSession session = request.getSession();
 
-        int id = (int) session.getAttribute("id");
+        int carportID = (int) session.getAttribute("carportID");
 
 
 
