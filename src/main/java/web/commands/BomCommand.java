@@ -1,6 +1,7 @@
 package web.commands;
 
 import business.entities.DescriptionEntities;
+import business.services.BomFacade;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,8 +16,9 @@ public class BomCommand extends CommandProtectedPage {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-        DescriptionEntities descriptionEntities = new DescriptionEntities();
-        request.setAttribute("descriptions", descriptionEntities);
+        //DescriptionEntities descriptionEntities = new DescriptionEntities();
+        BomFacade bomFacade = new BomFacade(database);
+        request.setAttribute("materialList", bomFacade.getMaterials());
         return pageToShow;
     }
 

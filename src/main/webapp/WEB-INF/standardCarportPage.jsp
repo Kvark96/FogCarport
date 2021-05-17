@@ -11,89 +11,114 @@
 
     <jsp:body>
         <div class="container">
-        <div class="row">
+            <div class="row">
 
 
-            <h1> ${applicationScope.standardCarportEntities.get(0).name}</h1>
+                <h1> ${applicationScope.standardCarportEntities.get(0).name}</h1>
 
-            <div class="col">   <img src="${pageContext.request.contextPath}/IMG/CARPORT ENKELT 3,00X4,80M CAR01 FLADT TAG.png"  class="img-fluid  mx-auto d-block"   alt="Fladt-tag">
+                <div class="col"><img
+                        src="${pageContext.request.contextPath}/IMG/CARPORT ENKELT 3,00X4,80M CAR01 FLADT TAG.png"
+                        class="img-fluid  mx-auto d-block" alt="Fladt-tag">
 
-                <p>${applicationScope.standardCarportEntities.get(0).description}  </p>
+                    <p>${applicationScope.standardCarportEntities.get(0).description} </p>
 
-                <p class="font-weight-bold">${applicationScope.standardCarportEntities.get(0).price}</p>
+                    <p class="font-weight-bold">${applicationScope.standardCarportEntities.get(0).price}</p>
 
-        </div>
+                </div>
 
-            <form method="post" action="${pageContext.request.contextPath}/fc/standardCarportCommand">
-        </form>
+                <form method="post" action="${pageContext.request.contextPath}/fc/StandardCarportCommand">
+
+                <input type="hidden"  name="standard_id" value="${applicationScope.standardCarportEntities.get(0).standard_id}">
+
+                    <input type="submit" value="Submit">
+
+                </form>
 
 
-
-            <h1> ${applicationScope.standardCarportEntities.get(1).name}</h1>
 
             <div class="col">    <img src="${pageContext.request.contextPath}/IMG/CARPORT ENKELT 3,60X5,40M CAR01H HØJ REJSNING.png"  class="img-fluid  mx-auto d-block mt-5"   alt="HØJ REJSNING">
 
 
+                <h1> ${applicationScope.standardCarportEntities.get(1).name}</h1>
 
-                <p>${applicationScope.standardCarportEntities.get(1).description}  </p>
+                <div class="col"><img
+                        src="${pageContext.request.contextPath}/IMG/CARPORT ENKELT 3,60X5,40M CAR01H HØJ REJSNING.png"
+                        class="img-fluid  mx-auto d-block mt-5" alt="HØJ REJSNING">
 
-                <p class="font-weight-bold">${applicationScope.standardCarportEntities.get(1).price}</p>
+
+                    <p>${applicationScope.standardCarportEntities.get(1).description} </p>
+
+                    <p class="font-weight-bold">${applicationScope.standardCarportEntities.get(1).price}</p>
+
+                </div>
+
+                <form method="post" action="${pageContext.request.contextPath}/fc/StandardCarportCommand">
+
+                    <input type="hidden"  name="standard_id" value="${applicationScope.standardCarportEntities.get(1).standard_id}">
+
+                    <input type="submit" value="Submit">
+
+
+
+                </form>
+
+
+                <h1> ${applicationScope.standardCarportEntities.get(3).name}</h1>
+
+                <div class="col">
+                    <img src="${pageContext.request.contextPath}/IMG/CARPORT ENKELT 3,60X9,10M CRXL1HR MED REDSKABSRUM 3,20X3,55M.png"
+                         class="img-fluid  mx-auto d-block" alt="HØJ REJSNIN GMED REDSKABSRUM320">
+
+
+                    <p>${applicationScope.standardCarportEntities.get(2).description} </p>
+
+                    <p class="font-weight-bold">${applicationScope.standardCarportEntities.get(2).price}</p>
+
+
 
             </div>
 
-            <form method="post" action="${pageContext.request.contextPath}/fc/StandartCarportCommand">
 
-        </form>
+                </div>
+
+
+
+                <form method="post" action="${pageContext.request.contextPath}/fc/StandardCarportCommand">
+
+                    <input type="hidden"  name="standard_id" value="${applicationScope.standardCarportEntities.get(2).standard_id}">
+
+                    <input type="submit" value="Submit">
+
+
+                </form>
 
 
 
             <h1> ${applicationScope.standardCarportEntities.get(3).name}</h1>
 
-            <div class="col">
-                <img src="${pageContext.request.contextPath}/IMG/CARPORT ENKELT 3,60X9,10M CRXL1HR MED REDSKABSRUM 3,20X3,55M.png"  class="img-fluid  mx-auto d-block"   alt="HØJ REJSNIN GMED REDSKABSRUM320">
+
+                <div class="col"><img
+                        src="${pageContext.request.contextPath}/IMG/CARPORT ENKELT 3,90X7,80M CPO01HR MED REDSKABSRUM 2,40X3,30M.png"
+                        class="img-fluid  mx-auto d-block mt-5" alt="HØJ REJSNIN GMED REDSKABSRUM240">
+
+
+                    <p>${applicationScope.standardCarportEntities.get(3).description} </p>
+
+                    <p class="font-weight-bold">${applicationScope.standardCarportEntities.get(3).price}</p>
+
+                </div>
+                <form method="post" action="${pageContext.request.contextPath}/fc/StandardCarportCommand">
+
+                    <input type="hidden"  name="standard_id" value="${applicationScope.standardCarportEntities.get(3).standard_id}">
+
+                    <input type="submit" value="Submit">
 
 
 
-
-
-                <p>${applicationScope.standardCarportEntities.get(2).description}  </p>
-
-                <p class="font-weight-bold">${applicationScope.standardCarportEntities.get(2).price}</p>
-
-
+                </form>
             </div>
 
-
-
-
-            <form method="post" action="${pageContext.request.contextPath}/fc/StandartCarportCommand">
-
-        </form>
-
-
-
-
-            <h1> ${applicationScope.standardCarportEntities.get(3).name}</h1>
-
-            <div class="col">       <img src="${pageContext.request.contextPath}/IMG/CARPORT ENKELT 3,90X7,80M CPO01HR MED REDSKABSRUM 2,40X3,30M.png"  class="img-fluid  mx-auto d-block mt-5"   alt="HØJ REJSNIN GMED REDSKABSRUM240">
-
-
-
-
-                <p>${applicationScope.standardCarportEntities.get(3).description}  </p>
-
-                <p class="font-weight-bold">${applicationScope.standardCarportEntities.get(3).price}</p>
-
-            </div>
-            <form method="post" action="${pageContext.request.contextPath}/fc/StandartCarportCommand">
-
-
-        </form>
         </div>
-
-        </div>
-
-
 
 
     </jsp:body>
