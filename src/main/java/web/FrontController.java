@@ -43,6 +43,8 @@ public class FrontController extends HttpServlet
         CarportMapper carportMapper = new CarportMapper(database);
         try {
             getServletContext().setAttribute("meassureEntitiesList",carportMapper.getMeasureEntities());
+            getServletContext().setAttribute("standardCarportEntities",carportMapper.getStandardCarportEntities());
+
         } catch (Exception e ){
             Logger.getLogger("web").log(Level.SEVERE, e.getMessage(), e);
         }
