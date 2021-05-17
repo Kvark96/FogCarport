@@ -281,6 +281,7 @@ public class BomEntities {
         this.squareDiscs = squareDiscs;
     }
 
+
     public void generateCarport(int length, int width) {
 
 
