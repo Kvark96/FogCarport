@@ -1,6 +1,5 @@
 package business.services;
 
-import business.entities.BomEntities;
 import business.entities.Material;
 import business.persistence.BomMapper;
 import business.persistence.Database;

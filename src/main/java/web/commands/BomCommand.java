@@ -1,6 +1,5 @@
 package web.commands;
 
-import business.entities.DescriptionEntities;
 import business.services.BomFacade;
 
 import javax.servlet.http.HttpServletRequest;

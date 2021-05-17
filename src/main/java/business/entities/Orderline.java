@@ -11,6 +11,11 @@ public class Orderline {
         this.material_id = material_id;
     }
 
+    public Orderline(int order_id, int material_id) {
+        this.order_id = order_id;
+        this.material_id = material_id;
+    }
+
     public int getOrder_id() {
         return order_id;
     }

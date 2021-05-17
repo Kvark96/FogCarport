@@ -4,10 +4,18 @@ public class Material {
     private int material_id;
     private String name;
     private int length;
-    private String unit;
+    private int unit;
     private String description;
 
-    public Material(int material_id, String name, int length, String unit, String description) {
+    public void setLength(int length) {
+        this.length = length;
+    }
+
+    public void setUnit(int unit) {
+        this.unit = unit;
+    }
+
+    public Material(int material_id, String name, int length, int unit, String description) {
         this.material_id = material_id;
         this.name = name;
         this.length = length;
@@ -27,7 +35,7 @@ public class Material {
         return length;
     }
 
-    public String getUnit() {
+    public int getUnit() {
         return unit;
     }
 
