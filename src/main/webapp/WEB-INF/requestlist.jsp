@@ -18,6 +18,7 @@
                 <th scope="col"> Kunde</th>
                 <th scope="col"> Type</th>
                 <th scope="col"></th>
+                <th scope="col"></th>
             </tr>
 
             </thead>
@@ -34,8 +35,13 @@
                         <form name="orderpage" action="${pageContext.request.contextPath}/fc/orderpage" method="post">
                             <input type="hidden" name="order_id" value="${req.order_id}"/>
                             <input type="hidden" name="typeOfOrder" value="${req.type}"/>
-                            <button class="btn btn-sm  btn-outline-secondary" type="submit" value="seOrdrer"> Se ordre </button>
+                            <button class="btn btn-sm btn-outline-primary" type="submit" value="seOrdrer"> Se ordre </button>
                         </form>
+                    </td>
+                    <td>
+                            <form name="bompage" action="${pageContext.request.contextPath}/fc/bomPage" method="post">
+                                <button class="btn btn-sm  btn-outline-primary"> Se stykliste </button>
+                            </form>
                     </td>
                 </tr>
             </c:forEach>

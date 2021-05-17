@@ -10,14 +10,17 @@
     </jsp:attribute>
 
     <jsp:body>
-        <h1>Hej ${sessionScope.email} </h1>
+        <h1>Hej ${sessionScope.name} </h1>
         <p> Velkommen til din kundeoversigt</p>
 
 
 
-        <p>  <a href="${pageContext.request.contextPath}/fc/customCarport" class="btn btn-primary"> Vælg carport ud fra mål </a>
-        <br/>
-        Role: ${sessionScope.role}
+
+        <br>
+        <p>  <a href="${pageContext.request.contextPath}/fc/customCarport" class="btn btn-primary"> Vælg carport ud special mål </a>
+        <br>
+        <a href="${pageContext.request.contextPath}/fc/standardCarportPage" class="btn btn-primary"> Standardt carporte </a>
+
 
     </jsp:body>
 

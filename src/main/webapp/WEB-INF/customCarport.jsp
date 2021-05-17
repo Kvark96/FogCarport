@@ -20,7 +20,7 @@
             </select>
 
 
-            <label for="width">Ønskede bredte i centimeter</label>
+            <label for="width">Ønskede bredde i centimeter</label>
 
             <select name="width" id="width" class="form-select">
                 <c:forEach var="width" items="${applicationScope.meassureEntitiesList}">
@@ -33,7 +33,7 @@
             </select>
 
             <br>
-            <input type="submit" class="btn btn-success align-items-md-center " value="Vælg"/>
+            <input type="submit" class="btn btn-primary align-items-md-center " value="Vælg"/>
 
         </form>
 
