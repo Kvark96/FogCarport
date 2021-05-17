@@ -21,12 +21,15 @@
         </thead>
         <tbody>
 
-        <c:forEach items="${descriptionEntities}" var="description">
+        <c:forEach items="${materialList}" var="mat">
             <tr>
-                <th scope="row"><c:out value="${description}"/></th>
+                <th scope="row"><c:out value="${mat.name}"/></th>
 
-                <td><c:out value="${getDescription}"/>
-                </td>
+                <td><c:out value="${mat.length}"/></td>
+                <td><c:out value="${mat.unit}"/></td>
+                <td><c:out value="${mat.description}"/></td>
+
+
             </tr>
         </c:forEach>
 
