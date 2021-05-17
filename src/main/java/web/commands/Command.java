@@ -59,6 +59,6 @@ public abstract class Command
     public abstract String execute(
             HttpServletRequest request,
             HttpServletResponse response)
-            throws UserException, SQLException;
+            throws UserException, SQLException, NoSuchFieldException;
 
 }

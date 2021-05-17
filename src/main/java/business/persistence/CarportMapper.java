@@ -2,6 +2,7 @@ package business.persistence;
 
 import business.entities.MeasureEntities;
 import business.entities.StandardCarportEntities;
+import org.omg.CosNaming.NamingContextPackage.NotFound;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,10 +14,12 @@ import java.util.List;
 public class CarportMapper {
 
     Database database;
+    List<StandardCarportEntities> standardCarportEntities;
 
     public CarportMapper(Database database) {
         this.database = database;
     }
+
 
     public List<MeasureEntities> getMeasureEntities() {
         List<MeasureEntities> measureEntitiesList = new ArrayList<>();
@@ -49,9 +52,8 @@ public class CarportMapper {
     }
 
 
-
     public List<StandardCarportEntities> getStandardCarportEntities() {
-        List<StandardCarportEntities> standardCarportEntities = new ArrayList<>();
+        standardCarportEntities = new ArrayList<>();
         try (Connection connection = database.connect()) {
 
             String sql = "SELECT * FROM carport.standardcarport;";
@@ -66,7 +68,7 @@ public class CarportMapper {
                     String description = rs.getString("description");
                     int price = rs.getInt("price");
 
-                    standardCarportEntities.add(new StandardCarportEntities(standard_id,name,description,price));
+                    standardCarportEntities.add(new StandardCarportEntities(standard_id, name, description, price));
 
                 }
                 System.out.println(standardCarportEntities.toString());
@@ -81,10 +83,14 @@ public class CarportMapper {
         return standardCarportEntities;
     }
 
+    public StandardCarportEntities getCarportFromId(int id) throws NoSuchFieldException {
+        for (StandardCarportEntities s : standardCarportEntities) {
+            if (s.getStandard_id() == id) {
+                return s;
+            }
 
+        }
+      throw new NoSuchFieldException();
 
-
-
-
-
+    }
 }
