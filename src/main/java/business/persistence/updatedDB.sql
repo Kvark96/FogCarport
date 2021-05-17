@@ -1,10 +1,5 @@
 -- MySQL Workbench Forward Engineering
 
-
-drop DATABASE carport;
-
--- MySQL Workbench Forward Engineering
-
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
@@ -120,9 +115,31 @@ CREATE TABLE IF NOT EXISTS `carport`.`orderline` (
     COLLATE = utf8mb4_0900_ai_ci;
 
 
+-- -----------------------------------------------------
+-- Table `carport`.`standardcarport`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `carport`.`standardcarport` (
+                                                           `standard_id` INT NOT NULL AUTO_INCREMENT,
+                                                           `name` TEXT(500) NULL DEFAULT NULL,
+                                                           `description` TEXT(1000) NULL DEFAULT NULL,
+                                                           `price` INT NULL DEFAULT NULL,
+                                                           PRIMARY KEY (`standard_id`))
+    ENGINE = InnoDB
+    AUTO_INCREMENT = 1
+    DEFAULT CHARACTER SET = utf8mb4
+    COLLATE = utf8mb4_0900_ai_ci;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+INSERT INTO `carport`.`standardcarport` (`standard_id`, `name`, `description`, `price`) VALUES ('1', 'CARPORT ENKELT 3,00X4,80M CAR01 FLADT TAG', '3,00 x 4,80 mtr. Højde; 2,25 mtr. Trykimprægnerede stolper og stern.', '4998');
+INSERT INTO `carport`.`standardcarport` (`standard_id`, `name`, `description`, `price`) VALUES ('2', 'CARPORT ENKELT 3,60X5,40M CAR01H HØJ REJSNING', '3,60 x 5,40 mtr.', '18498');
+INSERT INTO `carport`.`standardcarport` (`standard_id`, `name`, `description`, `price`) VALUES ('3', 'CARPORT ENKELT 3,60X9,10M CRXL1HR MED REDSKABSRUM 3,20X3,55M', 'Enkelt carport med høj rejsning. 3,60 x 9,10 m.', '29998');
+INSERT INTO `carport`.`standardcarport` (`standard_id`, `name`, `description`, `price`) VALUES ('4', 'CARPORT ENKELT 3,90X7,80M CPO01HR MED REDSKABSRUM 2,40X3,30M', 'Enkelt carport med høj rejsning. 3,90 x 7,80 m.', '28498');
+
 
 
 

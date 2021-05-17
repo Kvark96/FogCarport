@@ -4,12 +4,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
 
-public class StandartCarportCommand extends Command
+public class StandardCarportCommand extends Command
 {
     public String role;
     public String pageToShow;
 
-    public StandartCarportCommand(String pageToShow, String role)
+    public StandardCarportCommand(String pageToShow, String role)
     {
         this.pageToShow = pageToShow;
         this.role = role;
