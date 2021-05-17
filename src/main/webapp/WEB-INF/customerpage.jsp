@@ -18,7 +18,7 @@
         <br>
         <p>  <a href="${pageContext.request.contextPath}/fc/customCarport" class="btn btn-primary"> Vælg carport ud special mål </a>
         <br>
-        <a href="${pageContext.request.contextPath}/fc/standartCarportPage" class="btn btn-primary"> Standardt carporte </a>
+        <a href="${pageContext.request.contextPath}/fc/standardCarportPage" class="btn btn-primary"> Standardt carporte </a>
 
     </jsp:body>
 

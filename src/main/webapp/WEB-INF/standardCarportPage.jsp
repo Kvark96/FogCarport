@@ -13,7 +13,7 @@
         <div class="row">
 
 
-        <form method="post" action="${pageContext.request.contextPath}/fc/StandartCarportCommand">
+        <form method="post" action="${pageContext.request.contextPath}/fc/standardCarportCommand">
             <div class="col">   <img src="${pageContext.request.contextPath}/IMG/CARPORT ENKELT 3,00X4,80M CAR01 FLADT TAG.png"  class="img-fluid  mx-auto d-block"   alt="Fladt-tag">
 
         </div>
