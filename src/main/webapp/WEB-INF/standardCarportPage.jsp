@@ -23,7 +23,7 @@
 
         </form>
 
-        <form method="post" action="${pageContext.request.contextPath}/fc/StandartCarportCommand">
+        <form method="post" action="${pageContext.request.contextPath}/fc/standardCarportCommand">
 
             <div class="col">    <img src="${pageContext.request.contextPath}/IMG/CARPORT ENKELT 3,60X5,40M CAR01H HØJ REJSNING.png"  class="img-fluid  mx-auto d-block mt-5"   alt="HØJ REJSNING">
 
@@ -35,7 +35,7 @@
         </form>
 
 
-        <form method="post" action="${pageContext.request.contextPath}/fc/StandartCarportCommand">
+        <form method="post" action="${pageContext.request.contextPath}/fc/standardCarportCommand">
             <div class="col">        <img src="${pageContext.request.contextPath}/IMG/CARPORT ENKELT 3,60X9,10M CRXL1HR MED REDSKABSRUM 3,20X3,55M.png"  class="img-fluid  mx-auto d-block"   alt="HØJ REJSNIN GMED REDSKABSRUM320">
 
 
@@ -48,7 +48,7 @@
         </form>
 
 
-        <form method="post" action="${pageContext.request.contextPath}/fc/StandartCarportCommand">
+        <form method="post" action="${pageContext.request.contextPath}/fc/standardCarportCommand">
 
             <div class="col">       <img src="${pageContext.request.contextPath}/IMG/CARPORT ENKELT 3,90X7,80M CPO01HR MED REDSKABSRUM 2,40X3,30M.png"  class="img-fluid  mx-auto d-block mt-5"   alt="HØJ REJSNIN GMED REDSKABSRUM240">
 

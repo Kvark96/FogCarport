@@ -2,6 +2,7 @@ package web.commands;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 
 public class CartCommand extends CommandProtectedPage{
@@ -11,9 +12,13 @@ public class CartCommand extends CommandProtectedPage{
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+        HttpSession session = request.getSession();
+
+        int id = (int) session.getAttribute("id");
 
 
 
-        return pageToShow;
+        // Ved ikke om den skal returnere hertil, men nu er det sådan.
+        return "standardCarportPage";
     }
 }
