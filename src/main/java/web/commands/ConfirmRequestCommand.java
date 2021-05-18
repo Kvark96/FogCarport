@@ -1,6 +1,7 @@
 package web.commands;
 
 import business.exceptions.UserException;
+import business.persistence.BomMapper;
 import business.persistence.RequestMapper;
 import web.FrontController;
 
@@ -13,6 +14,7 @@ import java.sql.SQLException;
 
 public class ConfirmRequestCommand extends CommandProtectedPage {
 
+    BomMapper bomMapper = new BomMapper(database);
 
     public ConfirmRequestCommand(String pageToShow, String role) {
         super(pageToShow, role);
@@ -46,6 +48,9 @@ public class ConfirmRequestCommand extends CommandProtectedPage {
                 ResultSet rs = ps.executeQuery();
                 rs.next();
                 request.getSession().setAttribute("order_id", rs.getInt("order_id"));
+
+                bomMapper.generateCarport(rs.getInt("order_id"), length, width);
+
                 System.out.println(request.getSession().getAttribute("order_id"));
             } catch (SQLException error) {
                 System.out.println("Failed get order_id from database=" + error.getMessage());
