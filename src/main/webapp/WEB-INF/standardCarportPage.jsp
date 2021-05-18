@@ -26,7 +26,7 @@
 
                 </div>
 
-                <form method="post" action="${pageContext.request.contextPath}/fc/StandardCarportCommand">
+                <form method="post" action="${pageContext.request.contextPath}/fc/CartCommand">
 
                 <input type="hidden"  name="standard_id" value="${applicationScope.standardCarportEntities.get(0).standard_id}">
 
@@ -52,7 +52,7 @@
 
                 </div>
 
-                <form method="post" action="${pageContext.request.contextPath}/fc/StandardCarportCommand">
+                <form method="post" action="${pageContext.request.contextPath}/fc/CartCommand">
 
                     <input type="hidden"  name="standard_id" value="${applicationScope.standardCarportEntities.get(1).standard_id}">
 
@@ -83,7 +83,7 @@
 
 
 
-                <form method="post" action="${pageContext.request.contextPath}/fc/StandardCarportCommand">
+                <form method="post" action="${pageContext.request.contextPath}/fc/CartCommand">
 
                     <input type="hidden"  name="standard_id" value="${applicationScope.standardCarportEntities.get(2).standard_id}">
 
@@ -107,7 +107,7 @@
                     <p class="font-weight-bold">${applicationScope.standardCarportEntities.get(3).price}</p>
 
                 </div>
-                <form method="post" action="${pageContext.request.contextPath}/fc/StandardCarportCommand">
+                <form method="post" action="${pageContext.request.contextPath}/fc/CartCommand">
 
                     <input type="hidden"  name="standard_id" value="${applicationScope.standardCarportEntities.get(3).standard_id}">
 
