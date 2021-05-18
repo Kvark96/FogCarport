@@ -19,8 +19,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "FrontController", urlPatterns = {"/fc/*"})
 public class FrontController extends HttpServlet
 {
-    private final static String USER = "java";
-    private final static String PASSWORD = "java";
+    private final static String USER = "root";
+    private final static String PASSWORD = "Cph73128";
     private final static String URL = "jdbc:mysql://localhost:3306/carport?serverTimezone=CET";
 
     public static Database database;
@@ -76,7 +76,7 @@ public class FrontController extends HttpServlet
 
             request.getRequestDispatcher("/WEB-INF/" + view + ".jsp").forward(request, response);
         }
-        catch (UnsupportedEncodingException | UserException | SQLException ex)
+        catch (UnsupportedEncodingException | UserException | SQLException | NoSuchFieldException ex)
         {
             request.setAttribute("problem", ex.getMessage());
             Logger.getLogger("web").log(Level.SEVERE, ex.getMessage(), ex);

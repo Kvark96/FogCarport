@@ -11,6 +11,7 @@ import java.util.List;
 
 public class OrderlistCommand extends CommandProtectedPage{
     public OrderlistCommand(String pageToShow, String role) {
+
         super(pageToShow, role);
     }
 

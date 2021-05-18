@@ -29,8 +29,4 @@ public class BomFacade {
         return bomMapper.getMaterials();
     }
 
-
-
-
-
 }
