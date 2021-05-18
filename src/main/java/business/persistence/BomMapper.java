@@ -54,7 +54,7 @@ public class BomMapper {
     public void generateCarport(int orderid, int length, int width) {
 
         double antalRegner = (length / 100) / 0.55;
-        double antalSkruer = length * width * 13 / 200;
+        double antalSkruer = length /100 * width/100 * 13 / 200;
         double widthCalculator = width / 100;
 
         List<Material> materials = getMaterials();
@@ -84,15 +84,19 @@ public class BomMapper {
 
 
             try (Connection connection = database.connect()) {
-                String sql = "INSERT INTO orderline (orderline_id, order_id, materials_materials_id) VALUES (?,?,?)";
+                String sql = "INSERT INTO orderline (order_id, materials_materials_id, materials_length, materials_unit) VALUES (?,?,?,?)";
 
-                for (int i = 0; i > materials.size(); i++) {
+                for (int i = 0; i < materials.size(); i++) {
 
                     try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-                        ps.setInt (1, orderid);
-                        ps.setInt (2, materials.get(i).getMaterial_id());
+                        ps.setInt(1, orderid);
+                        ps.setInt(2, materials.get(i).getMaterial_id());
+                        ps.setInt(3, materials.get(i).getLength());
+                        ps.setInt(4, materials.get(i).getUnit());
 
                         ps.executeUpdate();
+
+
 
 
                     } catch (SQLException ex) {
@@ -103,7 +107,41 @@ public class BomMapper {
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
+        }
+
+
+    public List<Material> getOrderLineMaterials(int orderId) {
+        List<Material> materialDescription = new ArrayList<>();
+        try (Connection connection = database.connect()) {
+
+            String sql = "select * from carport.orderline AS ol " +
+                    "JOIN carport.materials AS mt ON ol.materials_materials_id = mt.materials_id " +
+                    "WHERE ol.order_id = " + orderId + ";";
+
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+
+                    int material_id = rs.getInt("materials_id");
+                    String name = rs.getString("name");
+                    int length = rs.getInt("materials_length");
+                    int unit = rs.getInt("materials_unit");
+                    String desc = rs.getString("description");
+
+                    materialDescription.add(new Material(material_id,name,length,unit,desc));
+
+                }
+
+                return materialDescription;
+            } catch (SQLException e) {
+                throw new SQLException();
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+
+        }
+        return materialDescription;
 
     }
-
 }
