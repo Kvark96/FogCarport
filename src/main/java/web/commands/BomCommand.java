@@ -46,10 +46,11 @@ public class BomCommand extends CommandProtectedPage {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws SQLException {
         //DescriptionEntities descriptionEntities = new DescriptionEntities();
         BomFacade bomFacade = new BomFacade(database);
-        getWidthAndLengthFromOrderId(2);
+        //getWidthAndLengthFromOrderId(2);
         //bomMapper.generateCarport(2,500,400);
 
-        request.setAttribute("materialList", bomFacade.getMaterials());
+        request.setAttribute("materialList", bomFacade.getOrderLineMaterials(2));
+
         return pageToShow;
     }
 

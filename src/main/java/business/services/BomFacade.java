@@ -25,8 +25,8 @@ public class BomFacade {
         this.bomMapper = new BomMapper(database);
     }
 
-    public List<Material> getMaterials(){
-        return bomMapper.getMaterials();
+    public List<Material> getOrderLineMaterials(int order_id){
+        return bomMapper.getOrderLineMaterials(order_id);
     }
 
 }

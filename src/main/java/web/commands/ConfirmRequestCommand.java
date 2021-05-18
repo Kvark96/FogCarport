@@ -48,6 +48,9 @@ public class ConfirmRequestCommand extends CommandProtectedPage {
                 ResultSet rs = ps.executeQuery();
                 rs.next();
                 request.getSession().setAttribute("order_id", rs.getInt("order_id"));
+
+                bomMapper.generateCarport(rs.getInt("order_id"), length, width);
+
                 System.out.println(request.getSession().getAttribute("order_id"));
             } catch (SQLException error) {
                 System.out.println("Failed get order_id from database=" + error.getMessage());
