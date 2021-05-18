@@ -13,6 +13,7 @@
     </jsp:attribute>
 
     <jsp:body>
+        <a href="${pageContext.request.contextPath}/fc/drawing">Se SVG</a>
 
 
             <h2>Velkommen til Fog </h2>
