@@ -1,6 +1,7 @@
 package web.commands;
 
 import business.exceptions.UserException;
+import business.persistence.BomMapper;
 import business.persistence.RequestMapper;
 import web.FrontController;
 
@@ -13,6 +14,7 @@ import java.sql.SQLException;
 
 public class ConfirmRequestCommand extends CommandProtectedPage {
 
+    BomMapper bomMapper = new BomMapper(database);
 
     public ConfirmRequestCommand(String pageToShow, String role) {
         super(pageToShow, role);
