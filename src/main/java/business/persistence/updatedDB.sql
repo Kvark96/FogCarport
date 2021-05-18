@@ -10,21 +10,24 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema carport
 -- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `carport` ;
 
 -- -----------------------------------------------------
 -- Schema carport
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `carport` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
-USE `carport`;
+CREATE SCHEMA IF NOT EXISTS `carport` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+USE `carport` ;
 
 -- -----------------------------------------------------
 -- Table `carport`.`materials`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `carport`.`materials` ;
+
 CREATE TABLE IF NOT EXISTS `carport`.`materials` (
                                                      `materials_id` INT NOT NULL,
                                                      `name` VARCHAR(100) NULL DEFAULT NULL,
                                                      `length` INT NULL DEFAULT NULL,
-                                                     `unit` VARCHAR(45) NULL DEFAULT NULL,
+                                                     `unit` INT NULL DEFAULT 0,
                                                      `description` VARCHAR(100) NULL DEFAULT NULL,
                                                      PRIMARY KEY (`materials_id`))
     ENGINE = InnoDB
@@ -35,13 +38,15 @@ CREATE TABLE IF NOT EXISTS `carport`.`materials` (
 -- -----------------------------------------------------
 -- Table `carport`.`measures`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `carport`.`measures` ;
+
 CREATE TABLE IF NOT EXISTS `carport`.`measures` (
                                                     `measure_id` INT NOT NULL AUTO_INCREMENT,
                                                     `length` INT NULL DEFAULT NULL,
                                                     `width` INT NULL DEFAULT NULL,
                                                     PRIMARY KEY (`measure_id`))
     ENGINE = InnoDB
-    AUTO_INCREMENT = 1
+    AUTO_INCREMENT = 11
     DEFAULT CHARACTER SET = utf8mb4
     COLLATE = utf8mb4_0900_ai_ci;
 
@@ -49,6 +54,8 @@ CREATE TABLE IF NOT EXISTS `carport`.`measures` (
 -- -----------------------------------------------------
 -- Table `carport`.`users`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `carport`.`users` ;
+
 CREATE TABLE IF NOT EXISTS `carport`.`users` (
                                                  `user_id` INT NOT NULL AUTO_INCREMENT,
                                                  `name` VARCHAR(45) NOT NULL,
@@ -61,13 +68,15 @@ CREATE TABLE IF NOT EXISTS `carport`.`users` (
                                                  PRIMARY KEY (`user_id`),
                                                  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
     ENGINE = InnoDB
-    AUTO_INCREMENT = 1
+    AUTO_INCREMENT = 3
     DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
 -- Table `carport`.`orders`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `carport`.`orders` ;
+
 CREATE TABLE IF NOT EXISTS `carport`.`orders` (
                                                   `order_id` INT NOT NULL AUTO_INCREMENT,
                                                   `created` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
@@ -86,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `carport`.`orders` (
                                                       FOREIGN KEY (`user_id`)
                                                           REFERENCES `carport`.`users` (`user_id`))
     ENGINE = InnoDB
-    AUTO_INCREMENT = 1
+    AUTO_INCREMENT = 2
     DEFAULT CHARACTER SET = utf8mb4
     COLLATE = utf8mb4_0900_ai_ci;
 
@@ -94,6 +103,8 @@ CREATE TABLE IF NOT EXISTS `carport`.`orders` (
 -- -----------------------------------------------------
 -- Table `carport`.`orderline`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `carport`.`orderline` ;
+
 CREATE TABLE IF NOT EXISTS `carport`.`orderline` (
                                                      `order_id` INT NOT NULL,
                                                      `orderline_id` INT NOT NULL AUTO_INCREMENT,
@@ -118,14 +129,15 @@ CREATE TABLE IF NOT EXISTS `carport`.`orderline` (
 -- -----------------------------------------------------
 -- Table `carport`.`standardcarport`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `carport`.`standardcarport` ;
+
 CREATE TABLE IF NOT EXISTS `carport`.`standardcarport` (
                                                            `standard_id` INT NOT NULL AUTO_INCREMENT,
-                                                           `name` TEXT(500) NULL DEFAULT NULL,
-                                                           `description` TEXT(1000) NULL DEFAULT NULL,
+                                                           `name` TEXT NULL DEFAULT NULL,
+                                                           `description` TEXT NULL DEFAULT NULL,
                                                            `price` INT NULL DEFAULT NULL,
                                                            PRIMARY KEY (`standard_id`))
     ENGINE = InnoDB
-    AUTO_INCREMENT = 1
     DEFAULT CHARACTER SET = utf8mb4
     COLLATE = utf8mb4_0900_ai_ci;
 
@@ -140,24 +152,24 @@ UPDATE `carport`.`standardcarport` SET `description` = '3,60 x 5,40 mtr. Uden re
 UPDATE `carport`.`standardcarport` SET `description` = 'Enkelt carport med høj rejsning. 3,60 x 9,10 m. Extra lang model. 3,20 x 3,55 m. redskabsrum. Højde; 3,05 m.. Trykimprægnerede stolper, stern og beklædning. Leveres med: Søm, skruer, beslag og betontagstenstag. Udførlig byggevejledning til carport og spær medfølger. Betontagsten i sort med 30 års garanti. NB! Leveres som Byg-selv sæt - usamlet og ubehandlet!' WHERE (`standard_id` = '3');
 UPDATE `carport`.`standardcarport` SET `description` = 'Enkelt carport med høj rejsning. 3,90 x 7,80 m. Extra bred model. 3,30 x 2,40 mtr redskabsrum. Højde; 3,10 mtr. Trykimprægnerede stolper, stern og beklædning. Leveres med: Søm, skruer, beslag og betontagstenstag. Udførlig byggevejledning til carport og spær medfølger. Betontagsten i sort med 30 års garanti. NB! Leveres som Byg-selv sæt - usamlet og ubehandlet!' WHERE (`standard_id` = '4');
 
-INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `unit`, `description`) VALUES ('1', '25x200 mm. trykimp. Brædt 360  understernbrædder til for & bag ende', '360', 'stk', 'Tilskæres ved montage');
-INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `unit`, `description`) VALUES ('2', '25x200 mm. trykimp. Brædt 540 understernbrædder til siderne', '540', 'stk', 'Tilskæres ved montage');
-INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `unit`, `description`) VALUES ('3', '25x125mm. trykimp. Brædt 360 oversternbrædder til forenden', '360', 'stk', 'Tilskæres ved montage');
-INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `unit`, `description`) VALUES ('4', '25x125mm. trykimp. Brædt 540 oversternbrædder til siderne', '540', 'stk', 'Tilskæres ved montage');
-INSERT INTO `carport`.`materials` (`materials_id`, `name`, `unit`, `description`) VALUES ('5', '45x195 mm. spærtræ ubh.', 'stk', 'Remme i sider, sadles ned i stolper');
-INSERT INTO `carport`.`materials` (`materials_id`, `name`, `unit`, `description`) VALUES ('6', '45x195 mm. spærtræ ubh', 'stk', 'Spær, monteres på rem');
-INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `unit`, `description`) VALUES ('7', '97x97 mm. trykimp. Stolpe 300', '300', 'stk', 'nedgraves 90 cm i jord');
-INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `unit`, `description`) VALUES ('8', '19x100 mm. trykimp. Brædt 540 vandbrædt på stern i sider', '540', 'stk', 'Tilskæres ved montage');
-INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `unit`, `description`) VALUES ('9', '19x100 mm. trykimp. Brædt 360 vandbrædt på stern i forende', '360', 'stk', 'Tilskæres ved montage');
-INSERT INTO `carport`.`materials` (`materials_id`, `name`, `unit`, `description`) VALUES ('10', 'Plastmo Ecolite blåtonet', 'stk', 'Tilskæres ved montage');
-INSERT INTO `carport`.`materials` (`materials_id`, `name`, `unit`, `description`) VALUES ('11', 'plastmo bundskruer 200 stk. 3 pakke Skruer til tagplader', 'pakke(r)', '13 skruer per m2');
-INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `unit`) VALUES ('12', 'hulbånd 1x20 mm. 10 mtr.  Til vindkryds på spær', '1000', 'ruller');
-INSERT INTO `carport`.`materials` (`materials_id`, `name`, `unit`) VALUES ('13', 'universal 190 mm højre  Til montering af spær på rem', 'stk');
-INSERT INTO `carport`.`materials` (`materials_id`, `name`, `unit`) VALUES ('14', 'universal 190 mm venstre Til montering af spær på rem', 'stk');
-INSERT INTO `carport`.`materials` (`materials_id`, `name`, `unit`) VALUES ('15', '4,5 x 60 mm. skruer 200 stk. 1 Pakke Til montering af stern&vandbrædt', 'pakke(r)');
-INSERT INTO `carport`.`materials` (`materials_id`, `name`, `unit`) VALUES ('16', '4,0 x 50 mm. beslagskruer 250', 'pakke(r)');
-INSERT INTO `carport`.`materials` (`materials_id`, `name`, `unit`, `description`) VALUES ('17', 'bræddebolt 10 x 120 mm. Til montering af rem på stolper', 'stk', '2 per stolpe');
-INSERT INTO `carport`.`materials` (`materials_id`, `name`, `unit`, `description`) VALUES ('18', 'firkantskiver 40x40x11mm Til montering af rem på stolper', 'stk', '2 per stolpe');
+INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `unit`, `description`) VALUES ('1', '25x200 mm. trykimp. Brædt 360  understernbrædder til for & bag ende', '360', '4', 'Tilskæres ved montage');
+INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `unit`, `description`) VALUES ('2', '25x200 mm. trykimp. Brædt 540 understernbrædder til siderne', '540', '4', 'Tilskæres ved montage');
+INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `unit`, `description`) VALUES ('3', '25x125mm. trykimp. Brædt 360 oversternbrædder til forenden', '360', '2', 'Tilskæres ved montage');
+INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `unit`, `description`) VALUES ('4', '25x125mm. trykimp. Brædt 540 oversternbrædder til siderne', '540', '4', 'Tilskæres ved montage');
+INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `unit`, `description`) VALUES ('5', '45x195 mm. spærtræ ubh.', '0', '2', 'Remme i sider, sadles ned i stolper');
+INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `description`) VALUES ('6', '45x195 mm. spærtræ ubh', '0',  'Spær, monteres på rem');
+INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `description`) VALUES ('7', '97x97 mm. trykimp. Stolpe 300', '300', 'nedgraves 90 cm i jord');
+INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `unit`, `description`) VALUES ('8', '19x100 mm. trykimp. Brædt 540 vandbrædt på stern i sider', '540', '4', 'Tilskæres ved montage');
+INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `unit`, `description`) VALUES ('9', '19x100 mm. trykimp. Brædt 360 vandbrædt på stern i forende', '360', '2', 'Tilskæres ved montage');
+INSERT INTO `carport`.`materials` (`materials_id`, `name`, `description`) VALUES ('10', 'Plastmo Ecolite blåtonet', 'Tilskæres ved montage');
+INSERT INTO `carport`.`materials` (`materials_id`, `name`, `description`) VALUES ('11', 'plastmo bundskruer 200 stk. 3 pakke Skruer til tagplader', '13 skruer per m2');
+INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `unit`) VALUES ('12', 'hulbånd 1x20 mm. 10 mtr.  Til vindkryds på spær', '1000', '2');
+INSERT INTO `carport`.`materials` (`materials_id`, `name`) VALUES ('13', 'universal 190 mm højre  Til montering af spær på rem');
+INSERT INTO `carport`.`materials` (`materials_id`, `name`) VALUES ('14', 'universal 190 mm venstre Til montering af spær på rem');
+INSERT INTO `carport`.`materials` (`materials_id`, `name`, `unit`) VALUES ('15', '4,5 x 60 mm. skruer 200 stk. 1 Pakke Til montering af stern&vandbrædt', '1');
+INSERT INTO `carport`.`materials` (`materials_id`, `name`, `unit`) VALUES ('16', '4,0 x 50 mm. beslagskruer 250', '1');
+INSERT INTO `carport`.`materials` (`materials_id`, `name`, `description`) VALUES ('17', 'bræddebolt 10 x 120 mm. Til montering af rem på stolper', '2 per stolpe');
+INSERT INTO `carport`.`materials` (`materials_id`, `name`, `description`) VALUES ('18', 'firkantskiver 40x40x11mm Til montering af rem på stolper', '2 per stolpe');
 
 
 INSERT INTO carport.measures (measure_id, length, width)
@@ -181,4 +193,8 @@ VALUES ('9', '550', '550');
 INSERT INTO carport.measures (measure_id, length, width)
 VALUES ('10', '600', '600');
 
+UPDATE `carport`.`materials` SET `unit` = '6' WHERE (`materials_id` = '7');
+UPDATE `carport`.`materials` SET `length` = '600' WHERE (`materials_id` = '10');
+UPDATE `carport`.`materials` SET `unit` = '12' WHERE (`materials_id` = '17');
+UPDATE `carport`.`materials` SET `unit` = '12' WHERE (`materials_id` = '18');
 

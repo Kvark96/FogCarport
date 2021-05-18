@@ -18,7 +18,7 @@ public class CommandProtectedPage extends Command
     }
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws SQLException, NoSuchFieldException {
         return pageToShow;
     }
 

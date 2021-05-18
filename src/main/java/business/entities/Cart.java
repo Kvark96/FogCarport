@@ -9,13 +9,12 @@ import java.util.List;
 // object and adds the ID from requestScope to the list of integers.
 
 public class Cart {
-    private List<Integer> carportIDs;
+    private List<StandardCarportEntities> carports;
 
     public Cart(){
-        carportIDs = new ArrayList<>();
+        carports = new ArrayList<>();
     }
 
-    public void addCarport(int id){
-        carportIDs.add(id);
+    public void addCarport(StandardCarportEntities e){ carports.add(e);
     }
 }
