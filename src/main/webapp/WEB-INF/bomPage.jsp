@@ -26,6 +26,7 @@
                 <th scope="row"><c:out value="${mat.name}"/></th>
 
                 <td><c:out value="${mat.length}"/></td>
+                <td><c:out value="${mat.amount}"/></td>
                 <td><c:out value="${mat.unit}"/></td>
                 <td><c:out value="${mat.description}"/></td>
 
