@@ -14,6 +14,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema carport
 -- -----------------------------------------------------
+DROP database carport;
 CREATE SCHEMA IF NOT EXISTS `carport` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
 USE `carport` ;
 
@@ -25,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `carport`.`materials` (
                                                      `name` VARCHAR(100) NULL DEFAULT NULL,
                                                      `length` INT NULL DEFAULT NULL,
 
-                                                   
+
 
                                                      `amount` INT NULL DEFAULT '0',
 
@@ -121,14 +122,14 @@ CREATE TABLE IF NOT EXISTS `carport`.`orders` (
 CREATE TABLE IF NOT EXISTS `carport`.`orderline` (
                                                      `order_id` INT NOT NULL,
                                                      `orderline_id` INT NOT NULL AUTO_INCREMENT,
-                                                     `materials_materials_id` INT NOT NULL,
+                                                     `materials_id` INT NOT NULL,
                                                      `materials_length` INT NULL DEFAULT NULL,
                                                      `materials_unit` INT NOT NULL,
                                                      PRIMARY KEY (`orderline_id`),
                                                      INDEX `fk_orderline_orders1` (`order_id` ASC) VISIBLE,
-                                                     INDEX `fk_orderline_materials1_idx` (`materials_materials_id` ASC) VISIBLE,
+                                                     INDEX `fk_orderline_materials1_idx` (`materials_id` ASC) VISIBLE,
                                                      CONSTRAINT `fk_orderline_materials1`
-                                                         FOREIGN KEY (`materials_materials_id`)
+                                                         FOREIGN KEY (`materials_id`)
                                                              REFERENCES `carport`.`materials` (`materials_id`),
                                                      CONSTRAINT `fk_orderline_orders1`
                                                          FOREIGN KEY (`order_id`)
