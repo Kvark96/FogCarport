@@ -25,6 +25,8 @@ CREATE TABLE IF NOT EXISTS `carport`.`materials` (
                                                      `name` VARCHAR(100) NULL DEFAULT NULL,
                                                      `length` INT NULL DEFAULT NULL,
 
+                                                   
+
                                                      `amount` INT NULL DEFAULT '0',
 
                                                      `description` VARCHAR(100) NULL DEFAULT NULL,
