@@ -45,11 +45,11 @@ public class ShowSVGCommand extends CommandUnprotectedPage{
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
+        int height = Integer.parseInt(request.getParameter("height"));
+        int length = Integer.parseInt(request.getParameter("length"));
+        String viewBox = "0 0 " + height + " " + length;
+        SVG svg = new SVG(0, 0, viewBox, 100, 100);
 
-        SVG svg = new SVG(0, 0, "0 0 855 690", 100, 100);
-        for(int x = 0; x < 15; x++){
-            svg.addRect(100 + 15*x, 0, 10.0, 10.0);
-        }
 
 
         request.setAttribute("svg", svg.toString());
