@@ -38,6 +38,7 @@ public abstract class Command
         commands.put("bomPage", new BomCommand("bomPage", "employee"));
         commands.put("standardCarportPage", new CommandProtectedPage("standardCarportPage", "customer"));
         commands.put("CartCommand",new CartCommand("cartPage","customer"));
+        commands.put("cartConfirmed", new ConfirmCartCommand("cartConfirmed","customer"));
 
     }
 
