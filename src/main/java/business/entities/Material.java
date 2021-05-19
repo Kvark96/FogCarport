@@ -4,7 +4,6 @@ public class Material {
     private int material_id;
     private String name;
     private int length;
-    private int amount;
     private String description;
     private String unit;
 
@@ -14,15 +13,11 @@ public class Material {
         this.length = length;
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
 
-    public Material(int material_id, String name, int length, int amount, String description, String unit) {
+    public Material(int material_id, String name, int length, String description, String unit) {
         this.material_id = material_id;
         this.name = name;
         this.length = length;
-        this.amount = amount;
         this.description = description;
         this.unit = unit;
 
@@ -40,9 +35,6 @@ public class Material {
         return length;
     }
 
-    public int getAmount() {
-        return amount;
-    }
 
     public String getDescription() {
         return description;

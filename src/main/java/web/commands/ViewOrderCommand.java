@@ -47,7 +47,7 @@ public class ViewOrderCommand extends CommandProtectedPage{
                 request.setAttribute("user_email", user_email);
                 request.setAttribute("price", price);
 
-                orderlines.add(new Orderline(order_id, orderline_id, quantity, material_id));
+                orderlines.add(new Orderline(order_id, orderline_id, material_id));
                 System.out.println(orderlines.toString());
             }
 

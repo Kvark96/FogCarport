@@ -5,6 +5,7 @@ import business.entities.MeasureEntities;
 import business.entities.Orderline;
 import business.entities.StandardCarportEntities;
 import business.exceptions.UserException;
+import com.sun.org.apache.xpath.internal.operations.Or;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -32,11 +33,10 @@ public class BomMapper {
                     int material_id = rs.getInt("materials_id");
                     String name = rs.getString("name");
                     int length = rs.getInt("length");
-                    int amount = rs.getInt("amount");
                     String desc = rs.getString("description");
                     String unit = rs.getString("unit");
 
-                    materialDescription.add(new Material(material_id,name,length,amount,desc,unit));
+                    materialDescription.add(new Material(material_id,name,length,desc,unit));
 
                 }
                 System.out.println(materialDescription.toString());
@@ -49,7 +49,15 @@ public class BomMapper {
 
         }
         return materialDescription;
+    }
 
+    public List<Orderline> generateOrderlines(int order_id, List<Material> materials){
+        List<Orderline> orderlines = new ArrayList<>();
+        int i = 0;          // orderline_id
+        for(Material m : materials){
+            orderlines.add(new Orderline(order_id, ++i, m.getMaterial_id()));
+        }
+        return orderlines;
     }
 
     public void generateCarport(int orderid, int length, int width) {
@@ -59,6 +67,7 @@ public class BomMapper {
         double widthCalculator = (double)width / 100.0;
 
         List<Material> materials = getMaterials();
+        List<Orderline> orderlines = generateOrderlines(orderid, materials);
 
         for (Material m: materials) {
             if (m.getMaterial_id() == 5) {
@@ -67,19 +76,26 @@ public class BomMapper {
 
             if (m.getMaterial_id() == 6) {
                 m.setLength(width);
-                m.setAmount((int) Math.ceil(antalRegner));
+                orderlines.get(6).setQuantity((int) Math.ceil(antalRegner));
+                //m.setAmount((int) Math.ceil(antalRegner));
             }
 
             if (m.getMaterial_id() == 10) {
-                m.setAmount((int) Math.ceil(widthCalculator));
+                orderlines.get(10).setQuantity((int) Math.ceil(widthCalculator));
+                //m.setAmount((int) Math.ceil(widthCalculator));
             }
 
             if (m.getMaterial_id() == 11) {
-                m.setAmount((int) Math.ceil(antalSkruer));
+                orderlines.get(11).setQuantity((int) Math.ceil(antalSkruer));
+                //m.setAmount((int) Math.ceil(antalSkruer));
             }
 
-            if (m.getMaterial_id() == 13 || m.getMaterial_id() == 14) {
-                m.setAmount((int) Math.ceil(antalRegner));
+            if (m.getMaterial_id() == 13) {
+                orderlines.get(13).setQuantity((int) Math.ceil(antalRegner));
+                //m.setAmount((int) Math.ceil(antalRegner));
+            }
+            if(m.getMaterial_id() == 14){
+                orderlines.get(14).setQuantity((int) Math.ceil(antalRegner));
             }
         }
 
@@ -93,7 +109,6 @@ public class BomMapper {
                         ps.setInt(1, orderid);
                         ps.setInt(2, materials.get(i).getMaterial_id());
                         ps.setInt(3, materials.get(i).getLength());
-                        ps.setInt(4, materials.get(i).getAmount());
 
                         ps.executeUpdate();
 
@@ -127,11 +142,10 @@ public class BomMapper {
                     int material_id = rs.getInt("materials_id");
                     String name = rs.getString("name");
                     int length = rs.getInt("materials_length");
-                    int amount = rs.getInt("materials_unit");
                     String desc = rs.getString("description");
                     String unit = rs.getString("unit");
 
-                    materialDescription.add(new Material(material_id,name,length,amount,desc,unit));
+                    materialDescription.add(new Material(material_id,name,length,desc,unit));
 
                 }
 

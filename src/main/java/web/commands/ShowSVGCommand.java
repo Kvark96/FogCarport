@@ -1,6 +1,7 @@
 package web.commands;
 
 import business.entities.Material;
+import business.entities.Orderline;
 import business.exceptions.UserException;
 import business.services.SVG;
 
@@ -18,7 +19,7 @@ public class ShowSVGCommand extends CommandUnprotectedPage{
         super(pageToShow);
     }
 
-    private List<Material> getBOM(int order_id){
+    private List<Orderline> getBOM(int order_id){
         List<Material> bom = new ArrayList<>();
         String sql = "SELECT * FROM carport.orderline WHERE order_id = ?";
         try(Connection connection = database.connect())
@@ -31,7 +32,6 @@ public class ShowSVGCommand extends CommandUnprotectedPage{
                         rs.getInt("material_id"),
                         rs.getString("name"),
                         rs.getInt("length"),
-                        rs.getInt("unit"),
                         rs.getString("description"),
                         rs.getString("unit")));
             }
@@ -41,7 +41,13 @@ public class ShowSVGCommand extends CommandUnprotectedPage{
             System.out.println(se.getMessage());
             se.printStackTrace();
         }
-        return bom;
+
+        List<Orderline> orderlines = new ArrayList<>();
+        int i = 0;          // orderline_id
+        for(Material m : bom){
+            orderlines.add(new Orderline(order_id, ++i, m.getMaterial_id()));
+        }
+        return orderlines;
     }
 
     @Override
@@ -53,7 +59,7 @@ public class ShowSVGCommand extends CommandUnprotectedPage{
         SVG svg = new SVG(0, 0, viewBox, 100, 100);
 
         int order_id = Integer.parseInt(request.getParameter("order_id"));
-        List<Material> bom = getBOM(order_id);
+        List<Orderline> bom = getBOM(order_id);
 
 
 
