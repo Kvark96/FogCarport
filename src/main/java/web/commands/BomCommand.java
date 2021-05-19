@@ -1,9 +1,13 @@
 package web.commands;
 
+import business.persistence.BomMapper;
 import business.services.BomFacade;
-
+import web.FrontController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class BomCommand extends CommandProtectedPage {
@@ -13,13 +17,16 @@ public class BomCommand extends CommandProtectedPage {
         super(pageToShow, role);
     }
 
+
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-        //DescriptionEntities descriptionEntities = new DescriptionEntities();
         BomFacade bomFacade = new BomFacade(database);
-        request.setAttribute("materialList", bomFacade.getMaterials());
+
+        int order_id = (int) request.getAttribute("order_id");
+
+        request.setAttribute("materialList", bomFacade.getOrderLineMaterials(order_id));
+
         return pageToShow;
     }
-
 
 }

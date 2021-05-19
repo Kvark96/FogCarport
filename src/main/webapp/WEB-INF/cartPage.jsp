@@ -11,31 +11,7 @@
 
     <jsp:body>
 
-        <table class="table table-striped">
-        <thead>
-        <tr>
-        <th scope="col">Navn</th>
-        <th scope="col">Antal</th>
-        <th scope="col">Pris</th>
-        <th scope="col"></th>
-        </tr>
-        </thead>
-
-        <c:forEach var="SCarport" items="${cart.carportIDs}">
-            <tr>
-                <td>${SCarport.name}</td>
-                <td>${SCarport.quantity}</td>
-                <td>${SCarport.quantity}</td>
-                <td>${SCarport.calcPrice}</td>
-                <td>
-
-                    <button type="submit" class="btn btn-danger" name="delete" value="${item}">
-                        Fjern
-
-                    </button>
-                </td>
-            </tr>
-        </c:forEach>
+        <h1>DOES THIS WORK ?</h1>
 
 
 

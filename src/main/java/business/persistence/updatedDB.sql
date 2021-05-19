@@ -108,11 +108,10 @@ DROP TABLE IF EXISTS `carport`.`orderline` ;
 CREATE TABLE IF NOT EXISTS `carport`.`orderline` (
                                                      `order_id` INT NOT NULL,
                                                      `orderline_id` INT NOT NULL AUTO_INCREMENT,
-                                                     `quantity` INT NOT NULL,
-                                                     `product_id` INT NOT NULL,
                                                      `materials_materials_id` INT NOT NULL,
+                                                     `materials_length` INT NULL DEFAULT NULL,
+                                                     `materials_unit` INT NOT NULL,
                                                      PRIMARY KEY (`orderline_id`),
-                                                     UNIQUE INDEX `product_id_UNIQUE` (`product_id` ASC) VISIBLE,
                                                      INDEX `fk_orderline_orders1` (`order_id` ASC) VISIBLE,
                                                      INDEX `fk_orderline_materials1_idx` (`materials_materials_id` ASC) VISIBLE,
                                                      CONSTRAINT `fk_orderline_materials1`
@@ -124,7 +123,6 @@ CREATE TABLE IF NOT EXISTS `carport`.`orderline` (
     ENGINE = InnoDB
     DEFAULT CHARACTER SET = utf8mb4
     COLLATE = utf8mb4_0900_ai_ci;
-
 
 -- -----------------------------------------------------
 -- Table `carport`.`standardcarport`

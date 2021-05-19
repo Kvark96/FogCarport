@@ -14,7 +14,8 @@
             <th scope="col"> Beskrivelse</th>
             <th scope="col"> Længde</th>
             <th scope="col"> Antal</th>
-            <th scope="col"> Noter</th>
+            <th scope="col"> Enhed</th>
+            <th scope="col"> Beskrivelse</th>
         </tr>
 
         </thead>

@@ -38,6 +38,8 @@ public abstract class Command
         commands.put("bomPage", new BomCommand("bomPage", "employee"));
         commands.put("standardCarportPage", new CommandProtectedPage("standardCarportPage", "customer"));
         commands.put("drawing", new ShowSVGCommand("drawing"));
+        commands.put("CartCommand",new CartCommand("cartPage","customer"));
+
     }
 
     public static Command fromPath(

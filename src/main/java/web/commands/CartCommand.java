@@ -1,6 +1,7 @@
 package web.commands;
 
 import business.entities.Cart;
+import business.entities.StandardCarportEntities;
 import business.persistence.CarportMapper;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,15 +18,21 @@ public class CartCommand extends CommandProtectedPage{
     public String execute(HttpServletRequest request, HttpServletResponse response) throws SQLException, NoSuchFieldException {
         HttpSession session = request.getSession();
         request.getSession().getAttribute("user_id");
-        int carportID = (int) request.getAttribute("standard_id");
+        int standard_id = Integer.parseInt(request.getParameter("standard_id"));
        Cart cart = (Cart) session.getAttribute("cart");
         CarportMapper carportMapper = new CarportMapper(database);
+        carportMapper.getStandardCarportEntitiesList();
 
-        String name = carportMapper.getCarportFromId(carportID).getName();
-        int price = carportMapper.getCarportFromId(carportID).getPrice();
 
+        String name = carportMapper.getCarportFromId(standard_id).getName();
+        int price = carportMapper.getCarportFromId(standard_id).getPrice();
+
+        StandardCarportEntities standardCarportEntities = new StandardCarportEntities(standard_id,name,"",price);
+
+        cart.addCarport(standardCarportEntities);
+        System.out.println(cart.toString());
         request.setAttribute("name", name);
-        request.setAttribute("price",price );
+        request.setAttribute("price",price);
 
 
 
@@ -34,6 +41,7 @@ public class CartCommand extends CommandProtectedPage{
 
 
 
-        return "cartPage";
+
+        return pageToShow;
     }
 }

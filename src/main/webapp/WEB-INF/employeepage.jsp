@@ -9,7 +9,7 @@
     <jsp:attribute name="footer">
     </jsp:attribute>
     <jsp:body>
-        <h1>Hej ${sessionScope.email}! </h1>
+        <h1>Hej ${sessionScope.name}! </h1>
         Du er nu logget ind som en medarbejder
         <br><br/>
         <p>  <a href="${pageContext.request.contextPath}/fc/orderlist" class="btn btn-primary"> Se alle ordrer </a>
