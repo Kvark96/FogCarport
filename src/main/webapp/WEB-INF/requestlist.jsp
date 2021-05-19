@@ -39,9 +39,12 @@
                         </form>
                     </td>
                     <td>
+
                             <form name="bompage" action="${pageContext.request.contextPath}/fc/bomPage" method="post">
+                                <input type="hidden" name="order_id" value="${req.order_id}"/>
                                 <button class="btn btn-sm  btn-outline-primary"> Se stykliste </button>
                             </form>
+
                     </td>
                 </tr>
             </c:forEach>

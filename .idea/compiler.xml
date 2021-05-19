@@ -15,7 +15,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="FogCarport" options="-endorseddirs C:\Users\peter\Desktop\Datamatiker\Eksamensprojekt\FogCarport\target/endorsed" />
+      <module name="FogCarport" options="-endorseddirs C:\Users\EG\Desktop\Carport\FogCarport\target/endorsed" />
     </option>
   </component>
 </project>

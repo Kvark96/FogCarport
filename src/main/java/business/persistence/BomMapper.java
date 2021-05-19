@@ -24,7 +24,6 @@ public class BomMapper {
 
             String sql = "select * from carport.materials;";
 
-
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
@@ -32,10 +31,11 @@ public class BomMapper {
                     int material_id = rs.getInt("materials_id");
                     String name = rs.getString("name");
                     int length = rs.getInt("length");
-                    int unit = rs.getInt("unit");
+                    int amount = rs.getInt("amount");
                     String desc = rs.getString("description");
+                    String unit = rs.getString("unit");
 
-                    materialDescription.add(new Material(material_id,name,length,unit,desc));
+                    materialDescription.add(new Material(material_id,name,length,amount,desc,unit));
 
                 }
                 System.out.println(materialDescription.toString());
@@ -53,9 +53,9 @@ public class BomMapper {
 
     public void generateCarport(int orderid, int length, int width) {
 
-        double antalRegner = (length / 100) / 0.55;
-        double antalSkruer = length /100 * width/100 * 13 / 200;
-        double widthCalculator = width / 100;
+        double antalRegner = ((double)length / 100.0) / 0.55;
+        double antalSkruer = (double) length / 100.0 * (double) width/100.0 * 13.0 / 200.0;
+        double widthCalculator = (double)width / 100.0;
 
         List<Material> materials = getMaterials();
 
@@ -66,19 +66,19 @@ public class BomMapper {
 
             if (m.getMaterial_id() == 6) {
                 m.setLength(width);
-                m.setUnit((int) Math.ceil(antalRegner));
+                m.setAmount((int) Math.ceil(antalRegner));
             }
 
             if (m.getMaterial_id() == 10) {
-                m.setUnit((int) Math.ceil(widthCalculator));
+                m.setAmount((int) Math.ceil(widthCalculator));
             }
 
             if (m.getMaterial_id() == 11) {
-                m.setUnit((int) Math.ceil(antalSkruer));
+                m.setAmount((int) Math.ceil(antalSkruer));
             }
 
             if (m.getMaterial_id() == 13 || m.getMaterial_id() == 14) {
-                m.setUnit((int) Math.ceil(antalRegner));
+                m.setAmount((int) Math.ceil(antalRegner));
             }
         }
 
@@ -92,7 +92,7 @@ public class BomMapper {
                         ps.setInt(1, orderid);
                         ps.setInt(2, materials.get(i).getMaterial_id());
                         ps.setInt(3, materials.get(i).getLength());
-                        ps.setInt(4, materials.get(i).getUnit());
+                        ps.setInt(4, materials.get(i).getAmount());
 
                         ps.executeUpdate();
 
@@ -126,10 +126,11 @@ public class BomMapper {
                     int material_id = rs.getInt("materials_id");
                     String name = rs.getString("name");
                     int length = rs.getInt("materials_length");
-                    int unit = rs.getInt("materials_unit");
+                    int amount = rs.getInt("materials_unit");
                     String desc = rs.getString("description");
+                    String unit = rs.getString("unit");
 
-                    materialDescription.add(new Material(material_id,name,length,unit,desc));
+                    materialDescription.add(new Material(material_id,name,length,amount,desc,unit));
 
                 }
 
