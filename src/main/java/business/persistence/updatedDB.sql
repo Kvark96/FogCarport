@@ -27,8 +27,9 @@ CREATE TABLE IF NOT EXISTS `carport`.`materials` (
                                                      `materials_id` INT NOT NULL,
                                                      `name` VARCHAR(100) NULL DEFAULT NULL,
                                                      `length` INT NULL DEFAULT NULL,
-                                                     `unit` INT NULL DEFAULT 0,
+                                                     `amount` INT NULL DEFAULT '0',
                                                      `description` VARCHAR(100) NULL DEFAULT NULL,
+                                                     `unit` VARCHAR(45) NULL DEFAULT 'stk',
                                                      PRIMARY KEY (`materials_id`))
     ENGINE = InnoDB
     DEFAULT CHARACTER SET = utf8mb4
@@ -150,22 +151,22 @@ UPDATE `carport`.`standardcarport` SET `description` = '3,60 x 5,40 mtr. Uden re
 UPDATE `carport`.`standardcarport` SET `description` = 'Enkelt carport med høj rejsning. 3,60 x 9,10 m. Extra lang model. 3,20 x 3,55 m. redskabsrum. Højde; 3,05 m.. Trykimprægnerede stolper, stern og beklædning. Leveres med: Søm, skruer, beslag og betontagstenstag. Udførlig byggevejledning til carport og spær medfølger. Betontagsten i sort med 30 års garanti. NB! Leveres som Byg-selv sæt - usamlet og ubehandlet!' WHERE (`standard_id` = '3');
 UPDATE `carport`.`standardcarport` SET `description` = 'Enkelt carport med høj rejsning. 3,90 x 7,80 m. Extra bred model. 3,30 x 2,40 mtr redskabsrum. Højde; 3,10 mtr. Trykimprægnerede stolper, stern og beklædning. Leveres med: Søm, skruer, beslag og betontagstenstag. Udførlig byggevejledning til carport og spær medfølger. Betontagsten i sort med 30 års garanti. NB! Leveres som Byg-selv sæt - usamlet og ubehandlet!' WHERE (`standard_id` = '4');
 
-INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `unit`, `description`) VALUES ('1', '25x200 mm. trykimp. Brædt 360  understernbrædder til for & bag ende', '360', '4', 'Tilskæres ved montage');
-INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `unit`, `description`) VALUES ('2', '25x200 mm. trykimp. Brædt 540 understernbrædder til siderne', '540', '4', 'Tilskæres ved montage');
-INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `unit`, `description`) VALUES ('3', '25x125mm. trykimp. Brædt 360 oversternbrædder til forenden', '360', '2', 'Tilskæres ved montage');
-INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `unit`, `description`) VALUES ('4', '25x125mm. trykimp. Brædt 540 oversternbrædder til siderne', '540', '4', 'Tilskæres ved montage');
-INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `unit`, `description`) VALUES ('5', '45x195 mm. spærtræ ubh.', '0', '2', 'Remme i sider, sadles ned i stolper');
+INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `amount`, `description`) VALUES ('1', '25x200 mm. trykimp. Brædt 360  understernbrædder til for & bag ende', '360', '4', 'Tilskæres ved montage');
+INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `amount`, `description`) VALUES ('2', '25x200 mm. trykimp. Brædt 540 understernbrædder til siderne', '540', '4', 'Tilskæres ved montage');
+INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `amount`, `description`) VALUES ('3', '25x125mm. trykimp. Brædt 360 oversternbrædder til forenden', '360', '2', 'Tilskæres ved montage');
+INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `amount`, `description`) VALUES ('4', '25x125mm. trykimp. Brædt 540 oversternbrædder til siderne', '540', '4', 'Tilskæres ved montage');
+INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `amount`, `description`) VALUES ('5', '45x195 mm. spærtræ ubh.', '0', '2', 'Remme i sider, sadles ned i stolper');
 INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `description`) VALUES ('6', '45x195 mm. spærtræ ubh', '0',  'Spær, monteres på rem');
 INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `description`) VALUES ('7', '97x97 mm. trykimp. Stolpe 300', '300', 'nedgraves 90 cm i jord');
-INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `unit`, `description`) VALUES ('8', '19x100 mm. trykimp. Brædt 540 vandbrædt på stern i sider', '540', '4', 'Tilskæres ved montage');
-INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `unit`, `description`) VALUES ('9', '19x100 mm. trykimp. Brædt 360 vandbrædt på stern i forende', '360', '2', 'Tilskæres ved montage');
+INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `amount`, `description`) VALUES ('8', '19x100 mm. trykimp. Brædt 540 vandbrædt på stern i sider', '540', '4', 'Tilskæres ved montage');
+INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `amount`, `description`) VALUES ('9', '19x100 mm. trykimp. Brædt 360 vandbrædt på stern i forende', '360', '2', 'Tilskæres ved montage');
 INSERT INTO `carport`.`materials` (`materials_id`, `name`, `description`) VALUES ('10', 'Plastmo Ecolite blåtonet', 'Tilskæres ved montage');
 INSERT INTO `carport`.`materials` (`materials_id`, `name`, `description`) VALUES ('11', 'plastmo bundskruer 200 stk. 3 pakke Skruer til tagplader', '13 skruer per m2');
-INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `unit`) VALUES ('12', 'hulbånd 1x20 mm. 10 mtr.  Til vindkryds på spær', '1000', '2');
+INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `amount`) VALUES ('12', 'hulbånd 1x20 mm. 10 mtr.  Til vindkryds på spær', '1000', '2');
 INSERT INTO `carport`.`materials` (`materials_id`, `name`) VALUES ('13', 'universal 190 mm højre  Til montering af spær på rem');
 INSERT INTO `carport`.`materials` (`materials_id`, `name`) VALUES ('14', 'universal 190 mm venstre Til montering af spær på rem');
-INSERT INTO `carport`.`materials` (`materials_id`, `name`, `unit`) VALUES ('15', '4,5 x 60 mm. skruer 200 stk. 1 Pakke Til montering af stern&vandbrædt', '1');
-INSERT INTO `carport`.`materials` (`materials_id`, `name`, `unit`) VALUES ('16', '4,0 x 50 mm. beslagskruer 250', '1');
+INSERT INTO `carport`.`materials` (`materials_id`, `name`, `amount`) VALUES ('15', '4,5 x 60 mm. skruer 200 stk. 1 Pakke Til montering af stern&vandbrædt', '1');
+INSERT INTO `carport`.`materials` (`materials_id`, `name`, `amount`) VALUES ('16', '4,0 x 50 mm. beslagskruer 250', '1');
 INSERT INTO `carport`.`materials` (`materials_id`, `name`, `description`) VALUES ('17', 'bræddebolt 10 x 120 mm. Til montering af rem på stolper', '2 per stolpe');
 INSERT INTO `carport`.`materials` (`materials_id`, `name`, `description`) VALUES ('18', 'firkantskiver 40x40x11mm Til montering af rem på stolper', '2 per stolpe');
 
@@ -191,8 +192,30 @@ VALUES ('9', '550', '550');
 INSERT INTO carport.measures (measure_id, length, width)
 VALUES ('10', '600', '600');
 
-UPDATE `carport`.`materials` SET `unit` = '6' WHERE (`materials_id` = '7');
+UPDATE `carport`.`materials` SET `amount` = '6' WHERE (`materials_id` = '7');
 UPDATE `carport`.`materials` SET `length` = '600' WHERE (`materials_id` = '10');
-UPDATE `carport`.`materials` SET `unit` = '12' WHERE (`materials_id` = '17');
-UPDATE `carport`.`materials` SET `unit` = '12' WHERE (`materials_id` = '18');
+UPDATE `carport`.`materials` SET `amount` = '12' WHERE (`materials_id` = '17');
+UPDATE `carport`.`materials` SET `amount` = '12' WHERE (`materials_id` = '18');
+UPDATE `carport`.`materials` SET `unit` = 'pakke(r)' WHERE (`materials_id` = '11');
+UPDATE `carport`.`materials` SET `unit` = 'ruller' WHERE (`materials_id` = '12');
+UPDATE `carport`.`materials` SET `unit` = 'pakke(r)' WHERE (`materials_id` = '15');
+UPDATE `carport`.`materials` SET `unit` = 'pakke(r)' WHERE (`materials_id` = '16');
+
+UPDATE `carport`.`materials` SET `name` = 'Universal 190 mm venstre', `description` = 'Til montering af spær på rem' WHERE (`materials_id` = '14');
+UPDATE `carport`.`materials` SET `name` = 'Universal 190 mm højre', `description` = 'Til montering af spær på rem' WHERE (`materials_id` = '13');
+UPDATE `carport`.`materials` SET `name` = 'Hulbånd 1x20 mm. 10 mtr.  ', `description` = 'Til vindkryds på spær' WHERE (`materials_id` = '12');
+UPDATE `carport`.`materials` SET `name` = 'Plastmo bundskruer 200 stk.', `description` = 'Skruer til tagplader' WHERE (`materials_id` = '11');
+UPDATE `carport`.`materials` SET `name` = '4,5 x 60 mm. skruer 200 stk.', `description` = 'Til montering af stern&vandbrædt' WHERE (`materials_id` = '15');
+UPDATE `carport`.`materials` SET `name` = '4,0 x 50 mm. beslagskruer 250 stk.', `description` = 'Til montering af universalbeslag + hulbånd' WHERE (`materials_id` = '16');
+UPDATE `carport`.`materials` SET `name` = 'Bræddebolt 10 x 120 mm', `description` = 'Til montering af rem på stolper' WHERE (`materials_id` = '17');
+UPDATE `carport`.`materials` SET `name` = 'Firkantskiver 40x40x11mm', `description` = 'Til montering af rem på stolper' WHERE (`materials_id` = '18');
+UPDATE `carport`.`materials` SET `name` = '25x200 mm. trykimp. Brædt', `description` = 'Understernbrædder til for & bag ende' WHERE (`materials_id` = '1');
+UPDATE `carport`.`materials` SET `name` = '25x200 mm. trykimp. Brædt', `description` = 'Understernbrædder til siderne' WHERE (`materials_id` = '2');
+UPDATE `carport`.`materials` SET `name` = '25x125mm. trykimp. Brædt', `description` = 'Oversternbrædder til forenden' WHERE (`materials_id` = '3');
+UPDATE `carport`.`materials` SET `name` = '25x125mm. trykimp. Brædt', `description` = 'Oversternbrædder til siderne' WHERE (`materials_id` = '4');
+UPDATE `carport`.`materials` SET `name` = '19x100 mm. trykimp. Brædt', `description` = 'Vandbrædt på stern i sider' WHERE (`materials_id` = '8');
+UPDATE `carport`.`materials` SET `name` = '97x97 mm. trykimp. Stolpe' WHERE (`materials_id` = '7');
+UPDATE `carport`.`materials` SET `name` = '19x100 mm. trykimp. Brædt ', `description` = 'Vandbrædt på stern i forende' WHERE (`materials_id` = '9');
+UPDATE `carport`.`materials` SET `description` = 'Tagplader monteres på spær' WHERE (`materials_id` = '10');
+
 

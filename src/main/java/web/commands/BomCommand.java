@@ -22,9 +22,10 @@ public class BomCommand extends CommandProtectedPage {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws SQLException {
         BomFacade bomFacade = new BomFacade(database);
 
-        int order_id = (int) request.getAttribute("order_id");
+        String order_id = (String) request.getParameter("order_id");
 
-        request.setAttribute("materialList", bomFacade.getOrderLineMaterials(order_id));
+        System.out.println(order_id);
+        request.setAttribute("materialList", bomFacade.getOrderLineMaterials(Integer.parseInt(order_id)));
 
         return pageToShow;
     }
