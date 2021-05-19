@@ -39,6 +39,7 @@ public abstract class Command
         commands.put("standardCarportPage", new CommandProtectedPage("standardCarportPage", "customer"));
         commands.put("drawing", new ShowSVGCommand("drawing"));
         commands.put("CartCommand",new CartCommand("cartPage","customer"));
+        commands.put("cartConfirmed", new ConfirmCartCommand("cartConfirmed","customer"));
 
     }
 

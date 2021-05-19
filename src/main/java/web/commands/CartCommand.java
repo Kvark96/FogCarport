@@ -17,8 +17,7 @@ public class CartCommand extends CommandProtectedPage{
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws SQLException, NoSuchFieldException {
         HttpSession session = request.getSession();
-        request.getSession().getAttribute("user_id");
-        int standard_id = Integer.parseInt(request.getParameter("standard_id"));
+       int standard_id = Integer.parseInt(request.getParameter("standard_id"));
        Cart cart = (Cart) session.getAttribute("cart");
         CarportMapper carportMapper = new CarportMapper(database);
         carportMapper.getStandardCarportEntitiesList();
@@ -26,13 +25,16 @@ public class CartCommand extends CommandProtectedPage{
 
         String name = carportMapper.getCarportFromId(standard_id).getName();
         int price = carportMapper.getCarportFromId(standard_id).getPrice();
+        String description = carportMapper.getCarportFromId(standard_id).getDescription();
 
-        StandardCarportEntities standardCarportEntities = new StandardCarportEntities(standard_id,name,"",price);
+        StandardCarportEntities standardCarportEntities = new StandardCarportEntities(standard_id,name,description,price);
 
         cart.addCarport(standardCarportEntities);
-        System.out.println(cart.toString());
-        request.setAttribute("name", name);
-        request.setAttribute("price",price);
+
+
+        request.getSession().setAttribute("cart",cart);
+
+        request.getSession().setAttribute("standard_id",standard_id);
 
 
 

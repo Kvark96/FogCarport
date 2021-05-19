@@ -17,4 +17,8 @@ public class Cart {
 
     public void addCarport(StandardCarportEntities e){ carports.add(e);
     }
+
+    public List<StandardCarportEntities> getCarports() {
+        return carports;
+    }
 }

@@ -25,7 +25,6 @@ public class BomMapper {
 
             String sql = "select * from carport.materials;";
 
-
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {

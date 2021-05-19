@@ -11,7 +11,31 @@
 
     <jsp:body>
 
-        <h1>DOES THIS WORK ?</h1>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col"> Produkt</th>
+                <th scope="col"> Pris</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+
+           <tbody>
+            <c:forEach items="${cart.carports}" var="carport">
+                <tr>
+                    <th scope="row">
+                        <c:out value="${carport.name}"/></th>
+                    <td><c:out value="${carport.price}"/></td>
+                    <td>
+                    </td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+
+
+        <a href="${pageContext.request.contextPath}/fc/cartConfirmed" class="btn btn-primary"> Bekræft </a>
+        <a href="${pageContext.request.contextPath}/fc/standardCarportPage" class="btn btn-primary">Gå tilbage til Standard carporte </a>
 
 
 
