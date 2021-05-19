@@ -17,12 +17,16 @@ public class BomCommand extends CommandProtectedPage {
         super(pageToShow, role);
     }
 
+
+
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-
         BomFacade bomFacade = new BomFacade(database);
 
         String order_id = (String) request.getParameter("order_id");
+
+        System.out.println(order_id);
+
         request.setAttribute("materialList", bomFacade.getOrderLineMaterials(Integer.parseInt(order_id)));
 
         return pageToShow;
