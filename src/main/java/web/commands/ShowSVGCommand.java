@@ -18,7 +18,7 @@ public class ShowSVGCommand extends CommandUnprotectedPage{
         super(pageToShow);
     }
 
-    private List<Material> collectBOM(int order_id){
+    private List<Material> getBOM(int order_id){
         List<Material> bom = new ArrayList<>();
         String sql = "SELECT * FROM carport.orderline WHERE order_id = ?";
         try(Connection connection = database.connect())
@@ -32,7 +32,8 @@ public class ShowSVGCommand extends CommandUnprotectedPage{
                         rs.getString("name"),
                         rs.getInt("length"),
                         rs.getInt("unit"),
-                        rs.getString("description")));
+                        rs.getString("description"),
+                        rs.getString("unit")));
             }
 
         } catch(SQLException se)
@@ -45,10 +46,14 @@ public class ShowSVGCommand extends CommandUnprotectedPage{
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
-        int height = Integer.parseInt(request.getParameter("height"));
-        int length = Integer.parseInt(request.getParameter("length"));
-        String viewBox = "0 0 " + height + " " + length;
+        //String order_id = (String) request.getParameter("order_id");
+        String width = request.getParameter("width");
+        String length = request.getParameter("length");
+        String viewBox = "0 0 "  +  length + " " + width;
         SVG svg = new SVG(0, 0, viewBox, 100, 100);
+
+        int order_id = Integer.parseInt(request.getParameter("order_id"));
+        List<Material> bom = getBOM(order_id);
 
 
 
