@@ -14,12 +14,6 @@
 
     <jsp:body>
 
-        <form action="${pageContext.request.contextPath}/fc/drawing" method="post" name="SVGForm">
-            <input type="hidden" value="780" name="length"/>
-            <input type="hidden" value="600" name="width"/>
-            <input type="submit" class="btn-primary" value="Se SVG">
-        </form>
-
 
             <h2>Velkommen til Fog </h2>
             <div style="margin-top: 3em;margin-bottom: 3em;">

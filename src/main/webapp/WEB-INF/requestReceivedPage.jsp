@@ -18,6 +18,12 @@
 
         <p>  <a href="${pageContext.request.contextPath}/fc/requestConfirmedPage" class="btn btn-primary"> Tryk her for at bekræfte </a>
 
+        <form action="${pageContext.request.contextPath}/fc/drawing" method="post" name="SVGForm">
+            <input type="hidden" value="780" name="length"/>
+            <input type="hidden" value="600" name="width"/>
+            <input type="submit" class="btn-primary" value="Se SVG">
+        </form>
+
 
 
     </jsp:body>
