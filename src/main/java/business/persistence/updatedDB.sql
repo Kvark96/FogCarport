@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+
+DROP database carport;
+
+=======
+>>>>>>> beb725ea5f77abfe9b1e706f2c3550549667b822
 -- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
@@ -21,6 +27,7 @@ USE `carport` ;
 -- -----------------------------------------------------
 -- Table `carport`.`materials`
 -- -----------------------------------------------------
+
 DROP TABLE IF EXISTS `carport`.`materials` ;
 
 CREATE TABLE IF NOT EXISTS `carport`.`materials` (
@@ -31,6 +38,7 @@ CREATE TABLE IF NOT EXISTS `carport`.`materials` (
                                                      `description` VARCHAR(100) NULL DEFAULT NULL,
                                                      `unit` VARCHAR(45) NULL DEFAULT 'stk',
                                                      PRIMARY KEY (`materials_id`))
+
     ENGINE = InnoDB
     DEFAULT CHARACTER SET = utf8mb4
     COLLATE = utf8mb4_0900_ai_ci;
