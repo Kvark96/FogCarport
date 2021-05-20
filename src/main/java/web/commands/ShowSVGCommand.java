@@ -32,6 +32,7 @@ public class ShowSVGCommand extends CommandUnprotectedPage{
                         rs.getInt("material_id"),
                         rs.getString("name"),
                         rs.getInt("length"),
+                        rs.getInt("amount"),
                         rs.getString("description"),
                         rs.getString("unit")));
             }
