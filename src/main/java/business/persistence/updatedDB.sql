@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-
 DROP database carport;
 
-=======
->>>>>>> beb725ea5f77abfe9b1e706f2c3550549667b822
+
 -- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
