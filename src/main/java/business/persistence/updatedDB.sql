@@ -1,6 +1,7 @@
 
 DROP database carport;
 
+-- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
@@ -22,13 +23,18 @@ USE `carport` ;
 -- -----------------------------------------------------
 -- Table `carport`.`materials`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `carport`.`materials` (
-                                                     `materials_id` INT NOT NULL,
-                                                     `name` VARCHAR(100) NULL DEFAULT NULL,
-                                                     `length` INT NULL DEFAULT NULL,
-                                                     `unit` INT NULL DEFAULT '0',
-                                                     `description` VARCHAR(100) NULL DEFAULT NULL,
-                                                     PRIMARY KEY (`materials_id`))
+CREATE TABLE IF NOT EXISTS carport.materials (
+                                                 materials_id INT NOT NULL,
+                                                 name VARCHAR(100) NULL DEFAULT NULL,
+                                                 length INT NULL DEFAULT NULL,
+
+
+
+                                                 amount INT NULL DEFAULT '0',
+
+                                                 description VARCHAR(100) NULL DEFAULT NULL,
+                                                 unit VARCHAR(45) NULL DEFAULT 'stk',
+                                                 PRIMARY KEY (materials_id))
     ENGINE = InnoDB
     DEFAULT CHARACTER SET = utf8mb4
     COLLATE = utf8mb4_0900_ai_ci;
