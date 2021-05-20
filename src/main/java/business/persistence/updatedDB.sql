@@ -1,4 +1,6 @@
--- MySQL Workbench Forward Engineering
+
+DROP database carport;
+
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
@@ -14,7 +16,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema carport
 -- -----------------------------------------------------
-DROP database carport;
 CREATE SCHEMA IF NOT EXISTS `carport` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
 USE `carport` ;
 
@@ -25,13 +26,8 @@ CREATE TABLE IF NOT EXISTS `carport`.`materials` (
                                                      `materials_id` INT NOT NULL,
                                                      `name` VARCHAR(100) NULL DEFAULT NULL,
                                                      `length` INT NULL DEFAULT NULL,
-
-
-
-                                                     `amount` INT NULL DEFAULT '0',
-
+                                                     `unit` INT NULL DEFAULT '0',
                                                      `description` VARCHAR(100) NULL DEFAULT NULL,
-                                                     `unit` VARCHAR(45) NULL DEFAULT 'stk',
                                                      PRIMARY KEY (`materials_id`))
     ENGINE = InnoDB
     DEFAULT CHARACTER SET = utf8mb4
@@ -47,7 +43,22 @@ CREATE TABLE IF NOT EXISTS `carport`.`measures` (
                                                     `width` INT NULL DEFAULT NULL,
                                                     PRIMARY KEY (`measure_id`))
     ENGINE = InnoDB
-    AUTO_INCREMENT = 11
+    AUTO_INCREMENT = 1
+    DEFAULT CHARACTER SET = utf8mb4
+    COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `carport`.`standardcarport`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `carport`.`standardcarport` (
+                                                           `standard_id` INT NOT NULL AUTO_INCREMENT,
+                                                           `name` TEXT NULL DEFAULT NULL,
+                                                           `description` TEXT NULL DEFAULT NULL,
+                                                           `price` INT NULL DEFAULT NULL,
+                                                           PRIMARY KEY (`standard_id`))
+    ENGINE = InnoDB
+    AUTO_INCREMENT = 1
     DEFAULT CHARACTER SET = utf8mb4
     COLLATE = utf8mb4_0900_ai_ci;
 
@@ -67,21 +78,8 @@ CREATE TABLE IF NOT EXISTS `carport`.`users` (
                                                  PRIMARY KEY (`user_id`),
                                                  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
     ENGINE = InnoDB
+    AUTO_INCREMENT = 1
     DEFAULT CHARACTER SET = latin1;
-
-
--- -----------------------------------------------------
--- Table `carport`.`standardcarport`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `carport`.`standardcarport` (
-                                                           `standard_id` INT NOT NULL AUTO_INCREMENT,
-                                                           `name` TEXT NULL DEFAULT NULL,
-                                                           `description` TEXT NULL DEFAULT NULL,
-                                                           `price` INT NULL DEFAULT NULL,
-                                                           PRIMARY KEY (`standard_id`))
-    ENGINE = InnoDB
-    DEFAULT CHARACTER SET = utf8mb4
-    COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
@@ -98,20 +96,19 @@ CREATE TABLE IF NOT EXISTS `carport`.`orders` (
                                                   `roof_type` VARCHAR(45) NULL DEFAULT NULL,
                                                   `tool_room_length` INT NULL DEFAULT NULL,
                                                   `tool_room:width` INT NULL DEFAULT NULL,
-                                                  `standard_id` INT NOT NULL,
+                                                  `standard_id` INT NULL,
                                                   PRIMARY KEY (`order_id`),
                                                   UNIQUE INDEX `order_id` (`order_id` ASC) VISIBLE,
                                                   INDEX `fk_orders_users_idx` (`user_id` ASC) VISIBLE,
                                                   INDEX `fk_orders_standardcarport1_idx` (`standard_id` ASC) VISIBLE,
-                                                  CONSTRAINT `fk_orders_users`
-                                                      FOREIGN KEY (`user_id`)
-                                                          REFERENCES `carport`.`users` (`user_id`),
                                                   CONSTRAINT `fk_orders_standardcarport1`
                                                       FOREIGN KEY (`standard_id`)
-                                                          REFERENCES `carport`.`standardcarport` (`standard_id`)
-                                                          ON DELETE NO ACTION
-                                                          ON UPDATE NO ACTION)
+                                                          REFERENCES `carport`.`standardcarport` (`standard_id`),
+                                                  CONSTRAINT `fk_orders_users`
+                                                      FOREIGN KEY (`user_id`)
+                                                          REFERENCES `carport`.`users` (`user_id`))
     ENGINE = InnoDB
+    AUTO_INCREMENT = 1
     DEFAULT CHARACTER SET = utf8mb4
     COLLATE = utf8mb4_0900_ai_ci;
 
@@ -122,14 +119,14 @@ CREATE TABLE IF NOT EXISTS `carport`.`orders` (
 CREATE TABLE IF NOT EXISTS `carport`.`orderline` (
                                                      `order_id` INT NOT NULL,
                                                      `orderline_id` INT NOT NULL AUTO_INCREMENT,
-                                                     `materials_id` INT NOT NULL,
+                                                     `materials_materials_id` INT NOT NULL,
                                                      `materials_length` INT NULL DEFAULT NULL,
                                                      `materials_unit` INT NOT NULL,
                                                      PRIMARY KEY (`orderline_id`),
                                                      INDEX `fk_orderline_orders1` (`order_id` ASC) VISIBLE,
-                                                     INDEX `fk_orderline_materials1_idx` (`materials_id` ASC) VISIBLE,
+                                                     INDEX `fk_orderline_materials1_idx` (`materials_materials_id` ASC) VISIBLE,
                                                      CONSTRAINT `fk_orderline_materials1`
-                                                         FOREIGN KEY (`materials_id`)
+                                                         FOREIGN KEY (`materials_materials_id`)
                                                              REFERENCES `carport`.`materials` (`materials_id`),
                                                      CONSTRAINT `fk_orderline_orders1`
                                                          FOREIGN KEY (`order_id`)
