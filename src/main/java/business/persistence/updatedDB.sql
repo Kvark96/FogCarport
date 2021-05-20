@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-
 DROP database carport;
 
-=======
->>>>>>> beb725ea5f77abfe9b1e706f2c3550549667b822
+
 -- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
@@ -154,11 +151,10 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
-
-UPDATE `carport`.`standardcarport` SET `description` = '3,00 x 4,80 mtr. Højde; 2,25 mtr. Trykimprægnerede stolper og stern. Leveres med: søm, skruer, beslag og plasttrapez tag m/bundskruer. NB! Leveres som Byg-selv sæt - usamlet, umalet og ubehandlet!' WHERE (`standard_id` = '1');
-UPDATE `carport`.`standardcarport` SET `description` = '3,60 x 5,40 mtr. Uden redskabsrum Trykimprægnerede stolper & stern. Leveres med: Søm, skruer, beslag og betontagstenstag. Udførlig byggevejledning til carport og spær medfølger. Betontagsten i sort med 30 års garanti. NB! Leveres som Byg-selv sæt - usamlet og ubehandlet!' WHERE (`standard_id` = '2');
-UPDATE `carport`.`standardcarport` SET `description` = 'Enkelt carport med høj rejsning. 3,60 x 9,10 m. Extra lang model. 3,20 x 3,55 m. redskabsrum. Højde; 3,05 m.. Trykimprægnerede stolper, stern og beklædning. Leveres med: Søm, skruer, beslag og betontagstenstag. Udførlig byggevejledning til carport og spær medfølger. Betontagsten i sort med 30 års garanti. NB! Leveres som Byg-selv sæt - usamlet og ubehandlet!' WHERE (`standard_id` = '3');
-UPDATE `carport`.`standardcarport` SET `description` = 'Enkelt carport med høj rejsning. 3,90 x 7,80 m. Extra bred model. 3,30 x 2,40 mtr redskabsrum. Højde; 3,10 mtr. Trykimprægnerede stolper, stern og beklædning. Leveres med: Søm, skruer, beslag og betontagstenstag. Udførlig byggevejledning til carport og spær medfølger. Betontagsten i sort med 30 års garanti. NB! Leveres som Byg-selv sæt - usamlet og ubehandlet!' WHERE (`standard_id` = '4');
+INSERT INTO `carport`.`standardcarport` (`standard_id`, `name`, `description`, `price`) VALUES ('1', 'CARPORT ENKELT 3,00X4,80M CAR01 FLADT TAG', '3,00 x 4,80 mtr. Højde; 2,25 mtr. Trykimprægnerede stolper og stern. Leveres med: søm, skruer, beslag og plasttrapez tag m/bundskruer. NB! Leveres som Byg-selv sæt - usamlet, umalet og ubehandlet!', '4998');
+INSERT INTO `carport`.`standardcarport` (`standard_id`, `name`, `description`, `price`) VALUES ('2', 'CARPORT ENKELT 3,60X9,10M CRXL1HR MED REDSKABSRUM 3,20X3,55M', 'Enkelt carport med høj rejsning. 3,60 x 9,10 m. Extra lang model. 3,20 x 3,55 m. redskabsrum. Højde; 3,05 m.. Trykimprægnerede stolper, stern og beklædning. Leveres med: Søm, skruer, beslag og betontagstenstag. Udførlig byggevejledning til carport og spær medfølger. Betontagsten i sort med 30 års garanti. NB! Leveres som Byg-selv sæt - usamlet og ubehandlet!', '29998');
+INSERT INTO `carport`.`standardcarport` (`standard_id`, `name`, `description`, `price`) VALUES ('3', 'CARPORT ENKELT 3,90X7,80M CPO01HR MED REDSKABSRUM 2,40X3,30M', 'Enkelt carport meEnkelt carport med høj rejsning. 3,90 x 7,80 m. Extra bred model. 3,30 x 2,40 mtr redskabsrum. Højde; 3,10 mtr. Trykimprægnerede stolper, stern og beklædning. Leveres med: Søm, skruer, beslag og betontagstenstag. Udførlig byggevejledning til carport og spær medfølger. Betontagsten i sort med 30 års garanti. NB! Leveres som Byg-selv sæt - usamlet og ubehandlet!d høj rejsning. 3,90 x 7,80 m.', '28998');
+INSERT INTO `carport`.`standardcarport` (`standard_id`, `name`, `description`, `price`) VALUES ('4', 'CARPORT ENKELT 3,60X5,40M CAR01H HØJ REJSNING', '3,60 x 5,40 mtr. Uden redskabsrum Trykimprægnerede stolper & stern. Leveres med: Søm, skruer, beslag og betontagstenstag. Udførlig byggevejledning til carport og spær medfølger. Betontagsten i sort med 30 års garanti. NB! Leveres som Byg-selv sæt - usamlet og ubehandlet!', '18498');
 
 INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `amount`, `description`) VALUES ('1', '25x200 mm. trykimp. Brædt 360  understernbrædder til for & bag ende', '360', '4', 'Tilskæres ved montage');
 INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `amount`, `description`) VALUES ('2', '25x200 mm. trykimp. Brædt 540 understernbrædder til siderne', '540', '4', 'Tilskæres ved montage');

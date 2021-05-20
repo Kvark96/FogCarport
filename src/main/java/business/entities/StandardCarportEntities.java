@@ -16,7 +16,6 @@ public class StandardCarportEntities {
         this.name = name;
         this.description = description;
         this.price = price;
-        calcPrice = getCalcPrice();
     }
 
     public int getStandard_id() {
@@ -33,10 +32,6 @@ public class StandardCarportEntities {
 
     public int getPrice() {
         return price;
-    }
-
-    public int getCalcPrice() {
-        return calcPrice;
     }
 
     @Override

@@ -17,7 +17,7 @@ public class Cart {
     }
 
     public void addCarport(StandardCarportEntities e){ carports.add(e);
-        calcprice =calcPrice_();
+        calcprice = calcPrice_();
     }
 
     public List<StandardCarportEntities> getCarports() {
@@ -31,9 +31,13 @@ public class Cart {
     public int calcPrice_(){
         int total = 0;
         for(StandardCarportEntities SCE : carports){
-            total += SCE.getCalcPrice();
+            total += SCE.getPrice();
         }
         return total;
+    }
+
+    public void clearCart(){
+        carports.clear();
     }
 
 }
