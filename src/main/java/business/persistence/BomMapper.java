@@ -100,14 +100,14 @@ public class BomMapper {
 
 
             try (Connection connection = database.connect()) {
-                String sql = "INSERT INTO orderline (order_id, materials_materials_id, materials_length, materials_unit) VALUES (?,?,?,?)";
+                String sql = "INSERT INTO orderline (order_id, quantity, materials_id) VALUES (?,?,?)";
 
                 for (int i = 0; i < materials.size(); i++) {
 
                     try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                         ps.setInt(1, orderid);
-                        ps.setInt(2, materials.get(i).getMaterial_id());
-                        ps.setInt(3, materials.get(i).getLength());
+                        ps.setInt(2, orderlines.get(i).getQuantity());
+                        ps.setInt(3, materials.get(i).getMaterial_id());
 
                         ps.executeUpdate();
 
@@ -130,7 +130,7 @@ public class BomMapper {
         try (Connection connection = database.connect()) {
 
             String sql = "select * from carport.orderline AS ol " +
-                    "JOIN carport.materials AS mt ON ol.materials_materials_id = mt.materials_id " +
+                    "JOIN carport.materials AS mt ON ol.materials_id = mt.materials_id " +
                     "WHERE ol.order_id = " + orderId + ";";
 
 
@@ -140,7 +140,7 @@ public class BomMapper {
 
                     int material_id = rs.getInt("materials_id");
                     String name = rs.getString("name");
-                    int length = rs.getInt("materials_length");
+                    int length = rs.getInt("length");
                     String desc = rs.getString("description");
                     String unit = rs.getString("unit");
 
@@ -150,7 +150,7 @@ public class BomMapper {
 
                 return materialDescription;
             } catch (SQLException e) {
-                throw new SQLException();
+                e.printStackTrace();
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

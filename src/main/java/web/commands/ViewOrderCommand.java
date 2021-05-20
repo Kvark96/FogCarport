@@ -25,7 +25,7 @@ public class ViewOrderCommand extends CommandProtectedPage{
 
         try(Connection con = FrontController.database.connect()){
             String sql =
-                    "SELECT length, width, price, users.email, orderline.quantity, orderline.orderline_id, orderline.material_id FROM carport.orders " +
+                    "SELECT length, width, price, users.email, orderline.quantity, orderline.orderline_id, orderline.materials_id FROM carport.orders " +
                             "JOIN carport.users ON orders.user_id = users.user_id " +
                             "LEFT JOIN carport.orderline ON orders.order_id = orderline.order_id " +
                             "WHERE orders.order_id = ?";
