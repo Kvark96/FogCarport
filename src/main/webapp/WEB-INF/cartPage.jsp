@@ -33,7 +33,7 @@
             </tbody>
         </table>
 
-      <h1> ${cart.cartports.calcprice}</h1>
+     
 
 
         <a href="${pageContext.request.contextPath}/fc/cartConfirmed" class="btn btn-primary"> Bekræft </a>
