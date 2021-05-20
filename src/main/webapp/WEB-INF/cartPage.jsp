@@ -33,8 +33,7 @@
             </tbody>
         </table>
 
-      <h1> ${cart.cartports.calcprice}</h1>
-
+        <h1>Pris = ${cart.calcprice}</h1>
 
         <a href="${pageContext.request.contextPath}/fc/cartConfirmed" class="btn btn-primary"> Bekræft </a>
         <a href="${pageContext.request.contextPath}/fc/standardCarportPage" class="btn btn-primary">Gå tilbage til Standard carporte </a>
