@@ -1,7 +1,7 @@
 package business.persistence;
 
 import business.entities.Order;
-import business.entities.OldOrders;
+import business.entities.PreviousOrder;
 
 
 import java.sql.*;
@@ -17,9 +17,9 @@ public class PreviousOrdersMapper {
     }
 
 
-    public List<OldOrders> getOldOrders(int user_id) {
+    public List<PreviousOrder> getOldOrders(int user_id) {
         List<Order> orders = new ArrayList<>();
-        List<OldOrders> oldOrders = new ArrayList<>();
+        List<PreviousOrder> oldOrders = new ArrayList<>();
 
         try(Connection con = database.connect()) {
             String sql = "SELECT * FROM orders WHERE user_id = ?";
@@ -36,7 +36,7 @@ public class PreviousOrdersMapper {
                     String type = rs.getString("roof_type");
 
                     orders.add(new Order(order_id, created, price, user_id, type));
-                    oldOrders.add(new OldOrders(order_id,created,price,user_id,type,length,width));
+                    oldOrders.add(new PreviousOrder(order_id,created,price,user_id,type,length,width));
 
 
                 }
