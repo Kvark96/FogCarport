@@ -7,6 +7,7 @@ import business.services.SVG;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,55 +15,49 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShowSVGCommand extends CommandUnprotectedPage{
+public class ShowSVGCommand extends CommandUnprotectedPage {
     public ShowSVGCommand(String pageToShow) {
         super(pageToShow);
     }
 
-    private List<Orderline> getBOM(int order_id){
-        List<Material> bom = new ArrayList<>();
+    private List<Orderline> getBOM(int order_id) {
+
+        List<Orderline> orderlines = new ArrayList<>();
         String sql = "SELECT * FROM carport.orderline WHERE order_id = ?";
-        try(Connection connection = database.connect())
-        {
+        try (Connection connection = database.connect()) {
+
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, order_id);
             ResultSet rs = ps.executeQuery();
-            while(rs.next()){
-                bom.add(new Material(
-                        rs.getInt("material_id"),
-                        rs.getString("name"),
-                        rs.getInt("length"),
-                        rs.getInt("amount"),
-                        rs.getString("description"),
-                        rs.getString("unit")));
+            while (rs.next()){
+                orderlines.add(new Orderline(
+                        order_id,
+                        rs.getInt("quantity"),
+                        rs.getInt("materials_length"),
+                        rs.getInt("materials_id")));
             }
 
-        } catch(SQLException se)
-        {
-            System.out.println(se.getMessage());
-            se.printStackTrace();
-        }
-
-        // TODO: Fix
-        List<Orderline> orderlines = new ArrayList<>();
-        int i = 0;          // orderline_id
-        for(Material m : bom){
-            orderlines.add(new Orderline(order_id, ++i, m.getMaterial_id()));
+        } catch (SQLException throwables) {
+            System.out.println(throwables.getMessage());
+            throwables.printStackTrace();
         }
         return orderlines;
     }
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
-        //String order_id = (String) request.getParameter("order_id");
-        String width = request.getParameter("width");
-        String length = request.getParameter("length");
-        String viewBox = "0 0 "  +  length + " " + width;
+        HttpSession session = request.getSession();
+        int width = (int) session.getAttribute("width");
+        int length = (int) session.getAttribute("length");
+        String viewBox = "0 0 780 780";
         SVG svg = new SVG(0, 0, viewBox, 100, 100);
 
         int order_id = Integer.parseInt(request.getParameter("order_id"));
+        System.out.println("In ShowSVGCommand, order_id = " + order_id);
+        System.out.println("For reference, width = " + width + " and length = " + length);
+        svg.addRect(0, 0, length, width);
         List<Orderline> bom = getBOM(order_id);
-
+        System.out.println(bom);
 
 
         request.setAttribute("svg", svg.toString());
