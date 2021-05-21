@@ -26,6 +26,10 @@ public class Orderline {
         this.length = length;
     }
 
+    public int getLength() {
+        return length;
+    }
+
     public int getOrder_id() {
         return order_id;
     }
