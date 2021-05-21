@@ -2,13 +2,13 @@ package business.entities;
 
 import java.sql.Timestamp;
 
-public class OldOrders {
+public class PreviousOrder {
     int order_id, user_id, length, width;
     String type;
     Timestamp created;
     double price;
 
-    public OldOrders(int order_id, Timestamp created, double price, int user_id, String type, int length, int width){
+    public PreviousOrder(int order_id, Timestamp created, double price, int user_id, String type, int length, int width){
         this.order_id = order_id;
         this.created = created;
         this.price = price;

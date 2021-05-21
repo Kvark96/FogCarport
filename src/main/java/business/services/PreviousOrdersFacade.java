@@ -1,6 +1,6 @@
 package business.services;
 
-import business.entities.OldOrders;
+import business.entities.PreviousOrder;
 import business.persistence.Database;
 import business.persistence.PreviousOrdersMapper;
 
@@ -16,7 +16,7 @@ public class PreviousOrdersFacade {
     }
 
 
-    public List<OldOrders> getOldOrders(int user_id) {
+    public List<PreviousOrder> getOldOrders(int user_id) {
         return previousOrdersMapper.getOldOrders(user_id);
     }
 }
