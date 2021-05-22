@@ -47,7 +47,7 @@ public class ConfirmRequestCommand extends CommandProtectedPage {
                 ps.setInt(1, user_id);
                 ResultSet rs = ps.executeQuery();
                 rs.next();
-                request.getSession().setAttribute("order_id", rs.getInt("order_id"));
+                request.setAttribute("order_id", rs.getInt("order_id")); // THIS WAS CHANGED FROM SESSIONSCOPE
 
                 bomMapper.generateCarport(rs.getInt("order_id"), length, width);
 

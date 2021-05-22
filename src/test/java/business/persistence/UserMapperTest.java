@@ -11,10 +11,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class UserMapperTest {
 
-    private final static String DATABASE = "startcode";  // Change this to your own database
+    private final static String DATABASE = "carport";  // Change this to your own database
     private final static String TESTDATABASE = DATABASE + "_test";
-    private final static String USER = "dev";
-    private final static String PASSWORD = "ax2";
+    private final static String USER = "root";
+    private final static String PASSWORD = "Cph73128";
     private final static String URL = "jdbc:mysql://localhost:3306/" + TESTDATABASE + "?serverTimezone=CET&useSSL=false";
 
     private static Database database;
@@ -39,9 +39,9 @@ public class UserMapperTest {
                 stmt.execute("create table " + TESTDATABASE + ".users LIKE " + DATABASE + ".users;" );
                 stmt.execute(
                     "insert into users values " +
-                    "(1,'jens@somewhere.com','jensen','customer'), " +
-                    "(2,'ken@somewhere.com','kensen','customer'), " +
-                    "(3,'robin@somewhere.com','batman','employee')");
+                    "(1,'Jens','jens@somewhere.com','jensen','customer','1111','København','4000'), " +
+                    "(2,'Ken','ken@somewhere.com','kensen','customer','2222','Hillerød','3000'), " +
+                    "(3,'Robin','robin@somewhere.com','batman','employee','3333','Lyngby','2000')");
             } catch (SQLException ex) {
             System.out.println( "Could not open connection to database: " + ex.getMessage() );
         }
@@ -79,7 +79,7 @@ public class UserMapperTest {
     public void testCreateUser01() throws UserException {
         // Can we create a new user - Notice, if login fails, this will fail
         // but so would login01, so this is OK
-        User original = new User( "king@kong.com", "uhahvorhemmeligt", "konge" );
+        User original = new User("KingApe" ,"king@kong.com", "uhahvorhemmeligt", "konge","5555","Odense","3000" );
         userMapper.createUser( original );
         User retrieved = userMapper.login( "king@kong.com", "uhahvorhemmeligt" );
         assertEquals( "konge", retrieved.getRole() );

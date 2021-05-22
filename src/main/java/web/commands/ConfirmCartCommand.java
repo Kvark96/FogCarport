@@ -39,6 +39,7 @@ public class ConfirmCartCommand extends CommandProtectedPage {
         } catch (SQLException error) {
             System.out.println("Failed get order_id from database=" + error.getMessage());
         }
+
     }
 
 
@@ -47,6 +48,8 @@ public class ConfirmCartCommand extends CommandProtectedPage {
         SQLException, NoSuchFieldException {
 
         addStandartCarportToOrders(request,response);
+        Cart cart = (Cart) request.getSession().getAttribute("cart");
+        cart.clearCart();
 
 
             return pageToShow;

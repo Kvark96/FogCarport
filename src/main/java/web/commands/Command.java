@@ -30,6 +30,7 @@ public abstract class Command
         commands.put("customerpage", new CommandProtectedPage("customerpage", "customer"));
         commands.put("employeepage", new CommandProtectedPage("employeepage", "employee"));
         commands.put("customCarport", new CommandProtectedPage("customCarport","customer"));
+        commands.put("previousorders", new PreviousordersCommand("previousorders","customer"));
         commands.put("orderlist", new OrderlistCommand("orderlist", "employee"));
         commands.put("orderpage", new ViewOrderCommand("orderpage", "employee"));
         commands.put("requestReceivedPage", new CustomCarportCommand("requestReceivedPage","customer"));
@@ -40,6 +41,7 @@ public abstract class Command
         commands.put("drawing", new ShowSVGCommand("drawing"));
         commands.put("CartCommand",new CartCommand("cartPage","customer"));
         commands.put("cartConfirmed", new ConfirmCartCommand("cartConfirmed","customer"));
+
 
     }
 
