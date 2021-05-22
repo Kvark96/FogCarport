@@ -114,8 +114,8 @@ public class BomMapper {
         List<Material> materialDescription = new ArrayList<>();
         try (Connection connection = database.connect()) {
 
-            String sql = "select * from carport.orderline AS ol " +
-                    "JOIN carport.materials AS mt ON ol.materials_id = mt.materials_id " +
+            String sql = "select * from orderline AS ol " +
+                    "JOIN materials AS mt ON ol.materials_id = mt.materials_id " +
                     "WHERE ol.order_id = " + orderId + ";";
 
 

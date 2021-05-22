@@ -14,7 +14,7 @@ public class UserMapperTest {
     private final static String DATABASE = "carport";  // Change this to your own database
     private final static String TESTDATABASE = DATABASE + "_test";
     private final static String USER = "root";
-    private final static String PASSWORD = "Cph73128";
+    private final static String PASSWORD = "herr1234";
     private final static String URL = "jdbc:mysql://localhost:3306/" + TESTDATABASE + "?serverTimezone=CET&useSSL=false";
 
     private static Database database;
@@ -35,6 +35,9 @@ public class UserMapperTest {
 
             // reset test database
             try ( Statement stmt = database.connect().createStatement() ) {
+
+                stmt.execute("drop table if exists orderline ");
+                stmt.execute("drop table if exists orders ");
                 stmt.execute("drop table if exists users" );
                 stmt.execute("create table " + TESTDATABASE + ".users LIKE " + DATABASE + ".users;" );
                 stmt.execute(

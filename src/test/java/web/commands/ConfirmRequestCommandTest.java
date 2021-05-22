@@ -1,15 +1,12 @@
 package web.commands;
 
 import business.entities.Order;
-import business.entities.User;
-import business.persistence.CarportMapper;
 import business.persistence.Database;
 import business.persistence.UserMapper;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
@@ -22,7 +19,7 @@ class ConfirmRequestCommandTest {
     private final static String DATABASE = "carport";  // Change this to your own database
     private final static String TESTDATABASE = DATABASE + "_test";
     private final static String USER = "root";
-    private final static String PASSWORD = "Cph73128";
+    private final static String PASSWORD = "herr1234";
     private final static String URL = "jdbc:mysql://localhost:3306/" + TESTDATABASE + "?serverTimezone=CET&useSSL=false";
 
     private static Database database;
@@ -66,12 +63,13 @@ class ConfirmRequestCommandTest {
         }
     }
 
-            @Test
-    void insertPrder() {
-                User user = new User("jens","jens@somewhere.com","123","customer","111","123","customer");
-                Timestamp timestamp = Timestamp.from(Instant.now());
-                Order order = new Order(1,timestamp,800,1,"custom");
-               // assertEquals(order.getUser_id(1));
+    @Test
+    void insertOrder() {
+
+        Timestamp timestamp = Timestamp.from(Instant.now());
+        Order order = new Order(3,timestamp,800,1,"custom");
+
+        assertEquals(3, order.getOrder_id());
 
     }
 }
