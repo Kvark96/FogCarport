@@ -84,15 +84,35 @@ public class ShowSVGCommand extends CommandUnprotectedPage {
         int numberOfPoles = bom.get(7).getQuantity();
         int startPosForPoles = startPosForSpares + distBetweenSpares;
         int distBetweenPoles = (carportWidth - (startPosForSpares  + distBetweenSpares * 2)) / 2;
+        System.out.println(numberOfPoles);
 
-        for(int i = 0; i < numberOfPoles / 2; i++){
-            svg.addRect(33, (startPosForPoles + distBetweenPoles * i) - 2, 9.7, 9.7);
+        double poleSize = 9.7;
+
+        // Left side of carport, same as the x value of the first rim - 2, for better visuals
+        int x1 = 33;
+
+        // Right side of carport, same as above
+        int x2 = carportWidth - 37;
+
+        // First set of poles are placed on the intersection of the second spare and the rim
+        int y1 = startPosForSpares + distBetweenSpares;
+
+        svg.addRect(x1, y1, poleSize, poleSize);
+        svg.addRect(x2, y1, poleSize, poleSize);
+
+        // Second set of poles are placed on the intersection of the second-to-last spare and the rim
+        int y2 = startPosForSpares + (numberOfSpares - 2) * distBetweenSpares;
+
+        svg.addRect(x1, y2, poleSize, poleSize);
+        svg.addRect(x2, y2, poleSize, poleSize);
+
+        // If there are 3 spares on either side, one pair is placed in the middle of y1 and y2
+        if(numberOfPoles > 4){
+            int y3 = y1 + y2 / 2;
+            svg.addRect(x1, y3, poleSize, poleSize);
+            svg.addRect(x2, y3, poleSize, poleSize);
         }
-
-        for(int i = 0; i < numberOfPoles / 2; i++){
-
-        }
-
+        
 
         System.out.println(bom);
 
