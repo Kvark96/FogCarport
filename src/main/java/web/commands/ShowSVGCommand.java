@@ -1,6 +1,5 @@
 package web.commands;
 
-import business.entities.Material;
 import business.entities.Orderline;
 import business.exceptions.UserException;
 import business.services.SVG;
@@ -50,17 +49,19 @@ public class ShowSVGCommand extends CommandUnprotectedPage {
         int carportWidth = (int) session.getAttribute("width");
         int carportLength = (int) session.getAttribute("length");
         String viewBox = "0 0 780 780";
-        SVG svg = new SVG(0, 0, viewBox, 100, 100);
+        SVG svg = new SVG(0,0,viewBox, 100, 100, carportLength, carportWidth);
+        SVG innerSvg = new SVG(20, 20, viewBox, 60, 60, carportLength, carportWidth);
+
 
         int order_id = Integer.parseInt(request.getParameter("order_id"));
         System.out.println("In ShowSVGCommand, order_id = " + order_id);
         System.out.println("For reference, carportWidth = " + carportWidth + " and carportLength = " + carportLength);
-        svg.addRect(0, 0, carportLength, carportWidth);
+        innerSvg.addRect(0, 0, carportLength, carportWidth);
         List<Orderline> bom = getBOM(order_id);
 
         // Remme
-        svg.addRect(35, 0, bom.get(4).getLength(), 4.5);
-        svg.addRect(carportWidth - 35, 0, bom.get(4).getLength(), 4.5);
+        innerSvg.addRect(35, 0, bom.get(4).getLength(), 4.5);
+        innerSvg.addRect(carportWidth - 35, 0, bom.get(4).getLength(), 4.5);
 
 
         // Spær
@@ -76,7 +77,7 @@ public class ShowSVGCommand extends CommandUnprotectedPage {
 //        int startPosForPoles;
 
         for(int i = 0; i < numberOfSpares; i++){
-            svg.addRect(0, startPosForSpares  + distBetweenSpares * i, 4.5, bom.get(5).getLength());
+            innerSvg.addRect(0, startPosForSpares  + distBetweenSpares * i, 4.5, bom.get(5).getLength());
             //if(i == 1) startPosForPoles = startPosForSpares  + distBetweenSpares * i;
         }
 
@@ -97,25 +98,32 @@ public class ShowSVGCommand extends CommandUnprotectedPage {
         // First set of poles are placed on the intersection of the second spare and the rim
         int pole_y1 = startPosForSpares + distBetweenSpares - 2;
 
-        svg.addRect(pole_x1, pole_y1, poleSize, poleSize);
-        svg.addRect(pole_x2, pole_y1, poleSize, poleSize);
+        innerSvg.addRect(pole_x1, pole_y1, poleSize, poleSize);
+        innerSvg.addRect(pole_x2, pole_y1, poleSize, poleSize);
 
         // Second set of poles are placed on the intersection of the second-to-last spare and the rim
         int pole_y2 = startPosForSpares + (numberOfSpares - 2) * distBetweenSpares - 2;
 
-        svg.addRect(pole_x1, pole_y2, poleSize, poleSize);
-        svg.addRect(pole_x2, pole_y2, poleSize, poleSize);
+        innerSvg.addRect(pole_x1, pole_y2, poleSize, poleSize);
+        innerSvg.addRect(pole_x2, pole_y2, poleSize, poleSize);
 
         // If there are 3 spares on either side, one pair is placed in the middle of pole_y1 and pole_y2
         if(numberOfPoles > 4){
             int pole_y3 = pole_y1 + pole_y2 / 2;
-            svg.addRect(pole_x1, pole_y3, poleSize, poleSize);
-            svg.addRect(pole_x2, pole_y3, poleSize, poleSize);
+            innerSvg.addRect(pole_x1, pole_y3, poleSize, poleSize);
+            innerSvg.addRect(pole_x2, pole_y3, poleSize, poleSize);
         }
 
         // Hulbånd
-        svg.addLine(pole_x1, pole_y1, pole_x2, pole_y2);
-        svg.addLine(pole_x1, pole_y2, pole_x2, pole_y1);
+        innerSvg.addDottedLine(pole_x1, pole_y1, pole_x2, pole_y2);
+        innerSvg.addDottedLine(pole_x1, pole_y2, pole_x2, pole_y1);
+
+        // Længde og bredde markører
+        // Indre SVG tilføjes først, fordi det skal den :)
+        svg.addSVG(innerSvg);
+        svg.addArrow(0, carportWidth, 0, 0, true);
+        svg.addArrow(0, carportWidth, carportLength, carportWidth, false);
+
 
 
         System.out.println(bom);
