@@ -81,7 +81,7 @@ public class ShowSVGCommand extends CommandUnprotectedPage {
         }
 
         // Stolper
-        int numberOfPoles = bom.get(7).getQuantity();
+        int numberOfPoles = bom.get(6).getQuantity();
         int startPosForPoles = startPosForSpares + distBetweenSpares;
         int distBetweenPoles = (carportWidth - (startPosForSpares  + distBetweenSpares * 2)) / 2;
         System.out.println(numberOfPoles);
@@ -89,30 +89,34 @@ public class ShowSVGCommand extends CommandUnprotectedPage {
         double poleSize = 9.7;
 
         // Left side of carport, same as the x value of the first rim - 2, for better visuals
-        int x1 = 33;
+        int pole_x1 = 33;
 
         // Right side of carport, same as above
-        int x2 = carportWidth - 37;
+        int pole_x2 = carportWidth - 37;
 
         // First set of poles are placed on the intersection of the second spare and the rim
-        int y1 = startPosForSpares + distBetweenSpares;
+        int pole_y1 = startPosForSpares + distBetweenSpares - 2;
 
-        svg.addRect(x1, y1, poleSize, poleSize);
-        svg.addRect(x2, y1, poleSize, poleSize);
+        svg.addRect(pole_x1, pole_y1, poleSize, poleSize);
+        svg.addRect(pole_x2, pole_y1, poleSize, poleSize);
 
         // Second set of poles are placed on the intersection of the second-to-last spare and the rim
-        int y2 = startPosForSpares + (numberOfSpares - 2) * distBetweenSpares;
+        int pole_y2 = startPosForSpares + (numberOfSpares - 2) * distBetweenSpares - 2;
 
-        svg.addRect(x1, y2, poleSize, poleSize);
-        svg.addRect(x2, y2, poleSize, poleSize);
+        svg.addRect(pole_x1, pole_y2, poleSize, poleSize);
+        svg.addRect(pole_x2, pole_y2, poleSize, poleSize);
 
-        // If there are 3 spares on either side, one pair is placed in the middle of y1 and y2
+        // If there are 3 spares on either side, one pair is placed in the middle of pole_y1 and pole_y2
         if(numberOfPoles > 4){
-            int y3 = y1 + y2 / 2;
-            svg.addRect(x1, y3, poleSize, poleSize);
-            svg.addRect(x2, y3, poleSize, poleSize);
+            int pole_y3 = pole_y1 + pole_y2 / 2;
+            svg.addRect(pole_x1, pole_y3, poleSize, poleSize);
+            svg.addRect(pole_x2, pole_y3, poleSize, poleSize);
         }
-        
+
+        // Hulbånd
+        svg.addLine(pole_x1, pole_y1, pole_x2, pole_y2);
+        svg.addLine(pole_x1, pole_y2, pole_x2, pole_y1);
+
 
         System.out.println(bom);
 
