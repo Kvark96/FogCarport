@@ -167,6 +167,8 @@ CREATE TABLE IF NOT EXISTS `carport_test`.`bomCalculator` (
                                                          `screw_kvm` INT NOT NULL,
                                                          `post_length_for_amount` INT NOT NULL,
                                                          `screw_package_numbers` INT NOT NULL,
+                                                         `minimum_number_of_posts` INT NOT NULL,
+                                                         `max_number_of_posts` INT NOT NULL,
                                                          PRIMARY KEY (`bom_id`))
     ENGINE = InnoDB;
 
@@ -175,8 +177,8 @@ SET SQL_MODE = @OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS = @OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS = @OLD_UNIQUE_CHECKS;
 
-INSERT INTO `carport_test`.`bomcalculator` (`bom_id`, `distance_Measure`, `screw_kvm`, `post_length_for_amount`, `screw_package_numbers`) VALUES ('1', '0.55', '13', '401', '200');
-
+INSERT INTO `carport_test`.`bomcalculator` (`bom_id`, `distance_Measure`, `screw_kvm`, `post_length_for_amount`, `screw_package_numbers`,`minimum_number_of_posts`,`max_number_of_posts`)
+VALUES ('1', '0.55', '13', '401', '200','4','6');
 
 INSERT INTO `carport_test`.`standardcarport` (`standard_id`, `name`, `description`, `price`)
 VALUES ('1', 'CARPORT ENKELT 3,00X4,80M CAR01 FLADT TAG',

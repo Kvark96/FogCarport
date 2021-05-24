@@ -1,14 +1,10 @@
 package business.persistence;
 
 import business.entities.CalculateNumbers;
-import business.entities.Material;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class BomCalculateMapper {
 
@@ -35,8 +31,10 @@ public class BomCalculateMapper {
                     int screwKvm = rs.getInt("screw_kvm");
                     int postPerLength = rs.getInt("post_length_for_amount");
                     int screwPackageNumbers = rs.getInt("screw_package_numbers");
+                    int minimumPosts = rs.getInt("minimum_number_of_posts");
+                    int maxPosts = rs.getInt("max_number_of_posts");
 
-                    calculateNumbers = new CalculateNumbers(bomId, distanceMeasure, screwKvm, postPerLength, screwPackageNumbers);
+                    calculateNumbers = new CalculateNumbers(bomId, distanceMeasure, screwKvm, postPerLength, screwPackageNumbers,minimumPosts,maxPosts);
 
                 }
 

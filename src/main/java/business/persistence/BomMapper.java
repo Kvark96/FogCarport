@@ -58,6 +58,8 @@ public class BomMapper {
         int screwKvm = calc.getScrewKvm();
         int postPerLength = calc.getPostPerLength();
         int screwPackageNumbers = calc.getScrewPackageNumbers();
+        int minPosts = calc.getMinimumPosts();
+        int maxPosts = calc.getMaximumPosts();
 
 
         double amountCalc = ((double)length / 100.0) / distanceMeasure;
@@ -78,9 +80,9 @@ public class BomMapper {
 
             if (m.getMaterial_id() == 7) {
                 if (length < postPerLength) {
-                    m.setAmount(4);
+                    m.setAmount(minPosts);
                 } else {
-                    m.setAmount(6);
+                    m.setAmount(maxPosts);
                 }
             }
 

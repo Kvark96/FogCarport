@@ -5,7 +5,7 @@
 <t:genericpage>
 
     <jsp:attribute name="header">
-         Home
+         Hjem
     </jsp:attribute>
 
     <jsp:attribute name="footer">
@@ -45,8 +45,9 @@
             <c:when test="${sessionScope.role == 'customer'}">
                 <div class="col-sm-4">
                     <a class="btn btn-primary" href="${pageContext.request.contextPath}${customCarport}" role="button">Lav
-                        en henvendelse!</a>
+                        en henvendelse</a>
                 </div>
+                <br>
                 <div class="col-sm-4">
                     <a class="btn btn-primary" href="${pageContext.request.contextPath}${previousorders}" role="button">
                         Tidligere Ordre
@@ -59,19 +60,18 @@
                     <a class="btn btn-primary" href="${pageContext.request.contextPath}${link}" role="button">Lav en
                         henvendelse!</a>
                 </div>
+
             </c:otherwise>
         </c:choose>
-
+        <br>
 
         <c:if test="${sessionScope.role == 'employee' }">
-            <p style="font-size: larger">This is what you can do,
-                since your are logged in as an employee</p>
+            <p style="font-size: larger">Dine muligheder som ansat</p>
             <p><a href="fc/employeepage">Employee Page</a>
         </c:if>
 
         <c:if test="${sessionScope.role == 'customer' }">
-            <p style="font-size: larger">This is what you can do, since your
-                are logged in as a customer</p>
+            <p style="font-size: larger">Dine muligheder som kunde</p>
             <a href="fc/customerpage">Customer Page</a>
         </c:if>
 

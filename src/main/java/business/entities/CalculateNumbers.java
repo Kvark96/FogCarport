@@ -7,13 +7,33 @@ public class CalculateNumbers {
     private int screwKvm;
     private int postPerLength;
     private int screwPackageNumbers;
+    private int minimumPosts;
+    private int maximumPosts;
 
-    public CalculateNumbers(int bomId, double distanceMeasure, int screwKvm, int postPerLength, int screwPackageNumbers) {
+    public CalculateNumbers(int bomId, double distanceMeasure, int screwKvm, int postPerLength, int screwPackageNumbers, int minimumPosts, int maximumPosts) {
         this.bomId = bomId;
         this.distanceMeasure = distanceMeasure;
         this.screwKvm = screwKvm;
         this.postPerLength = postPerLength;
         this.screwPackageNumbers = screwPackageNumbers;
+        this.minimumPosts = minimumPosts;
+        this.maximumPosts = maximumPosts;
+    }
+
+    public int getMinimumPosts() {
+        return minimumPosts;
+    }
+
+    public void setMinimumPosts(int minimumPosts) {
+        this.minimumPosts = minimumPosts;
+    }
+
+    public int getMaximumPosts() {
+        return maximumPosts;
+    }
+
+    public void setMaximumPosts(int maximumPosts) {
+        this.maximumPosts = maximumPosts;
     }
 
     public int getBomId() {

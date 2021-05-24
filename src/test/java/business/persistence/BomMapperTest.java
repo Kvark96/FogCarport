@@ -86,6 +86,19 @@ public class BomMapperTest {
     }
 
     @Test
+    void TestMaterialValuesOfIdSeven() {
+
+        bomMapper.generateCarport(1,420,420);       //Can't create Order-object
+        bomMapper.generateCarport(2, 320, 320);
+        List<Material> materials = bomMapper.getOrderLineMaterials(1);
+        List<Material> materials1 = bomMapper.getOrderLineMaterials(2);
+
+        assertEquals(6, materials.get(6).getAmount());
+        assertEquals(4, materials1.get(6).getAmount());
+
+    }
+
+    @Test
     void TestMaterialValuesOfIdTen() {
 
         bomMapper.generateCarport(1,420,420);       //Can't create Order-object
@@ -110,5 +123,7 @@ public class BomMapperTest {
         assertEquals(1, materials1.get(10).getAmount());
 
     }
+
+
 }
 
