@@ -1,9 +1,6 @@
 package business.persistence;
 
-import business.entities.Material;
-import business.entities.MeasureEntities;
-import business.entities.Orderline;
-import business.entities.StandardCarportEntities;
+import business.entities.*;
 import business.exceptions.UserException;
 
 import java.sql.*;
@@ -51,10 +48,20 @@ public class BomMapper {
 
     }
 
+
     public void generateCarport(int orderid, int length, int width) {
 
-        double antalRegner = ((double)length / 100.0) / 0.55;
-        double antalSkruer = (double) length / 100.0 * (double) width/100.0 * 13.0 / 200.0;
+        BomCalculateMapper bomCalculateMapper = new BomCalculateMapper(database);
+        CalculateNumbers calc = bomCalculateMapper.getCalculateNumbers();
+
+        double distanceMeasure = calc.getDistanceMeasure();
+        int screwKvm = calc.getScrewKvm();
+        int postPerLength = calc.getPostPerLength();
+        int screwPackageNumbers = calc.getScrewPackageNumbers();
+
+
+        double amountCalc = ((double)length / 100.0) / distanceMeasure;
+        double amountScrews = (double) length / 100.0 * (double) width/100.0 * (double)screwKvm / (double)screwPackageNumbers;
         double widthCalculator = (double)width / 100.0;
 
         List<Material> materials = getMaterials();
@@ -66,7 +73,15 @@ public class BomMapper {
 
             if (m.getMaterial_id() == 6) {
                 m.setLength(width);
-                m.setAmount((int) Math.ceil(antalRegner));
+                m.setAmount((int) Math.ceil(amountCalc));
+            }
+
+            if (m.getMaterial_id() == 7) {
+                if (length < postPerLength) {
+                    m.setAmount(4);
+                } else {
+                    m.setAmount(6);
+                }
             }
 
             if (m.getMaterial_id() == 10) {
@@ -74,11 +89,11 @@ public class BomMapper {
             }
 
             if (m.getMaterial_id() == 11) {
-                m.setAmount((int) Math.ceil(antalSkruer));
+                m.setAmount((int) Math.ceil(amountScrews));
             }
 
             if (m.getMaterial_id() == 13 || m.getMaterial_id() == 14) {
-                m.setAmount((int) Math.ceil(antalRegner));
+                m.setAmount((int) Math.ceil(amountCalc));
             }
         }
 

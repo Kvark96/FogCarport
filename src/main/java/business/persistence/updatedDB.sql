@@ -156,10 +156,27 @@ CREATE TABLE IF NOT EXISTS `carport`.`standardcarport`
     DEFAULT CHARACTER SET = utf8mb4
     COLLATE = utf8mb4_0900_ai_ci;
 
+-- -----------------------------------------------------
+-- Table `carport`.`bomCalculator`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `carport`.`bomCalculator` ;
+
+CREATE TABLE IF NOT EXISTS `carport`.`bomCalculator` (
+                                                         `bom_id` INT NOT NULL AUTO_INCREMENT,
+                                                         `distance_Measure` FLOAT NOT NULL,
+                                                         `screw_kvm` INT NOT NULL,
+                                                         `post_length_for_amount` INT NOT NULL,
+                                                         `screw_package_numbers` INT NOT NULL,
+                                                         PRIMARY KEY (`bom_id`))
+    ENGINE = InnoDB;
+
 
 SET SQL_MODE = @OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS = @OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS = @OLD_UNIQUE_CHECKS;
+
+INSERT INTO `carport`.`bomcalculator` (`bom_id`, `distance_Measure`, `screw_kvm`, `post_length_for_amount`, `screw_package_numbers`) VALUES ('1', '0.55', '13', '401', '200');
+
 
 INSERT INTO `carport`.`standardcarport` (`standard_id`, `name`, `description`, `price`)
 VALUES ('1', 'CARPORT ENKELT 3,00X4,80M CAR01 FLADT TAG',
