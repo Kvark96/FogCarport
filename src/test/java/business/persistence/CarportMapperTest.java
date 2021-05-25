@@ -29,7 +29,6 @@ class CarportMapperTest {
 
     @Test
     void getMeasureEntities() {
-    
 
     }
 
@@ -39,5 +38,7 @@ class CarportMapperTest {
 
     @Test
     void getCarportFromId() {
+
+
     }
 }

@@ -4,18 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cart {
-    private List<StandardCarportEntities> carports;
+    private List<StandardCarportEntity> carports;
     private int calcprice =  0;
 
     public Cart(){
         carports = new ArrayList<>();
     }
 
-    public void addCarport(StandardCarportEntities e){ carports.add(e);
+    public void addCarport(StandardCarportEntity e){ carports.add(e);
         calcprice = calcPrice_();
     }
 
-    public List<StandardCarportEntities> getCarports() {
+    public List<StandardCarportEntity> getCarports() {
         return carports;
     }
 
@@ -25,7 +25,7 @@ public class Cart {
 
     public int calcPrice_(){
         int total = 0;
-        for(StandardCarportEntities SCE : carports){
+        for(StandardCarportEntity SCE : carports){
             total += SCE.getPrice();
         }
         return total;

@@ -3,6 +3,7 @@ package web;
 import business.exceptions.UserException;
 import business.persistence.CarportMapper;
 import business.persistence.Database;
+import business.services.CarportFacade;
 import web.commands.*;
 
 import java.io.IOException;
@@ -40,10 +41,10 @@ public class FrontController extends HttpServlet
             }
         }
 
-        CarportMapper carportMapper = new CarportMapper(database);
+        CarportFacade carportFacade = new CarportFacade(database);
         try {
-            getServletContext().setAttribute("meassureEntitiesList",carportMapper.getMeasureEntities());
-            getServletContext().setAttribute("standardCarportEntities",carportMapper.getStandardCarportEntitiesList());
+            getServletContext().setAttribute("meassureEntitiesList",carportFacade.getMeasureEntities());
+            getServletContext().setAttribute("standardCarportEntities",carportFacade.getStandardCarportEntitiesList());
 
         } catch (Exception e ){
             Logger.getLogger("web").log(Level.SEVERE, e.getMessage(), e);

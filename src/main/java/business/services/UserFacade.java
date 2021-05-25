@@ -6,7 +6,7 @@ import business.persistence.UserMapper;
 import business.exceptions.UserException;
 
 public class UserFacade {
-    UserMapper userMapper;
+     private final UserMapper userMapper;
 
     public UserFacade(Database database) {
         userMapper = new UserMapper(database);

@@ -1,13 +1,10 @@
 package web.commands;
 
 import business.entities.Cart;
-import business.entities.StandardCarportEntities;
-import business.persistence.CarportMapper;
 import web.FrontController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

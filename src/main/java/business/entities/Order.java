@@ -16,6 +16,9 @@ public class Order {
     private String type;
     private String mail;
 
+    // tilføj email til konstruktorren
+    // public Order(int order_id, Timestamp created, double price, int user_id, String mail, String type) {
+
     public Order(int order_id, Timestamp created, double price, int user_id, String type) {
         this.order_id = order_id;
         this.created = created;
@@ -38,6 +41,8 @@ public class Order {
             System.out.println(se.getMessage());
             se.printStackTrace();
             return se.getMessage();
+
+            // return null;
         }
     }
 

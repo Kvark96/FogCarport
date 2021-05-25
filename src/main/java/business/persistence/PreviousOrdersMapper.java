@@ -46,7 +46,7 @@ public class PreviousOrdersMapper {
         }
 
         }catch (SQLException se){
-            System.out.println("Failed to connect to database in ViewOrderCommand");
+            System.out.println("Failed to connect to database");
             System.out.println(se.getMessage());
         }
 

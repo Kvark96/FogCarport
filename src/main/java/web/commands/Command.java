@@ -18,7 +18,7 @@ public abstract class Command
     private static HashMap<String, Command> commands;
     public static Database database;
 
-    private static void initCommands(Database database)
+    private static void initCommands()
     {
         commands = new HashMap<>();
         commands.put("index", new CommandUnprotectedPage("index"));
@@ -55,7 +55,7 @@ public abstract class Command
         if (commands == null)
         {
             database = db;
-            initCommands(database);
+            initCommands();
         }
 
         return commands.getOrDefault(action, new CommandUnknown());   // unknowncommand is default

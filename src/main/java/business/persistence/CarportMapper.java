@@ -1,7 +1,7 @@
 package business.persistence;
 
 import business.entities.MeasureEntities;
-import business.entities.StandardCarportEntities;
+import business.entities.StandardCarportEntity;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,14 +10,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarportMapper {
+public class CarportMapper  {
 
     Database database;
-   public List<StandardCarportEntities> standardCarportEntitiesList;
+
 
     public CarportMapper(Database database) {
         this.database = database;
     }
+
 
 
     public List<MeasureEntities> getMeasureEntities() {
@@ -25,7 +26,6 @@ public class CarportMapper {
         try (Connection connection = database.connect()) {
 
             String sql = "select * from carport.measures;";
-
 
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
@@ -51,8 +51,9 @@ public class CarportMapper {
     }
 
 
-    public List<StandardCarportEntities> getStandardCarportEntitiesList() {
-        standardCarportEntitiesList = new ArrayList<>();
+
+    public List<StandardCarportEntity> getStandardCarportEntitiesList() {
+        List<StandardCarportEntity> standardCarportEntityList = new ArrayList<>();
         try (Connection connection = database.connect()) {
 
             String sql = "SELECT * FROM carport.standardcarport;";
@@ -67,11 +68,11 @@ public class CarportMapper {
                     String description = rs.getString("description");
                     int price = rs.getInt("price");
 
-                    standardCarportEntitiesList.add(new StandardCarportEntities(standard_id, name, description, price));
+                    standardCarportEntityList.add(new StandardCarportEntity(standard_id, name, description, price));
 
                 }
-                System.out.println(standardCarportEntitiesList.toString());
-                return standardCarportEntitiesList;
+                System.out.println(standardCarportEntityList.toString());
+                return standardCarportEntityList;
             } catch (SQLException e) {
                 throw new SQLException();
             }
@@ -79,22 +80,6 @@ public class CarportMapper {
             ex.printStackTrace();
 
         }
-        return standardCarportEntitiesList;
+        return standardCarportEntityList;
     }
-
-
-    public StandardCarportEntities getCarportFromId(int standard_id) throws NoSuchFieldException {
-
-        for (StandardCarportEntities s : standardCarportEntitiesList) {
-            if (s.getStandard_id() == standard_id) {
-                return s;
-            }
-
-
-        }
-        throw new NoSuchFieldException();
-
-    }
-
-
 }
