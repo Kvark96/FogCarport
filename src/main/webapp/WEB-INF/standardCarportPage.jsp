@@ -30,7 +30,7 @@
 
                 <input type="hidden"  name="standard_id" value="${applicationScope.standardCarportEntities.get(0).standard_id}">
 
-                    <input type="submit" value="Submit">
+                    <input type="submit" class="btn btn-primary" value="Vælg denne carport">
 
                 </form>
 
@@ -56,7 +56,7 @@
 
                     <input type="hidden"  name="standard_id" value="${applicationScope.standardCarportEntities.get(1).standard_id}">
 
-                    <input type="submit" value="Submit">
+                    <input type="submit" class="btn btn-primary" value="Vælg denne carport">
 
 
 
@@ -87,7 +87,7 @@
 
                     <input type="hidden"  name="standard_id" value="${applicationScope.standardCarportEntities.get(2).standard_id}">
 
-                    <input type="submit" value="Submit">
+                    <input type="submit"class="btn btn-primary" value="Vælg denne carport">
 
 
                 </form>
@@ -111,7 +111,7 @@
 
                     <input type="hidden"  name="standard_id" value="${applicationScope.standardCarportEntities.get(3).standard_id}">
 
-                    <input type="submit" value="Submit">
+                    <input type="submit" class="btn btn-primary" value="Vælg denne carport">
 
 
 
