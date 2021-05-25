@@ -23,14 +23,16 @@ public class ConfirmCartCommand extends CommandProtectedPage {
         int user_id = (int) request.getSession().getAttribute("user_id");
         int isARequest = 0;
         int standard_id = (int) request.getSession().getAttribute("standard_id");
+        int price = Integer.parseInt(request.getParameter("price"));
         try (Connection connection = FrontController.database.connect()) {
 
-            String insertSql = "INSERT INTO carport.orders (user_id, customer_request,standard_id) VALUES (?,?,?)";
+            String insertSql = "INSERT INTO carport.orders (user_id, customer_request,standard_id, price) VALUES (?,?,?,?)";
 
             try (PreparedStatement ps = connection.prepareStatement(insertSql)) {
                 ps.setInt(1, user_id);
                 ps.setInt(2, isARequest);
                 ps.setInt(3, standard_id);
+                ps.setInt(4, price);
                 ps.execute();
 
             } catch (SQLException error) {

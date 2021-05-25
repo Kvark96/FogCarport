@@ -36,8 +36,11 @@
 
         <h1>Den samlede pris = ${cart.calcprice} DKK</h1>
 
+        <form name="confirm" action="${pageContext.request.contextPath}/fc/cartConfirmed"  method="POST">
+            <input type="hidden" name="price" value="${cart.calcprice}"/>
+            <button class="btn btn-primary" type="submit" value="confirm"> Bekræft </button>
+        </form>
 
-        <a href="${pageContext.request.contextPath}/fc/cartConfirmed" class="btn btn-primary"> Bekræft </a>
         <a href="${pageContext.request.contextPath}/fc/standardCarportPage" class="btn btn-primary">Gå tilbage til Standard carporte </a>
 
 
