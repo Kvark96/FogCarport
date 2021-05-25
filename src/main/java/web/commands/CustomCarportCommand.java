@@ -1,8 +1,5 @@
 package web.commands;
 
-import business.persistence.Database;
-import business.persistence.RequestMapper;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 

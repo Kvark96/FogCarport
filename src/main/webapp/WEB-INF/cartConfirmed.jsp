@@ -5,6 +5,7 @@
 <t:genericpage>
     <jsp:attribute name="header">
         Ordre gennemført
+
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
@@ -14,7 +15,6 @@
         <p> Du får tilsendt en kvittering på din mail. </p>
         <p> Forventet leveringstid er: 7 dage </p>
         <a href="${pageContext.request.contextPath}/fc/customerpage" class="btn btn-primary"> Gå tilbage til kundesiden</a>
-
 
     </jsp:body>
 
