@@ -50,7 +50,7 @@ public class ShowSVGCommand extends CommandUnprotectedPage {
         int carportLength = (int) session.getAttribute("length");
         String viewBox = "0 0 780 780";
         SVG svg = new SVG(0,0,viewBox, 100, 100, carportLength, carportWidth);
-        SVG innerSvg = new SVG(20, 20, viewBox, 60, 60, carportLength, carportWidth);
+        SVG innerSvg = new SVG(30, 25, viewBox, 80, 80, carportLength, carportWidth);
 
 
         int order_id = Integer.parseInt(request.getParameter("order_id"));
@@ -109,7 +109,8 @@ public class ShowSVGCommand extends CommandUnprotectedPage {
 
         // If there are 3 spares on either side, one pair is placed in the middle of pole_y1 and pole_y2
         if(numberOfPoles > 4){
-            int pole_y3 = pole_y1 + pole_y2 / 2;
+            int pole_y3 = (pole_y2 - pole_y1)/ 2;
+            pole_y3 += pole_y1;
             innerSvg.addRect(pole_x1, pole_y3, poleSize, poleSize);
             innerSvg.addRect(pole_x2, pole_y3, poleSize, poleSize);
         }
@@ -121,8 +122,8 @@ public class ShowSVGCommand extends CommandUnprotectedPage {
         // Længde og bredde markører
         // Indre SVG tilføjes først, fordi det skal den :)
         svg.addSVG(innerSvg);
-        svg.addArrow(0, carportWidth, 0, 0, true);
-        svg.addArrow(0, carportWidth, carportLength, carportWidth, false);
+        svg.addArrow(0, carportLength, 0, 0, true);
+        svg.addArrow(0, carportLength, carportWidth, carportLength, false);
 
 
 
