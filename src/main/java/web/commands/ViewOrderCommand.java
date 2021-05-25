@@ -14,6 +14,11 @@ public class ViewOrderCommand extends CommandProtectedPage{
         super(pageToShow, role);
     }
 
+    private void setOrderOnRequest(HttpServletRequest request, HttpServletResponse response){
+        String sql = "SELECT * FROM carport.standardcarport WHERE standard_id = ?";
+
+    }
+
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
 
@@ -41,8 +46,6 @@ public class ViewOrderCommand extends CommandProtectedPage{
                 double price = rs.getDouble("price");
                 String user_email = rs.getString("email");
                 int quantity = rs.getInt("quantity");
-                //TODO:
-                // int orderline_id = rs.getInt("orderline_id");
                 int material_id = rs.getInt("materials_id");
 
                 request.setAttribute("user_email", user_email);

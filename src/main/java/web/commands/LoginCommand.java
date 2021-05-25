@@ -31,6 +31,7 @@ public class LoginCommand extends CommandUnprotectedPage
         HttpSession session = request.getSession();
 
         session.setAttribute("user", user);
+        session.setAttribute("name", user.getName());
         session.setAttribute("user_id", user.getUser_id());
         session.setAttribute("role", user.getRole());
         session.setAttribute("email", email);

@@ -18,16 +18,6 @@ public class User {
     private String password; // Should be hashed and secured
     private String role;
 
-    public User(String name, String email, String password, String role, String phonenumber, String address, String zipcode) {
-
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.role = role;
-        this.phonenumber = phonenumber;
-        this.address = address;
-        this.zipcode = zipcode;
-    }
 
     public int getUser_id() {
         return user_id;

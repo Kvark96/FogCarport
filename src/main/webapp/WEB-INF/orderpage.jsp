@@ -12,22 +12,46 @@
 
         <h1>${typeOfOrder} nr. ${order_id} fra ${user_email}</h1>
 
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">Længde</th>
-                <th scope="col">Bredde</th>
-            </tr>
 
-            </thead>
-            <tbody>
 
-            <tr>
-                <td>${length}</td>
-                <td>${width}</td>
-            </tr>
-            </tbody>
-        </table>
+
+        <c:if test="${typeOfOrder == 'Forespørgsel' }">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Længde</th>
+                    <th scope="col">Bredde</th>
+                </tr>
+
+                </thead>
+                <tbody>
+
+                <tr>
+                    <td>${length}</td>
+                    <td>${width}</td>
+                </tr>
+                </tbody>
+            </table>
+        </c:if>
+
+        <c:if test="${typeOfOrder == 'Ordre' }">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Beskrivelse</th>
+                    <th scope="col">Antal</th>
+                </tr>
+
+                </thead>
+                <tbody>
+
+                <tr>
+                    <td>${length}</td>
+                    <td>${width}</td>
+                </tr>
+                </tbody>
+            </table>
+        </c:if>
 
         <h2>Total pris : ${price}</h2>
     </jsp:body>

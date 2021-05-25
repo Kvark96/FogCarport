@@ -82,7 +82,11 @@ public class UserMapperTest {
     public void testCreateUser01() throws UserException {
         // Can we create a new user - Notice, if login fails, this will fail
         // but so would login01, so this is OK
-        User original = new User("KingApe" ,"king@kong.com", "uhahvorhemmeligt", "konge","5555","Odense","3000" );
+        User original = new User("KingApe" ,"king@kong.com", "uhahvorhemmeligt");
+        original.setName("konge");
+        original.setPhonenumber("5555");
+        original.setAddress("Odense");
+        original.setZipcode("3000");
         userMapper.createUser( original );
         User retrieved = userMapper.login( "king@kong.com", "uhahvorhemmeligt" );
         assertEquals( "konge", retrieved.getRole() );
