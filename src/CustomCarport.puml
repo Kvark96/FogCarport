@@ -3,24 +3,31 @@
 
 autonumber
 @startuml
-actor participant as customer
-participant       jsp      as jsp
-control     Command      as cmd
-control      Facade      as face
-entity    Mapper    as map
-database Database as dat
+actor customer as customer
+participant       .jsp       as jsp
+control     FrontController as fc
+entity     Command         as cmd
+control      Facade         as face
+participant    Mapper            as map
+database Database           as dat
 
-customer -> cmd : Press link to customCarport.jsp
-cmd -> cmd : execute()
-cmd -> jsp : customCarport.jsp
+customer -> jsp : Press link to customCarport.jsp
+jsp -> fc : Find "customCarport"
+fc -> cmd : CustomCarportCommand.execute()
+cmd -> fc : pageToShow
+fc -> jsp : customCarport.jsp
 jsp -> customer : Show page
 customer -> jsp : Choose measurements
-jsp -> cmd : CustomCarportCommand.execute()
-cmd -> jsp : requestReceivedPage.jsp
+
+jsp -> fc : Find "requestReceivedPage"
+fc -> cmd : CustomCarportCommand.execute()
+cmd -> fc : pageToShow
+fc -> jsp : requestConfirmedPage.jsp
 jsp -> customer : Show page
 customer -> jsp : Confirm measures
-jsp -> cmd : ConfirmRequestCommand.execute()
-cmd -> cmd : execute()
+jsp -> fc : Find "requestConfirmedPage"
+fc -> cmd : ConfirmRequestCommand.execute()
+
 cmd -> face : OrderFacade.addOrderToDatabase()
 face -> map : OrderMapper.addOrderToDatabase()
 map -> dat : execute()
@@ -31,7 +38,8 @@ dat -> cmd : Retrieve latest OrderID
 cmd -> face : BomFacade.generateCarport()
 face -> map : BomFacade.generateCarport()
 map -> dat : execute()
-cmd -> jsp : RequestConfirmedPage.jsp
+cmd -> fc : pageToShow
+fc -> jsp : RequestConfirmedPage.jsp
 jsp -> customer : Show page
 @enduml
 @enduml
