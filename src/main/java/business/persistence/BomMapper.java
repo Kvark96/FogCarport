@@ -11,6 +11,7 @@ public class BomMapper {
 
     Database database;
     private CarportFacade carportFacade;
+
     public BomMapper(Database database) {
         this.database = database;
         this.carportFacade = new CarportFacade(database);
@@ -50,57 +51,8 @@ public class BomMapper {
     }
 
 
-    public void generateCarport(int orderid, int length, int width) {
 
-        BomCalculateMapper bomCalculateMapper = new BomCalculateMapper(database);
-        CalculateNumbers calc = bomCalculateMapper.getCalculateNumbers();
-
-        double distanceMeasure = calc.getDistanceMeasure();
-        int screwKvm = calc.getScrewKvm();
-        int postPerLength = calc.getPostPerLength();
-        int screwPackageNumbers = calc.getScrewPackageNumbers();
-        int minPosts = calc.getMinimumPosts();
-        int maxPosts = calc.getMaximumPosts();
-
-
-        double amountCalc = ((double) length / 100.0) / distanceMeasure;
-        double amountScrews = (double) length / 100.0 * (double) width / 100.0 * (double) screwKvm / (double) screwPackageNumbers;
-        double widthCalculator = (double) width / 100.0;
-
-        List<Material> materials = getMaterials();
-
-        for (Material m : materials) {
-            if (m.getMaterial_id() == 5) {
-                m.setLength(length);
-            }
-
-            if (m.getMaterial_id() == 6) {
-                m.setLength(width);
-                m.setAmount((int) Math.ceil(amountCalc));
-            }
-
-            if (m.getMaterial_id() == 7) {
-                if (length < postPerLength) {
-                    m.setAmount(minPosts);
-                } else {
-                    m.setAmount(maxPosts);
-                }
-            }
-
-            if (m.getMaterial_id() == 10) {
-                m.setAmount((int) Math.ceil(widthCalculator));
-            }
-
-            if (m.getMaterial_id() == 11) {
-                m.setAmount((int) Math.ceil(amountScrews));
-            }
-
-            if (m.getMaterial_id() == 13 || m.getMaterial_id() == 14) {
-                m.setAmount((int) Math.ceil(amountCalc));
-            }
-        }
-
-
+    public void insertCustomCartport(int orderid, List<Material> materials) {
         try (Connection connection = database.connect()) {
             String sql = "INSERT INTO orderline (order_id, materials_id, materials_length, quantity) VALUES (?,?,?,?)";
 
@@ -177,7 +129,7 @@ public class BomMapper {
                         rs.getInt("quantity"),
                         rs.getInt("materials_length"),
                         rs.getInt("materials_id"),
-             carportFacade.getCarportFromId(rs.getInt("standard_id"))));
+                        carportFacade.getCarportFromId(rs.getInt("standard_id"))));
             }
 
         } catch (SQLException throwables) {

@@ -2,6 +2,7 @@ package business.persistence;
 
 
 import business.entities.Material;
+import business.services.BomFacade;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,12 +27,13 @@ public class BomMapperTest {
 
     private static Database database;
     private static BomMapper bomMapper;
+    private  static BomFacade bomFacade;
 
     @BeforeAll
     public static void setUpClass() {
         try {
             database = new Database(USER, PASSWORD, URL);
-            bomMapper = new BomMapper(database);
+            bomFacade = new BomFacade(database);
         } catch (ClassNotFoundException e) {   // kan ikke finde driveren i database klassen
             fail("Database connection failed. Missing jdbc driver");
         }
@@ -65,7 +67,7 @@ public class BomMapperTest {
 
     @Test
     void TestOrderlineCreation() {
-        bomMapper.generateCarport(1, 420, 420);
+        bomFacade.generateCarport(1, 420, 420);
         List<Material> materials = bomMapper.getOrderLineMaterials(1);
 
         assertNotEquals(0, materials.size());
@@ -75,8 +77,8 @@ public class BomMapperTest {
     @Test
     void TestMaterialValuesOfIdSix() {
 
-        bomMapper.generateCarport(1,420,420);       //Can't create Order-object
-        bomMapper.generateCarport(2, 320, 320);
+        bomFacade.generateCarport(1,420,420);       //Can't create Order-object
+        bomFacade.generateCarport(2, 320, 320);
         List<Material> materials = bomMapper.getOrderLineMaterials(1);
         List<Material> materials1 = bomMapper.getOrderLineMaterials(2);
 
@@ -88,8 +90,8 @@ public class BomMapperTest {
     @Test
     void TestMaterialValuesOfIdSeven() {
 
-        bomMapper.generateCarport(1,420,420);       //Can't create Order-object
-        bomMapper.generateCarport(2, 320, 320);
+        bomFacade.generateCarport(1,420,420);       //Can't create Order-object
+        bomFacade.generateCarport(2, 320, 320);
         List<Material> materials = bomMapper.getOrderLineMaterials(1);
         List<Material> materials1 = bomMapper.getOrderLineMaterials(2);
 
@@ -101,8 +103,8 @@ public class BomMapperTest {
     @Test
     void TestMaterialValuesOfIdTen() {
 
-        bomMapper.generateCarport(1,420,420);       //Can't create Order-object
-        bomMapper.generateCarport(2, 320, 320);
+        bomFacade.generateCarport(1,420,420);       //Can't create Order-object
+        bomFacade.generateCarport(2, 320, 320);
         List<Material> materials = bomMapper.getOrderLineMaterials(1);
         List<Material> materials1 = bomMapper.getOrderLineMaterials(2);
 
@@ -114,8 +116,8 @@ public class BomMapperTest {
     @Test
     void TestMaterialValuesOfIdEleven() {
 
-        bomMapper.generateCarport(1,420,420);       //Can't create Order-object
-        bomMapper.generateCarport(2, 320, 320);
+        bomFacade.generateCarport(1,420,420);       //Can't create Order-object
+        bomFacade.generateCarport(2, 320, 320);
         List<Material> materials = bomMapper.getOrderLineMaterials(1);
         List<Material> materials1 = bomMapper.getOrderLineMaterials(2);
 
