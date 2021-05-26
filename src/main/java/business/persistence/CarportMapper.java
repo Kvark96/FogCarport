@@ -2,10 +2,7 @@ package business.persistence;
 
 import business.entities.MeasureEntities;
 import business.entities.StandardCarportEntity;
-import web.FrontController;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -85,4 +82,5 @@ public class CarportMapper  {
         }
         return standardCarportEntityList;
     }
+
 }
