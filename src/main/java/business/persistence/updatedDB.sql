@@ -31,7 +31,6 @@ CREATE TABLE IF NOT EXISTS `carport`.`bomcalculator` (
                                                          `max_number_of_posts` INT NOT NULL,
                                                          PRIMARY KEY (`bom_id`))
     ENGINE = InnoDB
-    AUTO_INCREMENT = 1
     DEFAULT CHARACTER SET = utf8mb4
     COLLATE = utf8mb4_0900_ai_ci;
 
@@ -61,7 +60,21 @@ CREATE TABLE IF NOT EXISTS `carport`.`measures` (
                                                     `width` INT NULL DEFAULT NULL,
                                                     PRIMARY KEY (`measure_id`))
     ENGINE = InnoDB
-    AUTO_INCREMENT = 1
+    DEFAULT CHARACTER SET = utf8mb4
+    COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `carport`.`standardcarport`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `carport`.`standardcarport` (
+                                                           `standard_id` INT NOT NULL AUTO_INCREMENT,
+                                                           `name` TEXT NULL DEFAULT NULL,
+                                                           `description` TEXT NULL DEFAULT NULL,
+                                                           `price` INT NULL DEFAULT NULL,
+                                                           `img` TEXT NULL,
+                                                           PRIMARY KEY (`standard_id`))
+    ENGINE = InnoDB
     DEFAULT CHARACTER SET = utf8mb4
     COLLATE = utf8mb4_0900_ai_ci;
 
@@ -81,23 +94,7 @@ CREATE TABLE IF NOT EXISTS `carport`.`users` (
                                                  PRIMARY KEY (`user_id`),
                                                  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
     ENGINE = InnoDB
-    AUTO_INCREMENT = 1
     DEFAULT CHARACTER SET = latin1;
-
-
--- -----------------------------------------------------
--- Table `carport`.`standardcarport`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `carport`.`standardcarport` (
-                                                           `standard_id` INT NOT NULL AUTO_INCREMENT,
-                                                           `name` TEXT NULL DEFAULT NULL,
-                                                           `description` TEXT NULL DEFAULT NULL,
-                                                           `price` INT NULL DEFAULT NULL,
-                                                           PRIMARY KEY (`standard_id`))
-    ENGINE = InnoDB
-    AUTO_INCREMENT = 1
-    DEFAULT CHARACTER SET = utf8mb4
-    COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
@@ -114,21 +111,18 @@ CREATE TABLE IF NOT EXISTS `carport`.`orders` (
                                                   `roof_type` VARCHAR(45) NULL DEFAULT NULL,
                                                   `tool_room_length` INT NULL DEFAULT NULL,
                                                   `tool_room:width` INT NULL DEFAULT NULL,
-                                                  `standard_id` INT NULL,
+                                                  `standard_id` INT NULL DEFAULT NULL,
                                                   PRIMARY KEY (`order_id`),
                                                   UNIQUE INDEX `order_id` (`order_id` ASC) VISIBLE,
                                                   INDEX `fk_orders_users_idx` (`user_id` ASC) VISIBLE,
                                                   INDEX `fk_orders_standardcarport1_idx` (`standard_id` ASC) VISIBLE,
-                                                  CONSTRAINT `fk_orders_users`
-                                                      FOREIGN KEY (`user_id`)
-                                                          REFERENCES `carport`.`users` (`user_id`),
                                                   CONSTRAINT `fk_orders_standardcarport1`
                                                       FOREIGN KEY (`standard_id`)
-                                                          REFERENCES `carport`.`standardcarport` (`standard_id`)
-                                                          ON DELETE NO ACTION
-                                                          ON UPDATE NO ACTION)
+                                                          REFERENCES `carport`.`standardcarport` (`standard_id`),
+                                                  CONSTRAINT `fk_orders_users`
+                                                      FOREIGN KEY (`user_id`)
+                                                          REFERENCES `carport`.`users` (`user_id`))
     ENGINE = InnoDB
-    AUTO_INCREMENT = 1
     DEFAULT CHARACTER SET = utf8mb4
     COLLATE = utf8mb4_0900_ai_ci;
 
@@ -152,7 +146,6 @@ CREATE TABLE IF NOT EXISTS `carport`.`orderline` (
                                                          FOREIGN KEY (`order_id`)
                                                              REFERENCES `carport`.`orders` (`order_id`))
     ENGINE = InnoDB
-    AUTO_INCREMENT = 1
     DEFAULT CHARACTER SET = utf8mb4
     COLLATE = utf8mb4_0900_ai_ci;
 
@@ -160,6 +153,7 @@ CREATE TABLE IF NOT EXISTS `carport`.`orderline` (
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
 
 
 INSERT INTO `carport`.`bomcalculator` (`bom_id`, `distance_Measure`, `screw_kvm`, `post_length_for_amount`, `screw_package_numbers`,`minimum_number_of_posts`,`max_number_of_posts`)
@@ -182,6 +176,13 @@ INSERT INTO `carport`.`standardcarport` (`standard_id`, `name`, `description`, `
 VALUES ('4', 'CARPORT ENKELT 3,60X5,40M CAR01H HØJ REJSNING',
         '3,60 x 5,40 mtr. Uden redskabsrum Trykimprægnerede stolper & stern. Leveres med: Søm, skruer, beslag og betontagstenstag. Udførlig byggevejledning til carport og spær medfølger. Betontagsten i sort med 30 års garanti. NB! Leveres som Byg-selv sæt - usamlet og ubehandlet!',
         '18498');
+
+
+UPDATE `carport`.`standardcarport` SET `img` = '/IMG/CARPORT ENKELT 3,60X5,40M CAR01H HØJ REJSNING.png' WHERE (`standard_id` = '2');
+UPDATE `carport`.`standardcarport` SET `img` = '/IMG/CARPORT ENKELT 3,00X4,80M CAR01 FLADT TAG.png' WHERE (`standard_id` = '1');
+UPDATE `carport`.`standardcarport` SET `img` = '/IMG/CARPORT ENKELT 3,60X9,10M CRXL1HR MED REDSKABSRUM 3,20X3,55M.png' WHERE (`standard_id` = '3');
+UPDATE `carport`.`standardcarport` SET `img` = '/IMG/CARPORT ENKELT 3,90X7,80M CPO01HR MED REDSKABSRUM 2,40X3,30M.png' WHERE (`standard_id` = '4');
+
 
 INSERT INTO `carport`.`materials` (`materials_id`, `name`, `length`, `amount`, `description`)
 VALUES ('1', '25x200 mm. trykimp. Brædt 360  understernbrædder til for & bag ende', '360', '4',
