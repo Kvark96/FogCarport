@@ -163,4 +163,27 @@ public class BomMapper {
         return materialDescription;
 
     }
+
+    public List<Orderline> getOrderlines(int order_id) {
+        List<Orderline> orderlines = new ArrayList<>();
+        String sql = "SELECT * FROM carport.orderline WHERE order_id = ?";
+        try (Connection connection = database.connect()) {
+
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, order_id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                orderlines.add(new Orderline(
+                        order_id,
+                        rs.getInt("quantity"),
+                        rs.getInt("materials_length"),
+                        rs.getInt("materials_id")));
+            }
+
+        } catch (SQLException throwables) {
+            System.out.println(throwables.getMessage());
+            throwables.printStackTrace();
+        }
+        return orderlines;
+    }
 }

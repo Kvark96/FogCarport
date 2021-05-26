@@ -1,6 +1,7 @@
 package web.commands;
 
 import business.entities.Order;
+import business.services.OrderFacade;
 import web.FrontController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,35 +11,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RequestListCommand extends CommandProtectedPage{
+    OrderFacade orderFacade;
     public RequestListCommand(String pageToShow, String role) {
         super(pageToShow, role);
+        orderFacade = new OrderFacade(FrontController.database);
     }
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
 
-        List<Order> requestList = new ArrayList<>();
-
-        try(Connection con = FrontController.database.connect()){
-            String sql = "SELECT * FROM orders WHERE customer_request = 1";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-
-            while(rs.next()){
-                int order_id = rs.getInt("order_id");
-                Timestamp ts = rs.getTimestamp("created");
-                double price = rs.getDouble("price");
-                int user_id = rs.getInt("user_id");
-                requestList.add(new Order(order_id, ts, price, user_id, "Forespørgsel"));
-            }
-
-            request.setAttribute("requestList", requestList);
-
-        } catch (SQLException se){
-            System.out.println("Failed to connect to database in RequestListCommand");
-            System.out.println(se.getMessage());
-        }
-
+        List<Order> requestList = orderFacade.getOrdersFromDatabase(1);
+        request.setAttribute("requestList", requestList);
         return pageToShow;
     }
 }

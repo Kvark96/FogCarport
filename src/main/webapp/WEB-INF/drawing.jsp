@@ -5,7 +5,7 @@
 <t:genericpage>
 
     <jsp:attribute name="header">
-         Home
+         Tegning af Carport
     </jsp:attribute>
 
     <jsp:attribute name="footer">
@@ -13,7 +13,7 @@
     </jsp:attribute>
 
     <jsp:body>
-        <p>Her er vores SVG:</p>
+        <p>Her er din carport:</p>
         ${requestScope.get("svg")}
 
     </jsp:body>

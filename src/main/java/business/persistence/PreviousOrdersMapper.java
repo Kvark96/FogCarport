@@ -22,7 +22,7 @@ public class PreviousOrdersMapper {
         List<PreviousOrder> oldOrders = new ArrayList<>();
 
         try(Connection con = database.connect()) {
-            String sql = "SELECT * FROM orders WHERE user_id = ?";
+            String sql = "SELECT * FROM orders JOIN carport.users on orders.user_id = users.user_id WHERE orders.user_id = ? ";
             try (PreparedStatement ps = con.prepareStatement(sql)) {
                 ps.setInt(1, user_id);
                 ResultSet rs = ps.executeQuery();
@@ -33,9 +33,10 @@ public class PreviousOrdersMapper {
                     int order_id = rs.getInt("order_id");
                     int length = rs.getInt("length");
                     int width = rs.getInt("width");
-                    String type = rs.getString("roof_type");
+                    int type = rs.getInt("customer_request");
+                    String mail = rs.getString("email");
 
-                    orders.add(new Order(order_id, created, price, user_id, type));
+                    orders.add(new Order(order_id, created, price, user_id, mail, type));
                     oldOrders.add(new PreviousOrder(order_id,created,price,user_id,type,length,width));
 
 

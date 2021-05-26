@@ -29,11 +29,11 @@
                     <td><c:out value="${order.created}"/></td>
                     <td><c:out value="${order.price}"/></td>
                     <td><c:out value="${order.user_id}"/></td>
-                    <td><c:out value="${order.type}"/></td>
+                    <td><c:out value="${order.customer_request}"/></td>
                     <td>
                         <form name="orderpage" action="${pageContext.request.contextPath}/fc/orderpage" method="post">
                             <input type="hidden" name="order_id" value="${order.order_id}"/>
-                            <input type="hidden" name="typeOfOrder" value="${order.type}"/>
+                            <input type="hidden" name="typeOfOrder" value="${order.customer_request}"/>
                             <button class="btn btn-sm  btn-outline-secondary" type="submit" value="seOrdrer">Se ordre</button>
                         </form>
                     </td>

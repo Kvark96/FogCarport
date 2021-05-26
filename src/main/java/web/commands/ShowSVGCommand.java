@@ -2,7 +2,9 @@ package web.commands;
 
 import business.entities.Orderline;
 import business.exceptions.UserException;
+import business.services.BomFacade;
 import business.services.SVG;
+import web.FrontController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,31 +17,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShowSVGCommand extends CommandUnprotectedPage {
+    BomFacade bomFacade;
     public ShowSVGCommand(String pageToShow) {
         super(pageToShow);
+        bomFacade = new BomFacade(FrontController.database);
     }
 
     private List<Orderline> getBOM(int order_id) {
-
-        List<Orderline> orderlines = new ArrayList<>();
-        String sql = "SELECT * FROM carport.orderline WHERE order_id = ?";
-        try (Connection connection = database.connect()) {
-
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, order_id);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()){
-                orderlines.add(new Orderline(
-                        order_id,
-                        rs.getInt("quantity"),
-                        rs.getInt("materials_length"),
-                        rs.getInt("materials_id")));
-            }
-
-        } catch (SQLException throwables) {
-            System.out.println(throwables.getMessage());
-            throwables.printStackTrace();
-        }
+        List<Orderline> orderlines = bomFacade.getOrderlines(order_id);
         return orderlines;
     }
 
