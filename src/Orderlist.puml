@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+@startuml
+actor employee as employee
+participant       .jsp       as jsp
+control     FrontController as fc
+entity     Command         as cmd
+control      Facade         as face
+participant    Mapper            as map
+database Database           as dat
+
+employee -> jsp : Press link to orderlist.jsp
+jsp -> fc : Find "orderlist"
+fc -> cmd : OrderlistCommand.execute()
+cmd -> face : OrderFacade.getOrdersFromDatabase()
+face -> map : OrderMapper.getOrderFromDatabase()
+map -> dat : executeQuery()
+dat -> cmd : Retrieve ResultSet
+cmd -> fc : pageToShow
+fc -> jsp : orderlist.jsp
+jsp -> employee : Show page
+
+@enduml
+@enduml

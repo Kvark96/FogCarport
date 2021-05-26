@@ -1,5 +1,6 @@
 package web.commands;
 
+import business.entities.Cart;
 import business.entities.User;
 import business.services.UserFacade;
 import business.exceptions.UserException;
@@ -39,6 +40,7 @@ public class RegisterCommand extends CommandUnprotectedPage {
                     session.setAttribute("user", user);
                     session.setAttribute("user_id", user.getUser_id());
                     session.setAttribute("role", user.getRole());
+                    session.setAttribute("cart", new Cart());
                     return user.getRole() + "page";
                 } else {
                     request.setAttribute("error", "the two passwords did not match");
