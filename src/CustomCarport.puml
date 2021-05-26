@@ -1,0 +1,37 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+@startuml
+actor participant as customer
+participant       jsp      as jsp
+control     Command      as cmd
+control      Facade      as face
+entity    Mapper    as map
+database Database as dat
+
+customer -> cmd : Press link to customCarport.jsp
+cmd -> cmd : execute()
+cmd -> jsp : customCarport.jsp
+jsp -> customer : Show page
+customer -> jsp : Choose measurements
+jsp -> cmd : CustomCarportCommand.execute()
+cmd -> jsp : requestReceivedPage.jsp
+jsp -> customer : Show page
+customer -> jsp : Confirm measures
+jsp -> cmd : ConfirmRequestCommand.execute()
+cmd -> cmd : execute()
+cmd -> face : OrderFacade.addOrderToDatabase()
+face -> map : OrderMapper.addOrderToDatabase()
+map -> dat : execute()
+cmd -> face : OrderFacade.getLatestOrderIdFromUserId()
+face -> map : OrderMapper.getLatestOrderIdFromUserId()
+map -> dat : executeQuery()
+dat -> cmd : Retrieve latest OrderID
+cmd -> face : BomFacade.generateCarport()
+face -> map : BomFacade.generateCarport()
+map -> dat : execute()
+cmd -> jsp : RequestConfirmedPage.jsp
+jsp -> customer : Show page
+@enduml
+@enduml
