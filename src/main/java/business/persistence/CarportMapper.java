@@ -38,7 +38,6 @@ public class CarportMapper  {
                     measureEntitiesList.add(new MeasureEntities(measureId, length, width));
 
                 }
-                System.out.println(measureEntitiesList.toString());
                 return measureEntitiesList;
             } catch (SQLException e) {
                 throw new SQLException();
@@ -71,7 +70,6 @@ public class CarportMapper  {
                     standardCarportEntityList.add(new StandardCarportEntity(standard_id, name, description, price));
 
                 }
-                System.out.println(standardCarportEntityList.toString());
                 return standardCarportEntityList;
             } catch (SQLException e) {
                 throw new SQLException();

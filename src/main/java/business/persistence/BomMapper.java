@@ -1,7 +1,6 @@
 package business.persistence;
 
 import business.entities.*;
-import business.exceptions.UserException;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -35,7 +34,6 @@ public class BomMapper {
                     materialDescription.add(new Material(material_id,name,length,amount,desc,unit));
 
                 }
-                System.out.println(materialDescription.toString());
                 return materialDescription;
             } catch (SQLException e) {
                 throw new SQLException();

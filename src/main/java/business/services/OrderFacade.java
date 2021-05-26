@@ -13,10 +13,6 @@ public class OrderFacade {
         this.orderMapper = new OrderMapper(database);
     }
 
-    public String getMailFromUserId(int user_id){
-        return orderMapper.getMailFromUserId(user_id);
-    }
-
     public void addOrderToDatabase(int user_id, int length, int width, int customer_request){
         orderMapper.addOrderToDatabase(user_id, length, width, customer_request);
     }

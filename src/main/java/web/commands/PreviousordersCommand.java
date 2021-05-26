@@ -16,7 +16,6 @@ public class PreviousordersCommand extends CommandProtectedPage{
         PreviousOrdersFacade previousOrdersFacade = new PreviousOrdersFacade(database);
 
         int user_id = (int) request.getSession().getAttribute("user_id");
-        System.out.println(user_id);
         request.setAttribute("previousOrdersList" ,previousOrdersFacade.getOldOrders(user_id));
 
 

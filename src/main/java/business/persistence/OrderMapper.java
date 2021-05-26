@@ -14,21 +14,6 @@ public class OrderMapper {
         this.database = database;
     }
 
-    public String getMailFromUserId(int user_id) {
-        try (Connection con = FrontController.database.connect()) {
-            String sql = "SELECT email FROM carport.users WHERE user_id = ?";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, user_id);
-            ResultSet rs = ps.executeQuery();
-            rs.next();
-            return rs.getString(1);
-        } catch (SQLException se) {
-            System.out.println(se.getMessage());
-            se.printStackTrace();
-            return se.getMessage();
-        }
-    }
-
     public void addOrderToDatabase(int user_id, int length, int width, int customer_request) {
         try (Connection connection = FrontController.database.connect()) {
 

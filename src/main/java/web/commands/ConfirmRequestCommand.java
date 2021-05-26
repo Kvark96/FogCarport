@@ -1,15 +1,11 @@
 package web.commands;
 
 import business.persistence.BomMapper;
-import business.persistence.OrderMapper;
 import business.services.OrderFacade;
 import web.FrontController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ConfirmRequestCommand extends CommandProtectedPage {
@@ -20,11 +16,6 @@ public class ConfirmRequestCommand extends CommandProtectedPage {
     public ConfirmRequestCommand(String pageToShow, String role) {
         super(pageToShow, role);
         orderFacade = new OrderFacade(FrontController.database);
-    }
-
-
-    private void addIdAndGetOrder_id(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-
     }
 
 

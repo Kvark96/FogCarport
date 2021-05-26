@@ -1,16 +1,8 @@
 package business.entities;
 
-import business.persistence.OrderMapper;
-import business.services.OrderFacade;
-import web.FrontController;
-
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Order {
-    private List<Orderline> orderlines;
-
     private int order_id;
     private Timestamp created;
     private double price;
@@ -20,29 +12,17 @@ public class Order {
     private int width;
     private int length;
 
-    // tilføj email til konstruktorren
-    // public Order(int order_id, Timestamp created, double price, int user_id, String mail, String type) {
-
     public Order(int order_id, Timestamp created, double price, int user_id, String mail, int customer_request) {
         this.order_id = order_id;
         this.created = created;
         this.price = price;
         this.user_id = user_id;
         this.customer_request = customer_request;
-        orderlines = new ArrayList<>();
         this.mail = mail;
     }
 
     public int getCustomer_request() {
         return customer_request;
-    }
-
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
     }
 
     public int getWidth() {
@@ -71,5 +51,13 @@ public class Order {
 
     public String getMail() {
         return mail;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
     }
 }

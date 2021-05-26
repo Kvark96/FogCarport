@@ -9,11 +9,6 @@ import web.FrontController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ShowSVGCommand extends CommandUnprotectedPage {
@@ -39,8 +34,6 @@ public class ShowSVGCommand extends CommandUnprotectedPage {
 
 
         int order_id = Integer.parseInt(request.getParameter("order_id"));
-        System.out.println("In ShowSVGCommand, order_id = " + order_id);
-        System.out.println("For reference, carportWidth = " + carportWidth + " and carportLength = " + carportLength);
         innerSvg.addRect(0, 0, carportLength, carportWidth);
         List<Orderline> bom = getBOM(order_id);
 
@@ -51,13 +44,8 @@ public class ShowSVGCommand extends CommandUnprotectedPage {
 
         // Spær
         int numberOfSpares = bom.get(5).getQuantity();
-        System.out.println("number of spares = " + numberOfSpares);
-
         int distBetweenSpares = carportLength / numberOfSpares;
-        System.out.println("dist = " + distBetweenSpares);
-
         int startPosForSpares = distBetweenSpares / 2;
-        System.out.println("startPos = " + startPosForSpares);
 
 //        int startPosForPoles;
 
@@ -70,7 +58,6 @@ public class ShowSVGCommand extends CommandUnprotectedPage {
         int numberOfPoles = bom.get(6).getQuantity();
         int startPosForPoles = startPosForSpares + distBetweenSpares;
         int distBetweenPoles = (carportWidth - (startPosForSpares  + distBetweenSpares * 2)) / 2;
-        System.out.println(numberOfPoles);
 
         double poleSize = 9.7;
 
@@ -109,10 +96,6 @@ public class ShowSVGCommand extends CommandUnprotectedPage {
         svg.addSVG(innerSvg);
         svg.addArrow(0, carportLength, 0, 0, true);
         svg.addArrow(0, carportLength, carportWidth, carportLength, false);
-
-
-
-        System.out.println(bom);
 
 
         request.setAttribute("svg", svg.toString());

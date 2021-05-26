@@ -1,13 +1,8 @@
 package web.commands;
 
-import business.persistence.BomMapper;
 import business.services.BomFacade;
-import web.FrontController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class BomCommand extends CommandProtectedPage {
@@ -23,9 +18,7 @@ public class BomCommand extends CommandProtectedPage {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws SQLException {
         BomFacade bomFacade = new BomFacade(database);
 
-        String order_id = (String) request.getParameter("order_id");
-
-        System.out.println(order_id);
+        String order_id = request.getParameter("order_id");
 
         request.setAttribute("materialList", bomFacade.getOrderLineMaterials(Integer.parseInt(order_id)));
 
