@@ -2,44 +2,24 @@ package web.commands;
 
 import business.entities.Orderline;
 import business.exceptions.UserException;
+import business.services.BomFacade;
 import business.services.SVG;
+import web.FrontController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ShowSVGCommand extends CommandUnprotectedPage {
+    BomFacade bomFacade;
     public ShowSVGCommand(String pageToShow) {
         super(pageToShow);
+        bomFacade = new BomFacade(FrontController.database);
     }
 
     private List<Orderline> getBOM(int order_id) {
-
-        List<Orderline> orderlines = new ArrayList<>();
-        String sql = "SELECT * FROM carport.orderline WHERE order_id = ?";
-        try (Connection connection = database.connect()) {
-
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, order_id);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()){
-                orderlines.add(new Orderline(
-                        order_id,
-                        rs.getInt("quantity"),
-                        rs.getInt("materials_length"),
-                        rs.getInt("materials_id")));
-            }
-
-        } catch (SQLException throwables) {
-            System.out.println(throwables.getMessage());
-            throwables.printStackTrace();
-        }
+        List<Orderline> orderlines = bomFacade.getOrderlines(order_id);
         return orderlines;
     }
 
@@ -54,8 +34,6 @@ public class ShowSVGCommand extends CommandUnprotectedPage {
 
 
         int order_id = Integer.parseInt(request.getParameter("order_id"));
-        System.out.println("In ShowSVGCommand, order_id = " + order_id);
-        System.out.println("For reference, carportWidth = " + carportWidth + " and carportLength = " + carportLength);
         innerSvg.addRect(0, 0, carportLength, carportWidth);
         List<Orderline> bom = getBOM(order_id);
 
@@ -66,13 +44,8 @@ public class ShowSVGCommand extends CommandUnprotectedPage {
 
         // Spær
         int numberOfSpares = bom.get(5).getQuantity();
-        System.out.println("number of spares = " + numberOfSpares);
-
         int distBetweenSpares = carportLength / numberOfSpares;
-        System.out.println("dist = " + distBetweenSpares);
-
         int startPosForSpares = distBetweenSpares / 2;
-        System.out.println("startPos = " + startPosForSpares);
 
 //        int startPosForPoles;
 
@@ -85,7 +58,6 @@ public class ShowSVGCommand extends CommandUnprotectedPage {
         int numberOfPoles = bom.get(6).getQuantity();
         int startPosForPoles = startPosForSpares + distBetweenSpares;
         int distBetweenPoles = (carportWidth - (startPosForSpares  + distBetweenSpares * 2)) / 2;
-        System.out.println(numberOfPoles);
 
         double poleSize = 9.7;
 
@@ -124,10 +96,6 @@ public class ShowSVGCommand extends CommandUnprotectedPage {
         svg.addSVG(innerSvg);
         svg.addArrow(0, carportLength, 0, 0, true);
         svg.addArrow(0, carportLength, carportWidth, carportLength, false);
-
-
-
-        System.out.println(bom);
 
 
         request.setAttribute("svg", svg.toString());

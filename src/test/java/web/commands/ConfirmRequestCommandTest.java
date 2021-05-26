@@ -67,7 +67,7 @@ class ConfirmRequestCommandTest {
     void insertOrder() {
 
         Timestamp timestamp = Timestamp.from(Instant.now());
-        Order order = new Order(3,timestamp,800,1,"custom");
+        Order order = new Order(3,timestamp,800,1,"",0);
 
         assertEquals(3, order.getOrder_id());
 

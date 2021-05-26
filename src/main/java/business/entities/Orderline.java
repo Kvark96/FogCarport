@@ -2,7 +2,7 @@ package business.entities;
 
 public class Orderline {
 
-    private int order_id, orderline_id, quantity, material_id;
+    private int order_id, quantity, material_id;
     private int length;
 
     public Orderline(int order_id, int quantity, int length, int material_id) {
@@ -34,9 +34,6 @@ public class Orderline {
         return order_id;
     }
 
-    public int getOrderline_id() {
-        return orderline_id;
-    }
 
     public int getQuantity() {
         return quantity;

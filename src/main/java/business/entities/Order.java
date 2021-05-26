@@ -1,57 +1,36 @@
 package business.entities;
 
-import web.FrontController;
-
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Order {
-    private List<Orderline> orderlines;
-
     private int order_id;
     private Timestamp created;
     private double price;
     private int user_id;
-    private String type;
+    private int customer_request;
     private String mail;
+    private int width;
+    private int length;
 
-    // tilføj email til konstruktorren
-    // public Order(int order_id, Timestamp created, double price, int user_id, String mail, String type) {
-
-    public Order(int order_id, Timestamp created, double price, int user_id, String type) {
+    public Order(int order_id, Timestamp created, double price, int user_id, String mail, int customer_request) {
         this.order_id = order_id;
         this.created = created;
         this.price = price;
         this.user_id = user_id;
-        this.type = type;
-        orderlines = new ArrayList<>();
-        mail = getUserMail();
+        this.customer_request = customer_request;
+        this.mail = mail;
     }
 
-    private String getUserMail() {
-        try (Connection con = FrontController.database.connect()) {
-            String sql = "SELECT email FROM carport.users WHERE user_id = ?";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, user_id);
-            ResultSet rs = ps.executeQuery();
-            rs.next();
-            return rs.getString(1);
-        } catch (SQLException se) {
-            System.out.println(se.getMessage());
-            se.printStackTrace();
-            return se.getMessage();
-
-            // return null;
-        }
+    public int getCustomer_request() {
+        return customer_request;
     }
 
-    public void addOrderline(Orderline o) {
-        orderlines.add(o);
+    public int getWidth() {
+        return width;
     }
 
-    public List<Orderline> getOrderlines() {
-        return orderlines;
+    public int getLength() {
+        return length;
     }
 
     public int getOrder_id() {
@@ -70,11 +49,15 @@ public class Order {
         return user_id;
     }
 
-    public String getType() {
-        return type;
-    }
-
     public String getMail() {
         return mail;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
     }
 }

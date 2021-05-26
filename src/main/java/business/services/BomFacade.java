@@ -1,6 +1,7 @@
 package business.services;
 
 import business.entities.Material;
+import business.entities.Orderline;
 import business.persistence.BomMapper;
 import business.persistence.Database;
 
@@ -15,5 +16,10 @@ public class BomFacade {
     public List<Material> getOrderLineMaterials(int order_id){
         return bomMapper.getOrderLineMaterials(order_id);
     }
+
+    public List<Orderline> getOrderlines(int order_id){
+        return bomMapper.getOrderlines(order_id);
+    }
+
 
 }

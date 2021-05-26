@@ -41,7 +41,6 @@ public class CarportMapper  {
                     measureEntitiesList.add(new MeasureEntities(measureId, length, width));
 
                 }
-                System.out.println(measureEntitiesList.toString());
                 return measureEntitiesList;
             } catch (SQLException e) {
                 throw new SQLException();
