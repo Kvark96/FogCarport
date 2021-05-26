@@ -36,15 +36,12 @@
                 </form>
 
 
-                <div class="col"><img
-                        src="${pageContext.request.contextPath}/IMG/CARPORT ENKELT 3,60X5,40M CAR01H HØJ REJSNING.png"
-                        class="img-fluid  mx-auto d-block mt-5" alt="HØJ REJSNING">
 
 
                     <h1> ${applicationScope.standardCarportEntities.get(1).name}</h1>
 
                     <div class="col"><img
-                            src="${pageContext.request.contextPath}/IMG/CARPORT ENKELT 3,60X5,40M CAR01H HØJ REJSNING.png"
+                            src="${pageContext.request.contextPath}${applicationScope.standardCarportEntities.get(1).img}"
                             class="img-fluid  mx-auto d-block mt-5" alt="HØJ REJSNING">
 
 
@@ -67,7 +64,7 @@
                     <h1> ${applicationScope.standardCarportEntities.get(3).name}</h1>
 
                     <div class="col">
-                        <img src="${pageContext.request.contextPath}/IMG/CARPORT ENKELT 3,60X9,10M CRXL1HR MED REDSKABSRUM 3,20X3,55M.png"
+                        <img src="${pageContext.request.contextPath}${applicationScope.standardCarportEntities.get(2).img}"
                              class="img-fluid  mx-auto d-block" alt="HØJ REJSNIN GMED REDSKABSRUM320">
 
 
@@ -97,7 +94,7 @@
 
 
                 <div class="col"><img
-                        src="${pageContext.request.contextPath}/IMG/CARPORT ENKELT 3,90X7,80M CPO01HR MED REDSKABSRUM 2,40X3,30M.png"
+                        src="${pageContext.request.contextPath}${applicationScope.standardCarportEntities.get(3).img}"
                         class="img-fluid  mx-auto d-block mt-5" alt="HØJ REJSNIN GMED REDSKABSRUM240">
 
 

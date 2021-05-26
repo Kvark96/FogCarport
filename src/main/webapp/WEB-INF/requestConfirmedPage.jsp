@@ -13,7 +13,6 @@
         <h1>Din henvendelse er nu modtaget</h1>
         <p> Du vil høre fra os, inden for 5 hverdage.</p>
 
-        <p> Dette er ordre id = ${requestScope.order_id}</p>
 
         <form action="${pageContext.request.contextPath}/fc/drawing" method="post" name="SVGForm">
             <input type="hidden" value="780" name="length"/>

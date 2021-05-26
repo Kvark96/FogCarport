@@ -28,8 +28,9 @@ public class CartCommand extends CommandProtectedPage {
         String name = entity.getName();
         int price = entity.getPrice();
         String description = entity.getDescription();
+        String img = entity.getImg();
 
-        StandardCarportEntity standardCarportEntity = new StandardCarportEntity(standard_id, name, description, price);
+        StandardCarportEntity standardCarportEntity = new StandardCarportEntity(standard_id, name, description, price,img);
 
         cart.addCarport(entity);
 
