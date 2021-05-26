@@ -86,8 +86,7 @@ public class CarportMapper  {
     }
 
 
-    ///
-
+    /*
     private void addIdAndGetOrder_id(HttpServletRequest request, HttpServletResponse response) throws SQLException {
         int user_id = (int) request.getSession().getAttribute("user_id");
         int isARequest = (int) request.getSession().getAttribute("isARequest");
@@ -125,4 +124,7 @@ public class CarportMapper  {
         }
 
     }
+
+    */
+
 }
