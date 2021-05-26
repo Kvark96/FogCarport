@@ -22,21 +22,11 @@ public class CartCommand extends CommandProtectedPage {
         HttpSession session = request.getSession();
         int standard_id = Integer.parseInt(request.getParameter("standard_id"));
         Cart cart = (Cart) session.getAttribute("cart");
-        List<StandardCarportEntity> standardCarportEntities = carportFacade.getStandardCarportEntitiesList();
-
-        StandardCarportEntity entity = carportFacade.getCarportFromId(standard_id, standardCarportEntities);
-        String name = entity.getName();
-        int price = entity.getPrice();
-        String description = entity.getDescription();
-        String img = entity.getImg();
-
-        StandardCarportEntity standardCarportEntity = new StandardCarportEntity(standard_id, name, description, price,img);
+        StandardCarportEntity entity = carportFacade.getCarportFromId(standard_id);
 
         cart.addCarport(entity);
 
-
         request.getSession().setAttribute("cart", cart);
-
         request.getSession().setAttribute("standard_id", standard_id);
 
 

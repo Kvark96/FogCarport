@@ -1,6 +1,7 @@
 package business.persistence;
 
 import business.entities.*;
+import business.services.CarportFacade;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -9,9 +10,11 @@ import java.util.List;
 public class BomMapper {
 
     Database database;
-
+    private CarportFacade carportFacade;
     public BomMapper(Database database) {
         this.database = database;
+        this.carportFacade = new CarportFacade(database);
+
     }
 
     public List<Material> getMaterials() {
@@ -31,7 +34,7 @@ public class BomMapper {
                     String desc = rs.getString("description");
                     String unit = rs.getString("unit");
 
-                    materialDescription.add(new Material(material_id,name,length,amount,desc,unit));
+                    materialDescription.add(new Material(material_id, name, length, amount, desc, unit));
 
                 }
                 return materialDescription;
@@ -60,13 +63,13 @@ public class BomMapper {
         int maxPosts = calc.getMaximumPosts();
 
 
-        double amountCalc = ((double)length / 100.0) / distanceMeasure;
-        double amountScrews = (double) length / 100.0 * (double) width/100.0 * (double)screwKvm / (double)screwPackageNumbers;
-        double widthCalculator = (double)width / 100.0;
+        double amountCalc = ((double) length / 100.0) / distanceMeasure;
+        double amountScrews = (double) length / 100.0 * (double) width / 100.0 * (double) screwKvm / (double) screwPackageNumbers;
+        double widthCalculator = (double) width / 100.0;
 
         List<Material> materials = getMaterials();
 
-        for (Material m: materials) {
+        for (Material m : materials) {
             if (m.getMaterial_id() == 5) {
                 m.setLength(length);
             }
@@ -112,8 +115,6 @@ public class BomMapper {
                     ps.executeUpdate();
 
 
-
-
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
@@ -146,7 +147,7 @@ public class BomMapper {
                     String desc = rs.getString("description");
                     String unit = rs.getString("unit");
 
-                    materialDescription.add(new Material(material_id,name,length,quantity,desc,unit));
+                    materialDescription.add(new Material(material_id, name, length, quantity, desc, unit));
 
                 }
 
@@ -170,12 +171,13 @@ public class BomMapper {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, order_id);
             ResultSet rs = ps.executeQuery();
-            while (rs.next()){
+            while (rs.next()) {
                 orderlines.add(new Orderline(
                         order_id,
                         rs.getInt("quantity"),
                         rs.getInt("materials_length"),
-                        rs.getInt("materials_id")));
+                        rs.getInt("materials_id"),
+             carportFacade.getCarportFromId(rs.getInt("standard_id"))));
             }
 
         } catch (SQLException throwables) {

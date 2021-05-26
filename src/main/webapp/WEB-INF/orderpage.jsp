@@ -4,18 +4,16 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Se ${typeOfOrder}:
+         Se ${type}:
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
     <jsp:body>
 
-        <h1>${typeOfOrder} nr. ${order_id} fra ${user_email}</h1>
+        <h1>${type} nr. ${order.order_id} fra ${order.mail}</h1>
 
 
-
-
-        <c:if test="${typeOfOrder == 'Forespørgsel' }">
+        <c:if test="${type == 'Forespørgsel' }">
             <table class="table">
                 <thead>
                 <tr>
@@ -27,32 +25,37 @@
                 <tbody>
 
                 <tr>
-                    <td>${length}</td>
-                    <td>${width}</td>
+                    <td>${order.lenght}</td>
+                    <td>${order.width}</td>
                 </tr>
                 </tbody>
             </table>
         </c:if>
 
-        <c:if test="${typeOfOrder == 'Ordre' }">
+        <c:if test="${type == 'Ordre' }">
             <table class="table">
+
                 <thead>
                 <tr>
-                    <th scope="col">Beskrivelse</th>
+                    <th scope="col">Navn</th>
                     <th scope="col">Antal</th>
                 </tr>
 
                 </thead>
                 <tbody>
 
-                <tr>
-                    <td>${length}</td>
-                    <td>${width}</td>
-                </tr>
+
+                <c:forEach items="${order.orderlines}" var="orderline">
+                    <tr>
+                        <td><c:out value="${orderline.standardCarportEntity.name}"/></td>
+                        <td><c:out value="${orderline.quantity}"/></td>
+
+                    </tr>
+                </c:forEach>
                 </tbody>
             </table>
         </c:if>
 
-        <h2>Total pris : ${price}</h2>
+        <h2>Total pris : ${order.price}</h2>
     </jsp:body>
 </t:genericpage>

@@ -7,8 +7,6 @@ import business.persistence.Database;
 
 import java.util.List;
 
-
-
 public class CarportFacade {
 private CarportMapper carportMapper;
 
@@ -21,21 +19,11 @@ private CarportMapper carportMapper;
         return carportMapper.getMeasureEntities();
     }
 
-
+    public StandardCarportEntity getCarportFromId(int standard_id)  {
+        return this.carportMapper.getStandardCarportEntity(standard_id);
+    }
 
     public CarportFacade(Database database) {
         this.carportMapper = new CarportMapper(database);
-    }
-
-    public StandardCarportEntity getCarportFromId(int standard_id, List<StandardCarportEntity> standardCarportEntityList) throws NoSuchFieldException {
-
-
-        for (StandardCarportEntity s : standardCarportEntityList) {
-            if (s.getStandard_id() == standard_id) {
-                return s;
-            }
-        }
-        throw new NoSuchFieldException();
-
     }
 }

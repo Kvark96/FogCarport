@@ -1,6 +1,7 @@
 package business.persistence;
 
 import business.entities.Order;
+import business.entities.Orderline;
 import web.FrontController;
 
 import java.sql.*;
@@ -14,8 +15,51 @@ public class OrderMapper {
         this.database = database;
     }
 
+
+    public void addOrderlineToDatabase(List<Orderline> lines) {
+
+        try (Connection connection = database.connect()) {
+            String sql = "INSERT INTO orderline (order_id, quantity, standard_id) VALUES (?,?,?)";
+
+            for (int i = 0; i < lines.size(); i++) {
+                Orderline ol = lines.get(i);
+                try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                    ps.setInt(1, ol.getOrder_id());
+                    ps.setInt(2, ol.getQuantity());
+                    ps.setInt(3, ol.getStandardCarportEntity().getStandard_id());
+                    ps.executeUpdate();
+
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+    }
+
+
+    public void addOrderToDatabase(int user_id, int customer_request) {
+        try (Connection connection = database.connect()) {
+
+            String insertSql = "INSERT INTO carport.orders (user_id, customer_request) VALUES (?,?)";
+            try (PreparedStatement ps = connection.prepareStatement(insertSql)) {
+                ps.setInt(1, user_id);
+                ps.setInt(2, customer_request);
+                ps.execute();
+
+            } catch (SQLException error) {
+                System.out.println("Failed to add id to orders" + error.getMessage());
+            }
+        } catch (SQLException se) {
+            System.out.println("Failed to Connect to DB in OrderMapper");
+            se.printStackTrace();
+        }
+    }
+
     public void addOrderToDatabase(int user_id, int length, int width, int customer_request) {
-        try (Connection connection = FrontController.database.connect()) {
+        try (Connection connection = database.connect()) {
 
             String insertSql = "INSERT INTO carport.orders (user_id, customer_request,length,width) VALUES (?,?,?,?)";
             try (PreparedStatement ps = connection.prepareStatement(insertSql)) {
@@ -28,15 +72,15 @@ public class OrderMapper {
             } catch (SQLException error) {
                 System.out.println("Failed to add id to orders" + error.getMessage());
             }
-        } catch (SQLException se){
+        } catch (SQLException se) {
             System.out.println("Failed to Connect to DB in OrderMapper");
             se.printStackTrace();
         }
     }
 
-    public int getLatestOrderIDFromUserID(int user_id){
-        String orderSql = "SELECT order_id FROM carport.orders WHERE user_id = ? order by order_id desc";
-        try(Connection connection = database.connect()) {
+    public int getLatestOrderIDFromUserID(int user_id) {
+        String orderSql = "select order_id from orders where user_id = ? order by created desc";
+        try (Connection connection = database.connect()) {
             try (PreparedStatement ps = connection.prepareStatement(orderSql)) {
                 ps.setInt(1, user_id);
                 ResultSet rs = ps.executeQuery();
@@ -47,7 +91,7 @@ public class OrderMapper {
             } catch (SQLException error) {
                 System.out.println("Failed get order_id from database=" + error.getMessage());
             }
-        } catch (SQLException se){
+        } catch (SQLException se) {
             System.out.println("Failed to Connect to DB in OrderMapper");
             se.printStackTrace();
         }
@@ -58,13 +102,13 @@ public class OrderMapper {
 
         List<Order> orders = new ArrayList<>();
 
-        try(Connection con = FrontController.database.connect()){
+        try (Connection con = database.connect()) {
             String sql = "SELECT * FROM orders JOIN carport.users ON orders.user_id = users.user_id WHERE customer_request = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, customer_request);
             ResultSet rs = ps.executeQuery();
 
-            while(rs.next()){
+            while (rs.next()) {
                 int order_id = rs.getInt("order_id");
                 Timestamp ts = rs.getTimestamp("created");
                 double price = rs.getDouble("price");
@@ -73,7 +117,7 @@ public class OrderMapper {
                 int type = rs.getInt("customer_request");
                 orders.add(new Order(order_id, ts, price, user_id, mail, type));
             }
-        } catch (SQLException se){
+        } catch (SQLException se) {
             System.out.println("Failed to connect to database in OrderlistCommand");
             System.out.println(se.getMessage());
         }
@@ -81,9 +125,9 @@ public class OrderMapper {
         return orders;
     }
 
-    public Order getFullOrderFromDatabase(int order_id) {
+    public Order getOrderFromDatabase(int order_id) {
         Order order = null;
-        try(Connection con = FrontController.database.connect()){
+        try (Connection con = FrontController.database.connect()) {
 
             String sql =
                     "SELECT customer_request, users.user_id, orders.order_id, created, length, width, price, users.email, orderline.quantity, orderline.orderline_id, orderline.materials_id FROM carport.orders " +
@@ -95,7 +139,7 @@ public class OrderMapper {
             ps.setInt(1, order_id);
             ResultSet rs = ps.executeQuery();
 
-            while(rs.next()){
+            while (rs.next()) {
                 int length = (int) rs.getDouble("length");
                 int width = (int) rs.getDouble("width");
                 double price = rs.getDouble("price");
@@ -113,7 +157,7 @@ public class OrderMapper {
             }
 
 
-        } catch (SQLException se){
+        } catch (SQLException se) {
             System.out.println("Failed to connect to database in ViewOrderCommand");
             System.out.println(se.getMessage());
         }

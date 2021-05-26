@@ -21,14 +21,8 @@ public class ViewOrderCommand extends CommandProtectedPage {
         int order_id = Integer.parseInt(request.getParameter("order_id"));
         String type = request.getParameter("typeOfOrder").equals("0") ? "Ordre" : "Forespørgsel";
         Order order = orderFacade.getFullOrderFromDatabase(order_id);
-
-        request.setAttribute("user_email", order.getMail());
-        request.setAttribute("price", order.getPrice());
-        request.setAttribute("order_id", order_id);
-        request.setAttribute("length", order.getLength());
-        request.setAttribute("width", order.getWidth());
-        request.setAttribute("typeOfOrder", type);
-
+        request.setAttribute("order", order);
+        request.setAttribute("type", type);
         return pageToShow;
     }
 }

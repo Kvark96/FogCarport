@@ -1,6 +1,7 @@
 package business.entities;
 
 import java.sql.*;
+import java.util.List;
 
 public class Order {
     private int order_id;
@@ -11,6 +12,7 @@ public class Order {
     private String mail;
     private int width;
     private int length;
+    private List<Orderline> orderlines;
 
     public Order(int order_id, Timestamp created, double price, int user_id, String mail, int customer_request) {
         this.order_id = order_id;
@@ -19,6 +21,14 @@ public class Order {
         this.user_id = user_id;
         this.customer_request = customer_request;
         this.mail = mail;
+    }
+
+    public List<Orderline> getOrderlines() {
+        return orderlines;
+    }
+
+    public void setOrderlines(List<Orderline> orderlines) {
+        this.orderlines = orderlines;
     }
 
     public int getCustomer_request() {

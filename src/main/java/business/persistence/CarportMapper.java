@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarportMapper  {
+public class CarportMapper {
 
     Database database;
 
@@ -21,7 +21,6 @@ public class CarportMapper  {
     public CarportMapper(Database database) {
         this.database = database;
     }
-
 
 
     public List<MeasureEntities> getMeasureEntities() {
@@ -53,7 +52,6 @@ public class CarportMapper  {
     }
 
 
-
     public List<StandardCarportEntity> getStandardCarportEntitiesList() {
         List<StandardCarportEntity> standardCarportEntityList = new ArrayList<>();
         try (Connection connection = database.connect()) {
@@ -80,51 +78,36 @@ public class CarportMapper  {
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
-
         }
         return standardCarportEntityList;
     }
 
-
-    /*
-    private void addIdAndGetOrder_id(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-        int user_id = (int) request.getSession().getAttribute("user_id");
-        int isARequest = (int) request.getSession().getAttribute("isARequest");
-        int length = (int) request.getSession().getAttribute("length");
-        int width = (int) request.getSession().getAttribute("width");
-        try (Connection connection = FrontController.database.connect()) {
-
-            String insertSql = "INSERT INTO carport.orders (user_id, customer_request,length,width) VALUES (?,?,?,?)";
-            try (PreparedStatement ps = connection.prepareStatement(insertSql)) {
-                ps.setInt(1, user_id);
-                ps.setInt(2, isARequest);
-                ps.setDouble(3, length);
-                ps.setDouble(4, width);
-                ps.execute();
-
-            } catch (SQLException error) {
-                System.out.println("Failed to add id to orders" + error.getMessage());
-            }
+    public StandardCarportEntity getStandardCarportEntity(int id) {
+        try (Connection connection = database.connect()) {
 
 
-            String orderSql = "SELECT order_id FROM carport.orders WHERE user_id = ? order by order_id desc";
+            String sql = "SELECT * FROM carport.standardcarport where standard_id = ?;";
 
-            try (PreparedStatement ps = connection.prepareStatement(orderSql)) {
-                ps.setInt(1, user_id);
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, id);
                 ResultSet rs = ps.executeQuery();
-                rs.next();
-                request.setAttribute("order_id", rs.getInt("order_id")); // THIS WAS CHANGED FROM SESSIONSCOPE
+                while (rs.next()) {
 
-                bomMapper.generateCarport(rs.getInt("order_id"), length, width);
-
-                System.out.println(request.getSession().getAttribute("order_id"));
-            } catch (SQLException error) {
-                System.out.println("Failed get order_id from database=" + error.getMessage());
+                    int standard_id = rs.getInt("standard_id");
+                    String name = rs.getString("name");
+                    String description = rs.getString("description");
+                    int price = rs.getInt("price");
+                    String img = rs.getString("img");
+                    return new StandardCarportEntity(standard_id, name, description, price, img);
+                }
+            } catch (SQLException e) {
+                throw new SQLException();
             }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+
         }
-
+        return null;
     }
-
-    */
-
 }

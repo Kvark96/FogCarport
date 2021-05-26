@@ -13,7 +13,7 @@ public class OrderlistCommand extends CommandProtectedPage {
 
     public OrderlistCommand(String pageToShow, String role) {
         super(pageToShow, role);
-        orderFacade = new OrderFacade(FrontController.database);
+        orderFacade = new OrderFacade(database);
     }
 
     @Override
