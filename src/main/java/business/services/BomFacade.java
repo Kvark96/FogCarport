@@ -21,5 +21,9 @@ public class BomFacade {
         return bomMapper.getOrderlines(order_id);
     }
 
+    public void generateCarport(int order_id, int length, int width){
+        bomMapper.generateCarport(order_id, length, width);
+    }
+
 
 }

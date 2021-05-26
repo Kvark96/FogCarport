@@ -1,6 +1,7 @@
 package web.commands;
 
 import business.persistence.BomMapper;
+import business.services.BomFacade;
 import business.services.OrderFacade;
 import web.FrontController;
 
@@ -10,7 +11,7 @@ import java.sql.SQLException;
 
 public class ConfirmRequestCommand extends CommandProtectedPage {
 
-    BomMapper bomMapper = new BomMapper(database);
+    BomFacade bomFacade = new BomFacade(database);
     OrderFacade orderFacade;
 
     public ConfirmRequestCommand(String pageToShow, String role) {
@@ -29,7 +30,7 @@ public class ConfirmRequestCommand extends CommandProtectedPage {
         int order_id = orderFacade.getLatestOrderIdFromUserId(user_id);
 
         request.setAttribute("order_id", order_id);
-        bomMapper.generateCarport(order_id, length, width);
+        bomFacade.generateCarport(order_id, length, width);
 
         return pageToShow;
     }
