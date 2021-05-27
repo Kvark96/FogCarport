@@ -22,8 +22,8 @@ public class BomMapperTest {
 
     private final static String DATABASE = "carport";  // Change this to your own database
     private final static String TESTDATABASE = DATABASE + "_test";
-    private final static String USER = "java";
-    private final static String PASSWORD = "java";
+    private final static String USER = "root";
+    private final static String PASSWORD = "herr1234";
     private final static String URL = "jdbc:mysql://localhost:3306/" + TESTDATABASE + "?serverTimezone=CET&useSSL=false";
 
     private static Database database;
@@ -34,6 +34,7 @@ public class BomMapperTest {
     public static void setUpClass() {
         try {
             database = new Database(USER, PASSWORD, URL);
+            bomMapper = new BomMapper(database);
             bomFacade = new BomFacade(database);
         } catch (ClassNotFoundException e) {   // kan ikke finde driveren i database klassen
             fail("Database connection failed. Missing jdbc driver");
@@ -56,8 +57,8 @@ public class BomMapperTest {
                             "(4,'HH','robin@somewhere.com','batman','employee','444','vej','1234')");
             stmt.execute("create table " + TESTDATABASE + ".orders LIKE " + DATABASE + ".orders;");
             stmt.execute("insert into orders values " +
-                    " (1, '2021-05-10 20:00:00', 0, 1, 0, 420, 420, 0, 0, 0, 1), " +
-                    " (2, '2021-05-10 20:01:00', 0, 1, 0, 320, 320, 0, 0, 0, 1)" );
+                    " (1, '2021-05-10 20:00:00', 0, 1, 0, 420, 420, 0, 0, 0), " +
+                    " (2, '2021-05-10 20:01:00', 0, 1, 0, 320, 320, 0, 0, 0)" );
             stmt.execute("create table " + TESTDATABASE + ".orderline LIKE " + DATABASE + ".orderline;");
 
 
@@ -126,7 +127,5 @@ public class BomMapperTest {
         assertEquals(1, materials1.get(10).getAmount());
 
     }
-
-
 }
 
