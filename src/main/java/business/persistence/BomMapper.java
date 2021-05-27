@@ -63,10 +63,7 @@ public class BomMapper {
                     ps.setInt(2, materials.get(i).getMaterial_id());
                     ps.setInt(3, materials.get(i).getLength());
                     ps.setInt(4, materials.get(i).getAmount());
-
-                    ps.executeUpdate();
-
-
+                     ps.executeUpdate();
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }

@@ -6,6 +6,7 @@ import business.services.BomFacade;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import web.FrontController;
 
 import java.sql.*;
 import java.time.Instant;
@@ -44,9 +45,9 @@ public class BomMapperTest {
         Timestamp setTimestamp = Timestamp.from(Instant.now());
         // reset test database
         try (Statement stmt = database.connect().createStatement()) {
-            stmt.execute("drop table if exists orderline ");
-            stmt.execute("drop table if exists orders ");
-            stmt.execute("drop table if exists users");
+          //  stmt.execute("drop table if exists orderline ");
+            //stmt.execute("drop table if exists orders ");
+            //stmt.execute("drop table if exists users");
             stmt.execute("create table " + TESTDATABASE + ".users LIKE " + DATABASE + ".users;");
             stmt.execute(
                     "insert into users values " +

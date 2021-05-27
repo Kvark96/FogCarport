@@ -13,7 +13,7 @@ database database as Foo5
 Foo -> Foo2 : open application
 Foo2 -> Foo3 : Calling CarportFacade
 Foo3 -> Foo4 : getMeasureEntities() & getStandardCarportEntitiesList
-Foo4 -> Foo5 : retrieve measures
+Foo4 -> Foo5 : retrieve measures & standard entities
 Foo5 -> Foo1 : List<MeasureEntities> & List<StandardCarportEntity>
 Foo -> Foo1  : Index.jsp(frontpage)
 
