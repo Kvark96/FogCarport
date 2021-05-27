@@ -46,14 +46,7 @@
                 <div class="col-sm-4">
                     <a class="btn btn-primary" href="${pageContext.request.contextPath}${customCarport}" role="button">Lav
                         en henvendelse</a>
-                </div>
-                <br>
-                <div class="col-sm-4">
-                    <a class="btn btn-primary" href="${pageContext.request.contextPath}${previousorders}" role="button">
-                        Tidligere Ordre
-                    </a>
 
-                </div>
             </c:when>
             <c:otherwise>
                 <div class="col-sm-4">

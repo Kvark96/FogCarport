@@ -19,7 +19,12 @@
         <br>
         <p>  <a href="${pageContext.request.contextPath}/fc/customCarport" class="btn btn-primary"> Vælg carport ud special mål </a>
         <br>
+        <br>
         <a href="${pageContext.request.contextPath}/fc/standardCarportPage" class="btn btn-primary"> Standard carporte </a>
+        <br>
+        <br>
+        <a class="btn btn-primary" href="${pageContext.request.contextPath}${previousorders}"> Se tidligere ordre </a>
+
 
 
     </jsp:body>

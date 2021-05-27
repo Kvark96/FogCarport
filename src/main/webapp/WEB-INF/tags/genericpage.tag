@@ -37,8 +37,7 @@
             <a class="p-2 text-dark" href="<%=request.getContextPath()%>">Forside</a>
         </c:if>
 
-        <a class="p-2 text-dark" href="#">Ordre</a>
-        <a class="p-2 text-dark" href="#">Profil</a>
+
         <a class="p-2 text-dark" href="#"></a>
     </nav>
 
