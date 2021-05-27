@@ -6,13 +6,10 @@ import business.persistence.UserMapper;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.Instant;
-
-import static java.time.Instant.now;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ConfirmRequestCommandTest {
