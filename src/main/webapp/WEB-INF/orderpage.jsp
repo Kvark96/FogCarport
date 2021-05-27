@@ -25,7 +25,7 @@
                 <tbody>
 
                 <tr>
-                    <td>${order.lenght}</td>
+                    <td>${order.length}</td>
                     <td>${order.width}</td>
                 </tr>
                 </tbody>

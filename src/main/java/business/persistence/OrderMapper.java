@@ -1,5 +1,6 @@
 package business.persistence;
 
+import business.entities.Cart;
 import business.entities.Order;
 import business.entities.Orderline;
 import web.FrontController;
@@ -40,13 +41,14 @@ public class OrderMapper {
     }
 
 
-    public void addOrderToDatabase(int user_id, int customer_request) {
+    public void addOrderToDatabase(int user_id, int customer_request, Cart cart) {
         try (Connection connection = database.connect()) {
 
-            String insertSql = "INSERT INTO carport.orders (user_id, customer_request) VALUES (?,?)";
+            String insertSql = "INSERT INTO carport.orders (user_id, customer_request, price) VALUES (?,?,?)";
             try (PreparedStatement ps = connection.prepareStatement(insertSql)) {
                 ps.setInt(1, user_id);
                 ps.setInt(2, customer_request);
+                ps.setDouble(3, cart.calcPrice_());
                 ps.execute();
 
             } catch (SQLException error) {

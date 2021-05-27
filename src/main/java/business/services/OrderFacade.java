@@ -43,7 +43,7 @@ public class OrderFacade {
         return fullOrder;
     }
     public void addStandardCarportToOrders(int user_id, int isARequest, Cart cart){
-        orderMapper.addOrderToDatabase(user_id,isARequest);
+        orderMapper.addOrderToDatabase(user_id,isARequest, cart);
         int order_id = orderMapper.getLatestOrderIDFromUserID(user_id);
         List<Orderline> orderlines = new ArrayList<>();
         for (StandardCarportEntity carport: cart.getCarports()) {
