@@ -1,5 +1,6 @@
 DROP database carport;
 -- MySQL Workbench Forward Engineering
+-- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
@@ -96,9 +97,6 @@ CREATE TABLE IF NOT EXISTS `carport`.`orders` (
                                                   `customer_request` TINYINT NULL DEFAULT NULL,
                                                   `length` DOUBLE NULL DEFAULT NULL,
                                                   `width` DOUBLE NULL DEFAULT NULL,
-                                                  `roof_type` VARCHAR(45) NULL DEFAULT NULL,
-                                                  `tool_room_length` INT NULL DEFAULT NULL,
-                                                  `tool_room:width` INT NULL DEFAULT NULL,
                                                   PRIMARY KEY (`order_id`),
                                                   UNIQUE INDEX `order_id` (`order_id` ASC) VISIBLE,
                                                   INDEX `fk_orders_users_idx` (`user_id` ASC) VISIBLE,
@@ -133,10 +131,10 @@ CREATE TABLE IF NOT EXISTS `carport`.`standardcarport` (
 CREATE TABLE IF NOT EXISTS `carport`.`orderline` (
                                                      `order_id` INT NOT NULL,
                                                      `orderline_id` INT NOT NULL AUTO_INCREMENT,
-                                                     `materials_id` INT NULL,
+                                                     `materials_id` INT NULL DEFAULT NULL,
                                                      `materials_length` INT NULL DEFAULT NULL,
                                                      `quantity` INT NOT NULL,
-                                                     `standard_id` INT NULL,
+                                                     `standard_id` INT NULL DEFAULT NULL,
                                                      PRIMARY KEY (`orderline_id`),
                                                      INDEX `fk_orderline_orders1` (`order_id` ASC) VISIBLE,
                                                      INDEX `fk_orderline_materials1_idx` (`materials_id` ASC) VISIBLE,
@@ -149,9 +147,7 @@ CREATE TABLE IF NOT EXISTS `carport`.`orderline` (
                                                              REFERENCES `carport`.`orders` (`order_id`),
                                                      CONSTRAINT `fk_orderline_standardcarport1`
                                                          FOREIGN KEY (`standard_id`)
-                                                             REFERENCES `carport`.`standardcarport` (`standard_id`)
-                                                             ON DELETE NO ACTION
-                                                             ON UPDATE NO ACTION)
+                                                             REFERENCES `carport`.`standardcarport` (`standard_id`))
     ENGINE = InnoDB
     AUTO_INCREMENT = 1
     DEFAULT CHARACTER SET = utf8mb4

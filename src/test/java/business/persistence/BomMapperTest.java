@@ -47,7 +47,7 @@ public class BomMapperTest {
         // reset test database
         try (Statement stmt = database.connect().createStatement()) {
           //  stmt.execute("drop table if exists orderline ");
-            //stmt.execute("drop table if exists orders ");
+            //stmt.execute("drop table if exists orders ");<
             //stmt.execute("drop table if exists users");
             stmt.execute("create table " + TESTDATABASE + ".users LIKE " + DATABASE + ".users;");
             stmt.execute(
@@ -57,8 +57,8 @@ public class BomMapperTest {
                             "(4,'HH','robin@somewhere.com','batman','employee','444','vej','1234')");
             stmt.execute("create table " + TESTDATABASE + ".orders LIKE " + DATABASE + ".orders;");
             stmt.execute("insert into orders values " +
-                    " (1, '2021-05-10 20:00:00', 0, 1, 0, 420, 420, 0, 0, 0), " +
-                    " (2, '2021-05-10 20:01:00', 0, 1, 0, 320, 320, 0, 0, 0)" );
+                    " (1, '2021-05-10 20:00:00', 0, 1, 0, 420, 420), " +
+                    " (2, '2021-05-10 20:01:00', 0, 1, 0, 320, 320)" );
             stmt.execute("create table " + TESTDATABASE + ".orderline LIKE " + DATABASE + ".orderline;");
 
 
