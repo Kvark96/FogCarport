@@ -4,17 +4,16 @@
 autonumber
 @startuml
 actor participant as Foo
-participant       jsp      as Foo1
-control     Frontcontroler      as Foo2
-control      facade      as Foo3
+
+participant     Frontcontroler      as Foo2
+participant      facade      as Foo3
 participant    mapper    as Foo4
 database database as Foo5
 
-Foo -> Foo2 : open application
+Foo -> Foo2 : Start application
 Foo2 -> Foo3 : Calling CarportFacade
 Foo3 -> Foo4 : getMeasureEntities() & getStandardCarportEntitiesList
 Foo4 -> Foo5 : retrieve measures & standard entities
-Foo5 -> Foo1 : List<MeasureEntities> & List<StandardCarportEntity>
-Foo -> Foo1  : Index.jsp(frontpage)
+Foo5 -> Foo2 : List<MeasureEntities> & List<StandardCarportEntity>
 
 @enduml

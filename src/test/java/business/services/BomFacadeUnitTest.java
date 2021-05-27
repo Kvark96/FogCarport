@@ -61,7 +61,7 @@ class BomFacadeUnitTest {
     }
 
     @Test
-    void generateCarportTestWithMinMaterial() {
+    void generateCarportListTest() {
         List<Material> resultList = bomFacade.generateCarport(240, 240, calculateNumbers, materialList);
       assertEquals(materialList.size(), resultList.size());
 
