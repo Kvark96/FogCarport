@@ -35,42 +35,139 @@ class BomFacadeUnitTest {
     }
 
     @Test
-    void generateCarportTestUnchangedMaterial() {
+    void generateCarportTestWithMinMaterial() {
         List<Material> resultList = bomFacade.generateCarport(240, 240, calculateNumbers, materialList);
-        Map <Integer,Material> map= new HashMap<>();
-       resultList.forEach(material -> {map.put(material.getMaterial_id(),material);});
-       Material test = map.get(1);
-        assertEquals(360,test.getLength());
-        assertEquals(4,test.getAmount());
-        test =map.get(5);
-        assertEquals(240,test.getLength());
-        assertEquals(2,test.getAmount());
+        Map<Integer, Material> map = new HashMap<>();
+        resultList.forEach(material -> {
+            map.put(material.getMaterial_id(), material);
+        });
 
+        Material test = map.get(1);
+        assertEquals(360, test.getLength());
+        assertEquals(4, test.getAmount());
 
+        test = map.get(5);
+        assertEquals(240, test.getLength());
+        assertEquals(2, test.getAmount());
+
+        test = map.get(6);
+        assertEquals(240, test.getLength());
+        assertEquals(5, test.getAmount());
+
+        test = map.get(7);
+        assertEquals(300, test.getLength());
+        assertEquals(4, test.getAmount());
+
+        test = map.get(10);
+        assertEquals(600, test.getLength());
+        assertEquals(3, test.getAmount());
+
+        test = map.get(11);
+        assertEquals(0, test.getLength());
+        assertEquals(1, test.getAmount());
+
+        test = map.get(12);
+        assertEquals(1000, test.getLength());
+        assertEquals(2, test.getAmount());
+
+        test = map.get(13);
+        assertEquals(0, test.getLength());
+        assertEquals(5, test.getAmount());
+
+        test = map.get(14);
+        assertEquals(0, test.getLength());
+        assertEquals(5, test.getAmount());
     }
 
+
     @Test
-    void generateCarportBigCarport() {
+    void generateCarportTestWithMaxMaterial() {
         List<Material> resultList = bomFacade.generateCarport(780, 780, calculateNumbers, materialList);
-        for (Material m : resultList) {
-            System.out.println(m.getMaterial_id());
-            System.out.println(m.getLength());
-            System.out.println(m.getAmount());
-            if (m.getMaterial_id() == 5) {
-                assertEquals(780,m.getLength());
-                assertEquals(2,m.getAmount());
-            }
+        Map<Integer, Material> map = new HashMap<>();
+        resultList.forEach(material -> {
+            map.put(material.getMaterial_id(), material);
+        });
 
+        Material test = map.get(1);
+        assertEquals(360, test.getLength());
+        assertEquals(4, test.getAmount());
 
+        test = map.get(5);
+        assertEquals(780, test.getLength());
+        assertEquals(2, test.getAmount());
 
+        test = map.get(6);
+        assertEquals(780, test.getLength());
+        assertEquals(15, test.getAmount());
 
-        }
+        test = map.get(7);
+        assertEquals(300, test.getLength());
+        assertEquals(6, test.getAmount());
+
+        test = map.get(10);
+        assertEquals(600, test.getLength());
+        assertEquals(8, test.getAmount());
+
+        test = map.get(11);
+        assertEquals(0, test.getLength());
+        assertEquals(4, test.getAmount());
+
+        test = map.get(12);
+        assertEquals(1000, test.getLength());
+        assertEquals(2, test.getAmount());
+
+        test = map.get(13);
+        assertEquals(0, test.getLength());
+        assertEquals(15, test.getAmount());
+
+        test = map.get(14);
+        assertEquals(0, test.getLength());
+        assertEquals(15, test.getAmount());
     }
+
     @Test
-    void failTest(){
+    void generateCarportTestWithMaxMaterialExspectedToFail() {
+        //Some of the lenght and amounts wont change with width and length therefore user og both assertEquals & assertNotEquals
+        List<Material> resultList = bomFacade.generateCarport(240, 240, calculateNumbers, materialList);
+        Map<Integer, Material> map = new HashMap<>();
+        resultList.forEach(material -> {
+            map.put(material.getMaterial_id(), material);
+        });
+        Material test = map.get(1);
+        assertEquals(360, test.getLength());
+        assertEquals(4, test.getAmount());
+
+        test = map.get(5);
+        assertNotEquals(780, test.getLength());
+        assertEquals(2, test.getAmount());
+
+        test = map.get(6);
+        assertNotEquals(780, test.getLength());
+        assertNotEquals(15, test.getAmount());
+
+        test = map.get(7);
+        assertEquals(300, test.getLength());
+        assertNotEquals(6, test.getAmount());
+
+        test = map.get(10);
+        assertEquals(600, test.getLength());
+        assertNotEquals(8, test.getAmount());
+
+        test = map.get(11);
+        assertEquals(0, test.getLength());
+        assertNotEquals(4, test.getAmount());
+
+        test = map.get(12);
+        assertEquals(1000, test.getLength());
+        assertEquals(2, test.getAmount());
+
+        test = map.get(13);
+        assertEquals(0, test.getLength());
+        assertNotEquals(15, test.getAmount());
+
+        test = map.get(14);
+        assertEquals(0, test.getLength());
+        assertNotEquals(15, test.getAmount());
 
     }
-
-
-
 }

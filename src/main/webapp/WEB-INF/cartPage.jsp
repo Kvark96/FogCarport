@@ -40,7 +40,7 @@
             <input type="hidden" name="price" value="${cart.calcprice}"/>
             <button class="btn btn-primary" type="submit" value="confirm"> Bekræft </button>
         </form>
-
+        <br>
         <a href="${pageContext.request.contextPath}/fc/standardCarportPage" class="btn btn-primary">Gå tilbage til Standard carporte </a>
 
 
